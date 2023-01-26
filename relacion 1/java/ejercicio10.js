@@ -1,15 +1,6 @@
-var ini=prompt("Valor inicial");
-ini=parseInt(ini);
-var fin=prompt("Valor final");
-fin=parseInt(fin);
-function ordena_limites(ini, fin){
-    if (ini> fin){
-        let ini2 = ini++;
-        alert("Incrementando valor... ");
-        alert(ini2 + " + 1 = " +ini );
-    }
-    else{
-        alert("Nada pasó");
-    }
-}
-ordena_limites(ini, fin);
+var precio_sin_iva=123.45;
+var iva=21;
+var aplicariva=(precio_sin_iva*iva)/100;
+var precio=precio_sin_iva+aplicariva
+
+document.getElementById("iva").innerHTML="El precio del producto aplicando su iva es "+precio+"€";

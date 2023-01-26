@@ -1,18 +1,11 @@
-var base=prompt("Introduce la base");
-var altura=prompt("Introduce la altura");
-base=parseInt(base);
-altura=parseInt(altura);
-function area(x, y) {
-    for (let i=1; i<=y; i++){
-        for (let j = 1;j <= x; j++){
-            if(i === 1 || i === y || j === 1 || j === x){
-                linea += "#";
-            }
-            else{
-                linea += " ";
-            }
-        }
-        console.log(linea);
-    }
-}
-area(base, altura);
+var num1=7; 
+var num2=4;
+var suma=num1+num2;
+var resta=num1-num2;
+var division=num1/num2;
+var multriplicacion=num1*num2;
+
+document.getElementById("suma").innerHTML="La suma de los dos numeros introducidos es: "+suma;
+document.getElementById("resta").innerHTML="La resta de los dos numeros introducidos es: "+resta;
+document.getElementById("division").innerHTML="La division de los dos numeros introducidos es: "+division;
+document.getElementById("multriplicacion").innerHTML="La multriplicacion de los dos numeros introducidos es: "+multriplicacion;

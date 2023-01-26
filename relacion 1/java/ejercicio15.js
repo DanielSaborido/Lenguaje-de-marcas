@@ -1,7 +1,4 @@
-let base=prompt("Introduce una base");
-let exponente=prompt("Introduce un exponente");
-function potencia(base, exponente){
-    let total = base**exponente;
-    return total
-}
-alert(potencia(base, exponente));
+var codigo=prompt("Introduce un codigo:","Anonimo")
+
+alert("El codigo introducido es: "+codigo)
+document.getElementById("codigo").innerHTML="El codigo introducido es: "+codigo

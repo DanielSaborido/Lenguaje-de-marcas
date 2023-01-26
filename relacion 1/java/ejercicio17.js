@@ -1,9 +1,5 @@
-let numero=prompt("Introduce un número entero");
-numero=parseInt(numero);
-function entero(numero){
-    while(numero<0){
-        var numero=prompt("Introduce un número entero");
-    }
-    return numero
-}
-alert(entero(numero));
+var num1=prompt("Escribe un número")
+var num2=prompt("Escribe un número")
+var suma=(parseFloat(num1)+parseFloat(num2))
+
+alert("La suma de los numeros es: "+suma)

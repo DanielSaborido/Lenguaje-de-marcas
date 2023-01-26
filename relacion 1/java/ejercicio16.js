@@ -1,9 +1,5 @@
-let numero=prompt("introduce un número");
-function factorial(numero){
-    let resultado=1;
-    for (i=1; i <= numero; i++){
-        resultado *= i
-    }
-    return resultado
-}
-alert(factorial(numero));
+var num1=prompt("Escribe un número")
+var num2=prompt("Escribe un número")
+var suma=num1+num2
+
+alert("La suma de los numeros es: "+suma)

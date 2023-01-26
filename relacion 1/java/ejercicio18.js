@@ -1,14 +1,7 @@
-let ini=prompt("Introduce un número entero");
-let fin = prompt("Introduce un valor final");
-fin = parseInt(fin);
-ini = parseInt(ini);
-
-function entero(ini, fin){
-    while(ini<0 || ini<fin){    
-        var ini = prompt("Introduce un número entero");
-        ini=parseInt(ini);
-        ini++;
-    }
-    return ini;
+var num=prompt("Escribe un número y veremos si es par o impar.")
+if (parseInt(num)%2==0){
+    alert("el número es par")
 }
-alert(entero(ini, fin));
+else{
+    alert("el número es impar")
+}
