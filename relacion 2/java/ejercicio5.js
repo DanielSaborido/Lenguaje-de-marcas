@@ -1,14 +1,20 @@
-var nota1=prompt("Escribe la nota del primer trimestre");
-var nota2=prompt("Escribe la nota del segundo trimestre");
-var nota3=prompt("Escribe la nota del tercer trimestre");
-nota1=parseInt(nota1)
-nota2=parseInt(nota2)
-nota3=parseInt(nota3)
-var total=((nota1+nota2+nota3)/3)
-total=parseInt(total)
+var trimestre1=prompt("Escribe la nota del primer trimestre");
+var trimestre2=prompt("Escribe la nota del segundo trimestre");
+var trimestre3=prompt("Escribe la nota del tercer trimestre");
+trimestre1=parseFloat(trimestre1)
+trimestre2=parseFloat(trimestre2)
+trimestre3=parseFloat(trimestre3)
+var total=((trimestre1+trimestre2+trimestre3)/3)
+total=parseFloat(total)
 console.log(total)
-if (total<=5){
-    alert("La asignatura esta suspensa.")
+if (trimestre1<5){
+    alert("El primer triestre esta suspenso.")
+}
+if (trimestre2<5){
+    alert("El segundo triestre esta suspenso.")
+}
+if (trimestre3<5){
+    alert("El tercer triestre esta suspenso.")
 }
 else{
     alert("La asignatura esta aprobada.")
