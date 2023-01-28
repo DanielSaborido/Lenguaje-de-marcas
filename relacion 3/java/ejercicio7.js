@@ -1,14 +1,8 @@
-var entrada=prompt("Escribe algo", "desconocido")
-console.log(entrada)
-if (entrada=="desconocido"){
-    alert("no introdujo ningún valor, valor por defecto")
+var simbolo=prompt("Introduce el simbolo que deseas imprimir")
+var numero=prompt("Introduce el número de veces que lo deseas imprimir")
+function linea(simbolo,numero){
+    for (i=0;i<=numero;i++){
+        document.write(simbolo)
+    }
 }
-if (entrada== entrada.match(/^[A-Z][a-z]+$/)){
-    alert("Hola, "+entrada)
-}
-if (entrada==entrada.match(/\s/g)){
-    alert("Espacio en blanco")
-}
-if (entrada==null){
-    alert("Cancelado")
-}
+linea(simbolo,numero)

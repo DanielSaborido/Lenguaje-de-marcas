@@ -1,4 +1,10 @@
-var semana=["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"]
-for (i=0;i<semana.length;i++){
-    alert(semana[i])
+var numero=prompt("Introduce un número")
+function parImpar(num){
+    if (num%2==0){
+        return 1
+    }
+    else{
+        return 0
+    }
 }
+alert(parImpar(numero))

@@ -1,7 +1,11 @@
-var entrada=prompt("Escribe algo")
-if (entrada.match(/\s/g)){
-    alert("Este texto contiene espacios")
+var texto=prompt("Introduce tu texto")
+texto=texto.toLowerCase()
+function palindromo(texto){
+    if (texto===texto.split("").reverse().join("")){
+        alert("El texto es un palindromo")
+    }
+    else{
+        alert("El texto no es un palindromo")
+    }
 }
-else{
-    alert("Este texto no contiene espacios")
-}
+palindromo(texto)

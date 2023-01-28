@@ -1,7 +1,10 @@
-var numero=prompt("Escribe un número")
-numero=parseInt(numero)
-for (i=numero-1;i>0;i--){
-    numero=numero*i
-    console.log(numero)
+var num=prompt("Introduce un número entero")
+num=parseInt(num)
+function entero(num){
+    while(num<0){
+        var num=prompt("Introduce un número entero")
+        num=parseInt(num)
+    }
+    return num
 }
-alert(numero)
+alert(entero(num))

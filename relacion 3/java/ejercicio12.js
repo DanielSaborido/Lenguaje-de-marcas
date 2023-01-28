@@ -1,7 +1,10 @@
-var numero=prompt("Escribe un número")
-numero=parseInt(numero)
-for (i=numero-1;i>0;i--){
-    numero=numero*i
-    console.log(numero)
+var numero=prompt("Introduce un número")
+function parImpar(num){
+    if (num%2==0){
+        return true
+    }
+    else{
+        return false
+    }
 }
-alert(numero)
+alert(parImpar(numero))
