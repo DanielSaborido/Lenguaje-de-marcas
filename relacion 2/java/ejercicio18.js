@@ -9,7 +9,7 @@ if (numero=1){
 }
 else{
     for (i=1;i<=numero;i++){
-    suma+=i
+        suma+=i
     }
 alert("La suma total desde 1 al "+numero+" es: "+suma)
 }

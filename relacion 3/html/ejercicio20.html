@@ -12,5 +12,13 @@
     <h2>Actividad 20</h2>
     <p>Función que solicite las notas de la clase, e imprime el número de aprobados,<br>
         suspensos y la media</p>
+    <form action="#" id="form">
+        <label>Introduce un número</label>
+        <input type="number" name="texto" id="text" onkeydown="detectEnter(event)">
+        <input id="boton" type="button" value="añadir" onclick="addToList()">
+    </form><br>
+    <button onclick="comprobarNota(lista)">comprobar</button>
+    <button onclick="aprobados()">Aprobados</button>
+    <button onclick="suspensos()">Suspensos</button>
 </body>
 </html>

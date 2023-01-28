@@ -1,14 +1,21 @@
-var numero1=5;
-var numero2=8;
-if(numero1<numero2) {
-    alert("numero1 no es mayor que numero2");
+var nota=prompt("Escribe la nota")
+function nota(nota){
+    if (nota>=0,nota<4){
+        return "Insuficiente"
+    }
+    if (nota>=4,nota<5){
+        return "Suficiente"
+    }
+    if (nota>=5,nota<7){
+        return "Bien"
+    }
+    if (nota>=7,nota<=8){
+        return "Notable"
+    }
+    if (nota>=9,nota<=10){
+        return "Sobresaliente"
+    }
+    else{
+        return "La nota introducida no es valida."
+    }
 }
-if(numero2>0) {
-    alert("numero2 es positivo");
-}
-if(numero1>=0) {
-    alert("numero1 no es negativo y distinto de cero");
-}
-if(numero1+=1>numero2) {
-    alert("Incrementar en 1 unidad el valor de numero1 no lo hace mayoro igual que numero2");
-} 

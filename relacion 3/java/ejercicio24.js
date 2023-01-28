@@ -1,19 +1,18 @@
-var nota=prompt("Escribe una nota")
-if (nota>=0,nota<5){
-    alert("Suspenso")
+var numero=prompt("Escribe un número")
+numero=parseInt(numero)
+var suma=0
+function suma(numero){
+    if (numero<=0){
+        return "El numero introducido es menor de 1"
+    }
+    if (numero=1){
+        return "La suma total desde 1 al "+numero+" es: "+numero
+    }
+    else{
+        for (i=1; i<=numero; i++){
+            suma+=i
+        }
+    return "La suma total desde 1 al "+numero+" es: "+suma
+    }
 }
-if (nota>=5){
-    alert("Aprobado")
-}
-if (nota==6){
-    alert("Bien")
-}
-if (nota>=7,nota<=8){
-    alert("notable")
-}
-if (nota>=9,nota<=10){
-    alert("Sobresaliente")
-}
-else{
-    alert("La nota introducida no es valida.")
-}
+alert(suma(numero))

@@ -1,7 +1,6 @@
-var num=prompt("escribe un número")
-if (num%2==0){
-    alert("El número es par")
+var texto=prompt("Escribe un texto")
+var parametro=prompt("Escribe el parametro a contar")
+function contar_a(texto,parametro){
+    return "Las veces que sale  una 'a' es: "+texto.toLowerCase().split(parametro).length - 1
 }
-else{
-    alert("El número es impar")
-}
+alert(contar_a(texto,parametro))

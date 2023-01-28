@@ -1,7 +1,10 @@
-var entrada=prompt("Escribe algo")
-if (entrada.match(/\s/g)){
-    alert("Este texto contiene espacios")
+var min=prompt("Introduce el valor mínimo")
+min=parseInt(min)
+var max=prompt("Introduce el valor máximo")
+max=parseInt(max)
+function sumaTotal(min, max){
+    for(i=min; i<=max; i++){
+        document.write(i+" ")
+    }
 }
-else{
-    alert("Este texto no contiene espacios")
-}
+sumaTotal(min,max)
