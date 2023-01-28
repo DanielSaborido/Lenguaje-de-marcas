@@ -1,14 +1,4 @@
-var numero1=5;
-var numero2=8;
-if(numero1<numero2) {
-    alert("numero1 no es mayor que numero2");
+var numero = prompt("Introduce el número")
+for (i=1;i<=numero;i++){
+    document.write(i)
 }
-if(numero2>0) {
-    alert("numero2 es positivo");
-}
-if(numero1>=0) {
-    alert("numero1 no es negativo y distinto de cero");
-}
-if(numero1+=1>numero2) {
-    alert("Incrementar en 1 unidad el valor de numero1 no lo hace mayoro igual que numero2");
-} 

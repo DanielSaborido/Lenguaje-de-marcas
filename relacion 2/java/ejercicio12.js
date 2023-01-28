@@ -1,7 +1,8 @@
-var numero=prompt("Escribe un número")
+var numero=prompt("Escribe un número para calcular su factorial")
+var factorial=1
 numero=parseInt(numero)
-for (i=numero-1;i>0;i--){
-    numero=numero*i
-    console.log(numero)
+for (i=numero;i>0;i--){
+    factorial=factorial*i
+    console.log(factorial)
 }
-alert(numero)
+alert("El factorial de "+numero+" es: "+factorial)

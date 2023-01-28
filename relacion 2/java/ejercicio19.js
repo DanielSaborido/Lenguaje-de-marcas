@@ -1,19 +1,12 @@
-var nota=prompt("Escribe una nota")
-if (nota>=0,nota<5){
-    alert("Suspenso")
-}
-if (nota>=5){
-    alert("Aprobado")
-}
-if (nota==6){
-    alert("Bien")
-}
-if (nota>=7,nota<=8){
-    alert("notable")
-}
-if (nota>=9,nota<=10){
-    alert("Sobresaliente")
+var numero=prompt("Escribe un número")
+var numero=parseInt(numero)
+var producto=1
+if (numero<=0){
+    alert("El numero introducido es menor de 1")
 }
 else{
-    alert("La nota introducida no es valida.")
+    for (i=1;i<=numero;i++){
+        producto*=i;
+    }
+alert("El producto total total desde 1 al "+numero+" es: "+producto)
 }

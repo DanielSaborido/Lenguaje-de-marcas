@@ -1,5 +1,5 @@
 var nota=prompt("Escribe una nota")
-if (nota>=0,nota<4){
+if (nota<4){
     alert("Insuficiente")
 }
 if (nota>=4,nota<5){
@@ -11,9 +11,6 @@ if (nota>=5,nota<7){
 if (nota>=7,nota<=8){
     alert("Notable")
 }
-if (nota>=9,nota<=10){
+if (nota>=9){
     alert("Sobresaliente")
-}
-else{
-    alert("La nota introducida no es valida.")
 }
