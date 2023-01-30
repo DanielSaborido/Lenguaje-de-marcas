@@ -9,7 +9,7 @@ function area(base, altura) {
                 document.write("#")
             }
             else{
-                document.write(" ")
+                document.write("&nbsp;&nbsp;")
             }
         }
         document.write("<br>")
