@@ -11,11 +11,16 @@
 <body>
     <h1>Formulario</h1>
     <form>
-        <input name="nombre" type="text" value="Nombre"/>
-        <input name="apellidos" type="text" value="Apellidos"/>
-        <input name="edad" type="number" value="Edad"/>
-        <input name="telefono" type="number" value="Nº Telf."/>
-        <input name="correo" type="text" value="Correo"/>
+        <label>Nombre: </label>
+        <input type="text" name="nombre" placeholder="Inserta su nombre." required/><br>
+        <label>Apellidos: </label>
+        <input type="text" name="apellidos" placeholder="Inserta sus apellidos." required/><br>
+        <label>Edad: </label>
+        <input type="number" name="edad" placeholder="Inserta su edad."/><br>
+        <label>Nº Telf.: </label>
+        <input type="number" name="telefono" placeholder="Inserta su telefono."/><br>
+        <label>Correo: </label>
+        <input type="text" name="correo" placeholder="Inserta su correo."/><br>
         <button type="submit" value="Enviar">Enviar</button>
         <button type="clean" value="Limpiar">Limpiar</button>
     </form>
