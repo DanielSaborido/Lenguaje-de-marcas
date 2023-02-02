@@ -1,23 +1,21 @@
 function Edad(){
     let edad=document.getElementById("edad").value
     parseInt(edad)
-    if(edad>100){
-        alert("Eres mayor de 100 años.")
-        return false
-    }
-    if(edad<=18){
-        alert("Eres menor de 18 años.")
-        return false
-    }
-    else{
+    if(edad>=18 && edad<=100){
+        console.log(edad)
         return true
     }
+    else{
+        alert("La edad introducida no es valida.")
+    }
+    return false
 }
 
 function Telefono(){
     let telefono=document.getElementById("telefono").value
-    if (telefono.match("(^6|^7)[0-9]{8}")){
-        return true     
+    if ((telefono.match(/(^6|^7)[0-9]{9}/)) && (length(telefono)==9)){
+        console.log(telefono)
+        return true
     }
     else{
         alert("Telefono mal introducido.")
@@ -27,7 +25,8 @@ function Telefono(){
 
 function Correo(){
     let correo=document.getElementById("correo").value
-    if (correo.match( /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/ )){
+    if (correo.match(/^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/)){
+        console.log(correo)
         return true
     }
     else{
@@ -41,6 +40,6 @@ function Validacion(){
     Telefono()
     Correo()
     if (Edad() && Telefono() && Correo()){
-        document.write("Respuestas guardadas correctamente")
+        alert("Respuestas guardadas correctamente")
     }
 }
