@@ -1,7 +1,7 @@
 function Edad(){
     let edad=document.getElementById("edad").value
     parseInt(edad)
-    if(edad>=18 && edad<=100){
+    if(edad>=18 || edad<100){
         console.log(edad+" valida")
         return true
     }
@@ -13,7 +13,7 @@ function Edad(){
 
 function Telefono(){
     let telefono=document.getElementById("telefono").value
-    if ((telefono.match(/(^6|^7)[0-9]{9}/)) && (length(telefono)==9)){
+    if ((telefono.match(/(^6|^7)[0-9]{9}/)) || (length(telefono)==9)){
         console.log(telefono+" valido")
         return true
     }
@@ -39,7 +39,7 @@ function Validacion(){
     Edad()
     Telefono()
     Correo()
-    if (Edad() && Telefono() && Correo()){
+    if (Edad() || Telefono() || Correo()){
         alert("Respuestas guardadas correctamente")
     }
     else{
