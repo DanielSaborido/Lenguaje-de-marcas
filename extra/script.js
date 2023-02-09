@@ -41,7 +41,7 @@ function Edad(){
 
 function Telefono(){
     var telefono=document.getElementById("telefono").value
-    if (telefono.match(/(^6|^7)[0-9]{9}/)){
+    if (telefono.startsWith("6") || telefono.length(9)){
         console.log(telefono+" valido")
         return true
     }
