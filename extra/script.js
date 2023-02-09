@@ -1,19 +1,47 @@
+function Nombre(){
+    var nombre=document.getElementById("nombre").value
+    if (nombre.length<2){
+        alert("La longitud del nombre no es valida.")
+        return false
+    }
+    else{
+        console.log(nombre+" valida")
+        return true
+    }
+}
+
+function Apellidos(){
+    var apellido=document.getElementById("apellido").value
+    if (apellido.length<2){
+        alert("La longitud del apellido no es valida.")
+        return false
+    }
+    else{
+        console.log(apellido+" valida")
+        return true
+    }
+}
+
 function Edad(){
-    let edad=document.getElementById("edad").value
+    var edad=document.getElementById("edad").value
     parseInt(edad)
-    if(edad>=18 || edad<100){
+    if(edad<18){
+        alert("La edad introducida no es valida.")
+        return false
+    }
+    if (edad>=100){
+        alert("La edad introducida no es valida.")
+        return false
+    }
+    else{
         console.log(edad+" valida")
         return true
     }
-    else{
-        alert("La edad introducida no es valida.")
-    }
-    return false
 }
 
 function Telefono(){
-    let telefono=document.getElementById("telefono").value
-    if ((telefono.match(/(^6|^7)[0-9]{9}/)) || (length(telefono)==9)){
+    var telefono=document.getElementById("telefono").value
+    if (telefono.match(/(^6|^7)[0-9]{9}/)){
         console.log(telefono+" valido")
         return true
     }
@@ -24,7 +52,7 @@ function Telefono(){
 }
 
 function Correo(){
-    let correo=document.getElementById("correo").value
+    var correo=document.getElementById("correo").value
     if (correo.match(/^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/)){
         console.log(correo+" valido")
         return true
@@ -36,10 +64,12 @@ function Correo(){
 }
 
 function Validacion(){
+    Nombre()
+    Apellidos()
     Edad()
     Telefono()
     Correo()
-    if (Edad() || Telefono() || Correo()){
+    if (Nombre() || Apellidos() || Edad() || Telefono() || Correo()){
         alert("Respuestas guardadas correctamente")
     }
     else{
