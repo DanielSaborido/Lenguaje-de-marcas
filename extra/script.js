@@ -40,8 +40,9 @@ function Edad(){
 }
 
 function Telefono(){
-    var telefono=document.getElementById("telefono").value
-    if (telefono.startsWith("6") || telefono.length(9)){
+    var telefono=parseInt(document.getElementById("telefono").value)
+    const numero=/([6|7]+)([0-9]{8})/
+    if (telefono.match(numero)){
         console.log(telefono+" valido")
         return true
     }
