@@ -28,10 +28,10 @@ function ruleta() {
             cuadro[i] = Math.floor(Math.random() * 4);
         
         // Genera los intervalos para que cada recuadro cambie de imagen cada centésima de segundo.
-        intervaloRuleta[0] = setInterval(function() { cambiaImagen(0);}, 50);
-        intervaloRuleta[1] = setInterval(function() { cambiaImagen(1);}, 80);
-        intervaloRuleta[2] = setInterval(function() { cambiaImagen(2);}, 110);
-        intervaloRuleta[3] = setInterval(function() { cambiaImagen(3);}, 140);
+        intervaloRuleta[0] = setInterval(function() { cambiaImagen(0);}, 100);
+        intervaloRuleta[1] = setInterval(function() { cambiaImagen(1);}, 150);
+        intervaloRuleta[2] = setInterval(function() { cambiaImagen(2);}, 200);
+        intervaloRuleta[3] = setInterval(function() { cambiaImagen(3);}, 250);
         
         // Al empezar están cambiando los tres recuadros.
         corriendo = 4;
