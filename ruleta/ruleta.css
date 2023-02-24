@@ -19,6 +19,14 @@ h1 {
     font-family: 'fuenteskyrim';
 }
 
+.premios {
+    width: 20%;
+    background-color: #b1a7a7a8;
+    padding: 10px;
+    border: 1px solid black;
+    float: left;
+}
+
 .contenedor {
     margin: auto;
     width: 50%;
@@ -33,6 +41,17 @@ h1 {
     text-align: center;
     /* Sombra. */
     /*box-shadow: 2px 2px 5px #66CCFF inset;*/
+}
+
+img[alt="logo"]{
+    height: 175px;
+    float: right;
+    float: inline-end;
+}
+
+img[alt="premios"]{
+    width: 30px;
+    height: 30px;
 }
 
 img {
@@ -55,7 +74,7 @@ img {
     border: 1px solid black;
     border-radius: 10px;
     /* Usamos la fuente cargada de google fonts. */
-    background-color: #c5bbbba1;
+    background-color: #c5bbbb8f;
     font-family: 'fuenteskyrim', cursive;
     font-size: 25px;
     text-align: center;

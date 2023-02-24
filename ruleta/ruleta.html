@@ -9,14 +9,69 @@
         <link href='ruleta.css' rel='stylesheet' type='text/css'>
         <script src="ruleta.js"></script>
     </head>
-    <body onload="cambiaSombras();">
+    <header>
+        <img src="img/logo/milogo.png" alt="logo">
         <h1>Ruleta de Skyrim</h1>
+    </header>
+    <body onload="cambiaSombras();">
+        <div class="premios">
+            <h2>Mejora de armadura</h2>
+            <div>
+                <img alt="premios" src="img/armadura.png">
+                <img alt="premios" src="img/armadura.png">
+                <img alt="premios" src="img/armadura.png">
+                <img alt="premios" src="img/armadura.png">
+            </div>
+            <h2>Mejora del arma</h2>
+            <div>
+                <img alt="premios" src="img/espadas.png">
+                <img alt="premios" src="img/espadas.png">
+                <img alt="premios" src="img/espadas.png">
+                <img alt="premios" src="img/espadas.png">
+            </div>
+            <h2>Hechizos</h2>
+            <div>
+                <img alt="premios" src="img/grimorio.png">
+                <img alt="premios" src="img/grimorio.png">
+                <img alt="premios" src="img/grimorio.png">
+                <img alt="premios" src="img/grimorio.png">
+            </div>
+            <h2>Gritos</h2>
+            <div>
+                <img alt="premios" src="img/grito.png">
+                <img alt="premios" src="img/grito.png">
+                <img alt="premios" src="img/grito.png">
+                <img alt="premios" src="img/grito.png">
+            </div>
+            <h2>1 septim</h2>
+            <div>
+                <img alt="premios" src="img/moneda.png">
+            </div>
+            <h2>10 septims</h2>
+            <div>
+                <img alt="premios" src="img/moneda.png">
+                <img alt="premios" src="img/moneda.png">
+            </div>
+            <h2>100 septims</h2>
+            <div>
+                <img alt="premios" src="img/moneda.png">
+                <img alt="premios" src="img/moneda.png">
+                <img alt="premios" src="img/moneda.png">
+            </div>
+            <h2>1000 septims</h2>
+            <div>
+                <img alt="premios" src="img/moneda.png">
+                <img alt="premios" src="img/moneda.png">
+                <img alt="premios" src="img/moneda.png">
+                <img alt="premios" src="img/moneda.png">
+            </div>
+        </div>
         <div class="contenedor">
             <div class="imagenes">
-                <img id="imag3" src="img/armadura.png">
-                <img id="imag2" src="img/grito.png">
+                <img id="imag3" src="img/moneda.png">
+                <img id="imag2" src="img/moneda.png">
                 <img id="imag1" src="img/moneda.png">
-                <img id="imag0" src="img/espadas.png">
+                <img id="imag0" src="img/moneda.png">
             </div>
             <div class="botones">
                 <div class="boton" id="iniciar" onclick="ruleta();">Iniciar</div>
@@ -24,6 +79,9 @@
                 <div class="boton" id="parar" onclick="paraRuleta();paraRuleta();">Parar 2</div>
                 <div class="boton" id="parar" onclick="paraRuleta();paraRuleta();paraRuleta();paraRuleta();">Parar Todos</div>
             </div>
+        </div>
+        <div>
+
         </div>
     </body>
 </html>
