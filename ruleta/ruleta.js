@@ -1,11 +1,11 @@
 // Almacenamos los nombres de las imágenes en una variable compleja.
             // Se denomina tabla y se accede a los valores mediante el indice (empezando por 0).
             // Por ejemplo: imagenes[0] contiene "rajoy.png"
-            var imagenes = ["img/quebrantador.png", "img/grito.png", "img/moneda.png", "img/armadura.png", "img/grimorio.png"];
+            var imagenes = ["img/espadas.png", "img/grito.png", "img/moneda.png", "img/armadura.png", "img/grimorio.png"];
             // Almacenamos el indice de la imagen que esta en cada recuadro.
-            var cuadro = [0, 0, 0, 0];
+            var cuadro = [0, 0, 0, 0, 0];
             // Almacenamos el setInterval de cada recuadro de forma independiente.
-            var intervaloRuleta = [null, null, null, null];
+            var intervaloRuleta = [null, null, null, null, null];
             // Variable donde almacenamos el numero de recuadros que están cambiando.
             var corriendo = 0;
             // Intervalo del cambio de sombras.
@@ -42,7 +42,7 @@
             function cambiaImagen(x) {
                 // Si la imagen es la última paso a la primera.
                 //  Si no cambia al asiguiente imagen.
-                if(cuadro[x]>=2) cuadro[x]=0;
+                if(cuadro[x]>=4) cuadro[x]=0;
                     else cuadro[x] = cuadro[x]+1;
                 
                 // Cambia la propiedad src de la imagen correspondiente en el html.

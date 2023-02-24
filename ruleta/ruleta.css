@@ -1,15 +1,27 @@
 @font-face {
-    font-family: 'DarkXShadowX21%5C%27s Skyrim Font';
-    src: url("fuentes/DarkXShadowX21%5C%27s Skyrim Font.ttf");
+    font-family: 'fuenteskyrim';
+    src: url("fuentes/skyrim.ttf");
+}
+
+html {
+    background: url("img/fondo.jpg");
+    background-size: cover;
+}
+
+body {
+    background: url("img/nieve.gif");
+    background-size: contain;
 }
 
 h1 {
-    font-family: 'DarkXShadowX21%5C%27s Skyrim Font';
+    font-size: 80px;
+    text-align: center;
+    font-family: 'fuenteskyrim';
 }
 
 .contenedor {
     margin: auto;
-    width: 400px;
+    width: 50%;
 }
 
 .imagenes {
@@ -17,15 +29,15 @@ h1 {
     border: 1px solid black;
     /* Bordes redondeados. */
     border-radius: 30px;
-    width: 370px;
+    width: auto;
     text-align: center;
     /* Sombra. */
     /*box-shadow: 2px 2px 5px #66CCFF inset;*/
 }
 
 img {
-    width: 100px;
-    height: 100px;
+    width: 125px;
+    height: 125px;
     margin: 8px;
     border: 1px solid black;
     /* Sombra. */
@@ -33,7 +45,7 @@ img {
 }
 
 .botones {
-    width: 370px;
+    width: 100%;
     text-align: center;
 }
 
@@ -43,7 +55,9 @@ img {
     border: 1px solid black;
     border-radius: 10px;
     /* Usamos la fuente cargada de google fonts. */
-    font-family: 'Darks Skyrim Font', cursive;
+    background-color: #c5bbbba1;
+    font-family: 'fuenteskyrim', cursive;
+    font-size: 25px;
     text-align: center;
     margin-top: 10px;
     margin-left: 10px;
