@@ -3,6 +3,11 @@
     src: url("fuentes/skyrim.ttf");
 }
 
+@font-face {
+    font-family: 'godofwar';
+    src: url("fuentes/GODOFWAR.TTF");
+}
+
 html {
     background: url("img/fondo.jpg");
     background-size: cover;
@@ -24,7 +29,7 @@ h1 {
     height: 50%;
     background-color: #b1a7a7a8;
     padding: 10px;
-    overflow: scroll;
+    overflow: auto;
     border: 1px solid black;
     float: left;
 }
@@ -51,8 +56,8 @@ img[alt="logo"]{
 }
 
 img[alt="premios"]{
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     margin: 8px;
     border: 1px solid black;
     /* Sombra. */
@@ -81,11 +86,11 @@ img[alt="juego"] {
     /* Usamos la fuente cargada de google fonts. */
     background-color: #c5bbbb8f;
     font-family: 'fuenteskyrim', cursive;
-    font-size: 25px;
+    font-size: 30px;
     text-align: center;
     margin-top: 10px;
     margin-left: 10px;
-    width: 150px;
+    width: 20%;
     box-shadow: 2px 2px 5px #999;
 }
 
@@ -96,17 +101,26 @@ img[alt="juego"] {
 
 .equipamientos {
     width: 20%;
-    height: 50%;
+    height: auto;
     background-color: #b1a7a7a8;
     padding: 10px;
     border: 1px solid black;
     float: right;
 }
 
+.progreso{
+    width: auto;
+    height: auto;
+    background-color: #b1a7a7a8;
+    padding: 10px;
+    border: 1px solid black;
+    float: left;
+}
+
 .hechizos{
-    overflow: scroll;
+    overflow: auto;
 }
 
 .gritos{
-    overflow: scroll;
+    overflow: auto;
 }

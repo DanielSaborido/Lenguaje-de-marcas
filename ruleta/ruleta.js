@@ -1,7 +1,11 @@
 // Almacenamos los nombres de las imágenes en una variable compleja.
 // Se denomina tabla y se accede a los valores mediante el indice (empezando por 0).
-// Por ejemplo: imagenes[0] contiene "rajoy.png"
-var imagenes = ["img/espadas.png", "img/grito.png", "img/moneda.png", "img/armadura.png", "img/grimorio.png"];
+// Por ejemplo: opciones[0] contiene "rajoy.png"
+var opciones = ["img/espadas.png", "img/grito.png", "img/moneda.png", "img/armadura.png", "img/grimorio.png"];
+var armas = ["img/armas/acero.png", "img/armas/OrcishSword.png", "img/armas/Daedricsword.png", "img/armas/Dragonsword.png"];
+var armaduras = ["img/personaje/hierro.png", "img/personaje/orco.png", "img/personaje/ebano.png", "img/personaje/dragon.png"];
+var hechizos = ["Curación", "Expulsar no muerto", "Explosión elemental", "Conjurar atronach", "LLamada a las armas"];
+var gritos = ["Fuerza implacable", "Torbellino arrollador", "Despejar cielos", "Invocar dragón", "Desgarro de dragones"];
 // Almacenamos el indice de la imagen que esta en cada recuadro.
 var cuadro = [0, 0, 0, 0, 0];
 // Almacenamos el setInterval de cada recuadro de forma independiente.
@@ -46,7 +50,7 @@ function cambiaImagen(x) {
         else cuadro[x] = cuadro[x]+1;
     
     // Cambia la propiedad src de la imagen correspondiente en el html.
-    document.getElementById("imag"+x).src = imagenes[cuadro[x]];                
+    document.getElementById("imag"+x).src = opciones[cuadro[x]];                
 }
 
 // Función que para un recuadro de la ruleta.
@@ -86,6 +90,13 @@ function circulaSombras() {
         document.getElementById("imag2").style['boxShadow']=estilo;
         document.getElementById("imag3").style['boxShadow']=estilo;
 }
-function premios(){
 
+
+function jugar(){
+    var dinero = 1000;
+    dinero -= 25
+    dinero.toString
+    const aviso = document.getElementById("dinero")
+    aviso.innerHTML = "Dinero disponible: "+dinero+" septim(s)"
 }
+jugar();
