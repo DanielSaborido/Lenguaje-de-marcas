@@ -1,3 +1,11 @@
+@font-face {
+    font-family: 'DarkXShadowX21%5C%27s Skyrim Font';
+    src: url("fuentes/DarkXShadowX21%5C%27s Skyrim Font.ttf");
+}
+
+h1 {
+    font-family: 'DarkXShadowX21%5C%27s Skyrim Font';
+}
 
 .contenedor {
     margin: auto;
@@ -35,7 +43,7 @@ img {
     border: 1px solid black;
     border-radius: 10px;
     /* Usamos la fuente cargada de google fonts. */
-    font-family: 'The Girl Next Door', cursive;
+    font-family: 'Darks Skyrim Font', cursive;
     text-align: center;
     margin-top: 10px;
     margin-left: 10px;
