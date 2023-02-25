@@ -6,6 +6,9 @@ var armas = ["img/armas/acero.png", "img/armas/OrcishSword.png", "img/armas/Daed
 var armaduras = ["img/personaje/hierro.png", "img/personaje/orco.png", "img/personaje/ebano.png", "img/personaje/dragon.png"];
 var hechizos = ["Curación", "Expulsar no muerto", "Explosión elemental", "Conjurar atronach", "LLamada a las armas"];
 var gritos = ["Fuerza implacable", "Torbellino arrollador", "Despejar cielos", "Invocar dragón", "Desgarro de dragones"];
+var dinero = 250000000;
+document.getElementById("dinero").innerHTML = "Dinero disponible: "+dinero+" septim(s)";
+    var li = document.createElement("li"); // Creamos un elemento LI
 // Almacenamos el indice de la imagen que esta en cada recuadro.
 var cuadro = [0, 0, 0, 0, 0];
 // Almacenamos el setInterval de cada recuadro de forma independiente.
@@ -40,6 +43,17 @@ function ruleta() {
         // Al empezar están cambiando los tres recuadros.
         corriendo = 4;
     }
+}
+
+function jugar(){
+    if (dinero<25){
+        document.getElementById("iniciar").addEventListener("click", function(){ alert("Saldo insuficiente, no puedes jugar más."); })
+    }
+    else{
+        ruleta();
+        dinero -= 25;
+        document.getElementById("dinero").innerHTML = "Dinero disponible: "+dinero+" septim(s)";
+    }    
 }
 
 // Función que cambia la imagen.
@@ -91,12 +105,37 @@ function circulaSombras() {
         document.getElementById("imag3").style['boxShadow']=estilo;
 }
 
-
-function jugar(){
-    var dinero = 1000;
-    dinero -= 25
-    dinero.toString
-    const aviso = document.getElementById("dinero")
-    aviso.innerHTML = "Dinero disponible: "+dinero+" septim(s)"
+function cambiarArmadura() {
+    document.getElementById("armadura").src = armaduras[0];
+    armaduras.shift();
 }
-jugar();
+
+function cambiarArma() {
+    document.getElementById("arma").src = armas[0];
+    armas.shift();
+}
+
+function mashechizo() {
+    var anadirmagia = document.getElementById("magia");
+    var li = document.createElement("li"); 
+    var tipohechizo = document.createTextNode(hechizos[0]); // Creamos un nodo de texto con el valor del elemento del array
+    li.appendChild(tipohechizo); // Agregamos el nodo de texto al elemento LI
+    anadirmagia.appendChild(li); // Agregamos el elemento LI al elemento UL
+    hechizos.shift();
+}
+
+function masgrito() {
+    var anadirgrito = document.getElementById("gritos");
+    var li = document.createElement("li"); 
+    var tipogrito = document.createTextNode(gritos[0]); // Creamos un nodo de texto con el valor del elemento del array
+    li.appendChild(tipogrito); // Agregamos el nodo de texto al elemento LI
+    anadirgrito.appendChild(li); // Agregamos el elemento LI al elemento UL
+    gritos.shift();
+}
+
+function compra() {
+    document.getElementById("carma").addEventListener("click", function(){ if (dinero>1000){ dinero-=1000;cambiarArma();} else {alert("Saldo insuficiente."); }})
+    document.getElementById("carmadura").addEventListener("click", function(){ if (dinero>1000){ dinero-=1000;cambiarArmadura();} else {alert("Saldo insuficiente."); }})
+    document.getElementById("chechizo").addEventListener("click", function(){ if (dinero>1000){ dinero-=1000;mashechizo();} else {alert("Saldo insuficiente."); }})
+    document.getElementById("cgrito").addEventListener("click", function(){ if (dinero>1000){ dinero-=1000;masgrito();} else {alert("Saldo insuficiente."); }})
+}

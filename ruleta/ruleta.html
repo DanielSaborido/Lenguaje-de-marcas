@@ -49,6 +49,18 @@
             <img alt="premios" src="img/moneda.png">
             <img alt="premios" src="img/moneda.png">
         </div>
+        <div class="equipamientos">
+            <img src="img/personaje/desnudo.png" id="armadura">
+            <img src="" id="arma">
+            <div class="hechizos">
+                <h2>Hechizos obtenidos</h2>
+                <ul id="magia"></ul>
+            </div>
+            <div class="gritos">
+                <h2>Gritos desbloqueados</h2>
+                <ul id="gritos"></ul>
+            </div>
+        </div>
         <div class="contenedor">
             <div class="imagenes">
                 <img id="imag3" src="img/moneda.png" alt="juego">
@@ -57,30 +69,22 @@
                 <img id="imag0" src="img/moneda.png" alt="juego">
             </div>
             <div class="botones">
-                <div class="boton" id="iniciar" onclick="ruleta();">Iniciar</div>
+                <div class="boton" id="iniciar" onclick="jugar();">Iniciar</div>
                 <div class="boton" id="parar" onclick="paraRuleta();">Parar</div>
                 <div class="boton" id="parar" onclick="paraRuleta();paraRuleta();">Parar 2</div>
                 <div class="boton" id="parar" onclick="paraRuleta();paraRuleta();paraRuleta();paraRuleta();">Parar Todos</div>
             </div>
         </div>
-        <div class="equipamientos">
-            <img src="img/personaje/desnudo.png" id="armadura">
-            <img src="" id="arma">
-            <div class="hechizos">
-                <h2>Hechizos obtenidos</h2>
-                <ul>
-
-                </ul>
-            </div>
-            <div class="gritos">
-                <h2>Gritos desbloqueados</h2>
-                <ul>
-
-                </ul>
-            </div>
-        </div>
         <div class="progreso">
             <p id="dinero"></p>
+            <div class="compra">
+                <div id="carma" onclick="compra();">Comprar Arma</div>
+                <div id="carmadura" onclick="compra();">Comprar Armadura</div>
+                <div id="chechizo" onclick="compra();">Comprar Hechizo</div>
+                <div id="cgrito" onclick="compra();">Comprar Grito</div>
+            </div>
+        </div>
+        <div class="recompensa">
         </div>
     </body>
     <script src="ruleta.js"></script>
