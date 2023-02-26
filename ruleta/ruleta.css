@@ -166,3 +166,8 @@ img[alt="juego"] {
     border: 1px solid black;
     overflow: auto;
 }
+
+progress {
+    width: 100%;
+    accent-color: hsl(0, 100%, 50%);
+  }

@@ -4,10 +4,11 @@
 var opciones = ["img/espadas.png", "img/grito.png", "img/moneda.png", "img/armadura.png", "img/grimorio.png"];
 var armas = ["img/armas/acero.png", "img/armas/OrcishSword.png", "img/armas/Daedricsword.png", "img/armas/Dragonsword.png"];
 var armaduras = ["img/personaje/hierro.png", "img/personaje/orco.png", "img/personaje/ebano.png", "img/personaje/dragon.png"];
-var hechizos = ["Curación", "Expulsar no muerto", "Explosión elemental", "Conjurar atronach", "LLamada a las armas"];
-var gritos = ["Fuerza implacable", "Torbellino arrollador", "Despejar cielos", "Invocar dragón", "Desgarro de dragones"];
+var hechizos = ["Curación", "Expulsar no muerto", "Explosión elemental", "Conjurar atronach", "LLamada a las armas", "Piel de Dragón"];
+var gritos = ["Fuerza implacable", "Torbellino arrollador", "Invocar Tormenta", "Despejar cielos", "Invocar dragón", "Desgarro de dragones"];
 var dinero = 1000000;
 document.getElementById("dinero").innerHTML = "Dinero disponible: "+dinero+" septim(s)";
+var progreso = document.getElementById("barpro")
 // Almacenamos el indice de la imagen que esta en cada recuadro.
 var cuadro = [0, 0, 0, 0, 0];
 // Almacenamos el setInterval de cada recuadro de forma independiente.
@@ -120,6 +121,7 @@ function cambiarArmadura() {
     }
     else {
         document.getElementById("armadura").src = armaduras[0];
+        progreso.value +=5;
         armaduras.shift();
     }
 }
@@ -135,6 +137,7 @@ function cambiarArma() {
     }
     else {
         document.getElementById("arma").src = armas[0];
+        progreso.value +=5;
         armas.shift();
     }
 }
@@ -154,6 +157,7 @@ function mashechizo() {
         var tipohechizo = document.createTextNode(hechizos[0]); // Creamos un nodo de texto con el valor del elemento del array
         li.appendChild(tipohechizo); // Agregamos el nodo de texto al elemento LI
         anadirmagia.appendChild(li); // Agregamos el elemento LI al elemento UL
+        progreso.value +=5;
         hechizos.shift();
     }
 }
@@ -173,6 +177,7 @@ function masgrito() {
         var tipogrito = document.createTextNode(gritos[0]); // Creamos un nodo de texto con el valor del elemento del array
         li.appendChild(tipogrito); // Agregamos el nodo de texto al elemento LI
         anadirgrito.appendChild(li); // Agregamos el elemento LI al elemento UL
+        progreso.value +=5;
         gritos.shift();
     }
 }
@@ -233,6 +238,6 @@ function cgrito() {
     }
 }
 
-if (armaduras.length==0 && armas.length==0 && hechizos.length==0 && gritos.length==0) {
+if (progreso.value == 100) {
     document.getElementById("recompensa").innerHTML = "Felicidades lograste obtener todo al maximo.";
 }
