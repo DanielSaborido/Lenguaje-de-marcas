@@ -40,7 +40,11 @@ h1 {
 }
 
 .anuncios {
+    align-items: center;
+    text-align: center;
     margin: auto;
+    font-size: 50px;
+    font-family: 'godofwar';
     height: 30%;
     width: 50%;
     border: 1px solid black;
@@ -71,7 +75,6 @@ img[alt="premios"]{
     /* Sombra. */
     box-shadow: 2px 2px 5px #66CCFF;
 }
-
 
 img[alt="armas"]{
     height: 280px;
@@ -126,6 +129,21 @@ img[alt="juego"] {
     padding: 10px;
     border: 1px solid black;
     float: right;
+}
+
+.compra {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+#titulo {
+    grid-column-start: span 2;
+}
+
+.compra > div {
+    width: 100%;
+    text-align: center;
+    border: 1px solid black;
 }
 
 .progreso{

@@ -6,7 +6,7 @@ var armas = ["img/armas/acero.png", "img/armas/OrcishSword.png", "img/armas/Daed
 var armaduras = ["img/personaje/hierro.png", "img/personaje/orco.png", "img/personaje/ebano.png", "img/personaje/dragon.png"];
 var hechizos = ["Curación", "Expulsar no muerto", "Explosión elemental", "Conjurar atronach", "LLamada a las armas"];
 var gritos = ["Fuerza implacable", "Torbellino arrollador", "Despejar cielos", "Invocar dragón", "Desgarro de dragones"];
-var dinero = 250000000;
+var dinero = 1000000;
 document.getElementById("dinero").innerHTML = "Dinero disponible: "+dinero+" septim(s)";
 // Almacenamos el indice de la imagen que esta en cada recuadro.
 var cuadro = [0, 0, 0, 0, 0];
@@ -45,12 +45,17 @@ function ruleta() {
 }
 
 function jugar(){
-    if (dinero<25){
-        document.getElementById("iniciar").addEventListener("click", function(){ alert("Saldo insuficiente, no puedes jugar más."); })
+    if (dinero<50){
+        document.getElementById("iniciar").addEventListener("click", function(){ 
+            document.getElementById("recompensa").innerHTML ="Te quedaste sin dinero para tiradas.";
+            setTimeout(function() {
+                document.getElementById("recompensa").innerHTML = "";
+            }, 2000);
+        })
     }
     else{
         ruleta();
-        dinero -= 25;
+        dinero -= 50;
         document.getElementById("dinero").innerHTML = "Dinero disponible: "+dinero+" septim(s)";
     }    
 }
@@ -173,39 +178,59 @@ function masgrito() {
 }
 
 function carma() {
-    if (dinero>1000){ 
+    if (dinero>=1000){ 
         dinero-=1000;
         document.getElementById("dinero").innerHTML = "Dinero disponible: "+dinero+" septim(s)";
         cambiarArma();
     } 
-    else {alert("Saldo insuficiente."); }
+    else {
+        document.getElementById("recompensa").innerHTML ="Saldo insuficiente.";
+        setTimeout(function() {
+            document.getElementById("recompensa").innerHTML = "";
+          }, 2000); 
+    }
 }
 
 function carmadura() {
-    if (dinero>1000){ 
+    if (dinero>=1000){ 
         dinero-=1000;
         document.getElementById("dinero").innerHTML = "Dinero disponible: "+dinero+" septim(s)";
         cambiarArmadura();
     } 
-    else {alert("Saldo insuficiente."); }
+    else {
+        document.getElementById("recompensa").innerHTML ="Saldo insuficiente.";
+        setTimeout(function() {
+            document.getElementById("recompensa").innerHTML = "";
+          }, 2000); 
+    }
 }
 
 function chechizo() {
-    if (dinero>1000){ 
+    if (dinero>=1000){ 
         dinero-=1000;
         document.getElementById("dinero").innerHTML = "Dinero disponible: "+dinero+" septim(s)";
         mashechizo();
     } 
-    else {alert("Saldo insuficiente."); }
+    else {
+        document.getElementById("recompensa").innerHTML ="Saldo insuficiente.";
+        setTimeout(function() {
+            document.getElementById("recompensa").innerHTML = "";
+          }, 2000); 
+    }
 }
 
 function cgrito() {
-    if (dinero>1000){ 
+    if (dinero>=1000){ 
         dinero-=1000;
         document.getElementById("dinero").innerHTML = "Dinero disponible: "+dinero+" septim(s)";
         masgrito();
     } 
-    else {alert("Saldo insuficiente."); }
+    else {
+        document.getElementById("recompensa").innerHTML ="Saldo insuficiente.";
+        setTimeout(function() {
+            document.getElementById("recompensa").innerHTML = "";
+          }, 2000); 
+    }
 }
 
 if (armaduras.length==0 && armas.length==0 && hechizos.length==0 && gritos.length==0) {
