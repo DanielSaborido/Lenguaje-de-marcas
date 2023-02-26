@@ -34,12 +34,12 @@
             <img alt="premios" src="img/grito.png">
             <img alt="premios" src="img/grito.png">
             <img alt="premios" src="img/grito.png">
-            <h2>1 septim</h2>
-            <img alt="premios" src="img/moneda.png">
-            <h2>10 septims</h2>
-            <img alt="premios" src="img/moneda.png">
+            <h2>50 septim</h2>
             <img alt="premios" src="img/moneda.png">
             <h2>100 septims</h2>
+            <img alt="premios" src="img/moneda.png">
+            <img alt="premios" src="img/moneda.png">
+            <h2>500 septims</h2>
             <img alt="premios" src="img/moneda.png">
             <img alt="premios" src="img/moneda.png">
             <img alt="premios" src="img/moneda.png">
@@ -50,8 +50,8 @@
             <img alt="premios" src="img/moneda.png">
         </div>
         <div class="equipamientos">
-            <img src="img/personaje/desnudo.png" id="armadura">
-            <img src="" id="arma">
+            <img src="img/personaje/desnudo.png" id="armadura" alt="armaduras">
+            <img src="" id="arma" alt="armas">
             <div class="hechizos">
                 <h2>Hechizos obtenidos</h2>
                 <ul id="magia"></ul>
@@ -75,16 +75,17 @@
                 <div class="boton" id="parar" onclick="paraRuleta();paraRuleta();paraRuleta();paraRuleta();">Parar Todos</div>
             </div>
         </div>
+        <div class="anuncios">
+            <p id="recompensa"></p>
+        </div>
         <div class="progreso">
             <p id="dinero"></p>
             <div class="compra">
-                <div id="carma" onclick="compra();">Comprar Arma</div>
-                <div id="carmadura" onclick="compra();">Comprar Armadura</div>
-                <div id="chechizo" onclick="compra();">Comprar Hechizo</div>
-                <div id="cgrito" onclick="compra();">Comprar Grito</div>
+                <div id="carma" onclick="carma();">Comprar Arma</div>
+                <div id="carmadura" onclick="carmadura();">Comprar Armadura</div>
+                <div id="chechizo" onclick="chechizo();">Comprar Hechizo</div>
+                <div id="cgrito" onclick="cgrito();">Comprar Grito</div>
             </div>
-        </div>
-        <div class="recompensa">
         </div>
     </body>
     <script src="ruleta.js"></script>

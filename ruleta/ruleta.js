@@ -8,7 +8,6 @@ var hechizos = ["Curación", "Expulsar no muerto", "Explosión elemental", "Conj
 var gritos = ["Fuerza implacable", "Torbellino arrollador", "Despejar cielos", "Invocar dragón", "Desgarro de dragones"];
 var dinero = 250000000;
 document.getElementById("dinero").innerHTML = "Dinero disponible: "+dinero+" septim(s)";
-    var li = document.createElement("li"); // Creamos un elemento LI
 // Almacenamos el indice de la imagen que esta en cada recuadro.
 var cuadro = [0, 0, 0, 0, 0];
 // Almacenamos el setInterval de cada recuadro de forma independiente.
@@ -106,36 +105,109 @@ function circulaSombras() {
 }
 
 function cambiarArmadura() {
-    document.getElementById("armadura").src = armaduras[0];
-    armaduras.shift();
+    if (armaduras.length==0){
+        dinero+=1000;
+        document.getElementById("recompensa").innerHTML = "Ya tienes todas las armaduras. Armadura vendida por 1000 septins.";
+        setTimeout(function() {
+            document.getElementById("recompensa").innerHTML = "";
+            document.getElementById("dinero").innerHTML = "Dinero disponible: "+dinero+" septim(s)";
+          }, 2000); 
+    }
+    else {
+        document.getElementById("armadura").src = armaduras[0];
+        armaduras.shift();
+    }
 }
 
 function cambiarArma() {
-    document.getElementById("arma").src = armas[0];
-    armas.shift();
+    if (armas.length==0){
+        dinero+=1000;
+        document.getElementById("recompensa").innerHTML = "Ya tienes todas las armas. Arma vendida por 1000 septins.";
+        setTimeout(function() {
+            document.getElementById("recompensa").innerHTML = "";
+            document.getElementById("dinero").innerHTML = "Dinero disponible: "+dinero+" septim(s)";
+          }, 2000); 
+    }
+    else {
+        document.getElementById("arma").src = armas[0];
+        armas.shift();
+    }
 }
 
 function mashechizo() {
-    var anadirmagia = document.getElementById("magia");
-    var li = document.createElement("li"); 
-    var tipohechizo = document.createTextNode(hechizos[0]); // Creamos un nodo de texto con el valor del elemento del array
-    li.appendChild(tipohechizo); // Agregamos el nodo de texto al elemento LI
-    anadirmagia.appendChild(li); // Agregamos el elemento LI al elemento UL
-    hechizos.shift();
+    if (hechizos.length==0){
+        dinero+=1000;
+        document.getElementById("recompensa").innerHTML = "Ya tienes todos los hechizos. Hechizo vendido por 1000 septins.";
+        setTimeout(function() {
+            document.getElementById("recompensa").innerHTML = "";
+            document.getElementById("dinero").innerHTML = "Dinero disponible: "+dinero+" septim(s)";
+          }, 2000); 
+    }
+    else {
+        var anadirmagia = document.getElementById("magia");
+        var li = document.createElement("li"); 
+        var tipohechizo = document.createTextNode(hechizos[0]); // Creamos un nodo de texto con el valor del elemento del array
+        li.appendChild(tipohechizo); // Agregamos el nodo de texto al elemento LI
+        anadirmagia.appendChild(li); // Agregamos el elemento LI al elemento UL
+        hechizos.shift();
+    }
 }
 
 function masgrito() {
-    var anadirgrito = document.getElementById("gritos");
-    var li = document.createElement("li"); 
-    var tipogrito = document.createTextNode(gritos[0]); // Creamos un nodo de texto con el valor del elemento del array
-    li.appendChild(tipogrito); // Agregamos el nodo de texto al elemento LI
-    anadirgrito.appendChild(li); // Agregamos el elemento LI al elemento UL
-    gritos.shift();
+    if (gritos.length==0){
+        dinero+=1000;
+        document.getElementById("recompensa").innerHTML = "Ya tienes todos los gritos. Grito vendido por 1000 septins.";
+        setTimeout(function() {
+            document.getElementById("recompensa").innerHTML = "";
+            document.getElementById("dinero").innerHTML = "Dinero disponible: "+dinero+" septim(s)";
+          }, 2000); 
+    }
+    else {
+        var anadirgrito = document.getElementById("gritos");
+        var li = document.createElement("li"); 
+        var tipogrito = document.createTextNode(gritos[0]); // Creamos un nodo de texto con el valor del elemento del array
+        li.appendChild(tipogrito); // Agregamos el nodo de texto al elemento LI
+        anadirgrito.appendChild(li); // Agregamos el elemento LI al elemento UL
+        gritos.shift();
+    }
 }
 
-function compra() {
-    document.getElementById("carma").addEventListener("click", function(){ if (dinero>1000){ dinero-=1000;cambiarArma();} else {alert("Saldo insuficiente."); }})
-    document.getElementById("carmadura").addEventListener("click", function(){ if (dinero>1000){ dinero-=1000;cambiarArmadura();} else {alert("Saldo insuficiente."); }})
-    document.getElementById("chechizo").addEventListener("click", function(){ if (dinero>1000){ dinero-=1000;mashechizo();} else {alert("Saldo insuficiente."); }})
-    document.getElementById("cgrito").addEventListener("click", function(){ if (dinero>1000){ dinero-=1000;masgrito();} else {alert("Saldo insuficiente."); }})
+function carma() {
+    if (dinero>1000){ 
+        dinero-=1000;
+        document.getElementById("dinero").innerHTML = "Dinero disponible: "+dinero+" septim(s)";
+        cambiarArma();
+    } 
+    else {alert("Saldo insuficiente."); }
+}
+
+function carmadura() {
+    if (dinero>1000){ 
+        dinero-=1000;
+        document.getElementById("dinero").innerHTML = "Dinero disponible: "+dinero+" septim(s)";
+        cambiarArmadura();
+    } 
+    else {alert("Saldo insuficiente."); }
+}
+
+function chechizo() {
+    if (dinero>1000){ 
+        dinero-=1000;
+        document.getElementById("dinero").innerHTML = "Dinero disponible: "+dinero+" septim(s)";
+        mashechizo();
+    } 
+    else {alert("Saldo insuficiente."); }
+}
+
+function cgrito() {
+    if (dinero>1000){ 
+        dinero-=1000;
+        document.getElementById("dinero").innerHTML = "Dinero disponible: "+dinero+" septim(s)";
+        masgrito();
+    } 
+    else {alert("Saldo insuficiente."); }
+}
+
+if (armaduras.length==0 && armas.length==0 && hechizos.length==0 && gritos.length==0) {
+    document.getElementById("recompensa").innerHTML = "Felicidades lograste obtener todo al maximo.";
 }

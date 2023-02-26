@@ -39,6 +39,14 @@ h1 {
     width: 50%;
 }
 
+.anuncios {
+    margin: auto;
+    height: 30%;
+    width: 50%;
+    border: 1px solid black;
+    background-color: #b1a7a7a8;
+}
+
 .imagenes {
     padding: 10px;
     border: 1px solid black;
@@ -62,6 +70,18 @@ img[alt="premios"]{
     border: 1px solid black;
     /* Sombra. */
     box-shadow: 2px 2px 5px #66CCFF;
+}
+
+
+img[alt="armas"]{
+    height: 280px;
+    width: 125px;
+    margin: 8px;
+}
+
+img[alt="armaduras"]{
+    height: 280px;
+    margin: 8px;
 }
 
 img[alt="juego"] {
@@ -101,7 +121,7 @@ img[alt="juego"] {
 
 .equipamientos {
     width: 20%;
-    height: auto;
+    height: 75%;
     background-color: #b1a7a7a8;
     padding: 10px;
     border: 1px solid black;
@@ -118,9 +138,13 @@ img[alt="juego"] {
 }
 
 .hechizos{
+    height: 25%;
+    border: 1px solid black;
     overflow: auto;
 }
 
 .gritos{
+    height: 25%;
+    border: 1px solid black;
     overflow: auto;
 }
