@@ -6,7 +6,7 @@ var armas = ["img/armas/acero.png", "img/armas/OrcishSword.png", "img/armas/Daed
 var armaduras = ["img/personaje/hierro.png", "img/personaje/orco.png", "img/personaje/ebano.png", "img/personaje/dragon.png"];
 var hechizos = ["Curación", "Expulsar no muerto", "Explosión elemental", "Conjurar atronach", "LLamada a las armas", "Piel de Dragón"];
 var gritos = ["Fuerza implacable", "Torbellino arrollador", "Invocar Tormenta", "Despejar cielos", "Invocar dragón", "Desgarro de dragones"];
-var dinero = 20000;
+var dinero = 15000;
 document.getElementById("dinero").innerHTML = "Dinero disponible: "+dinero+" septim(s)";
 var progreso = document.getElementById("barpro")
 // Almacenamos el indice de la imagen que esta en cada recuadro.
@@ -116,7 +116,7 @@ function cambiarArmadura() {
             document.getElementById("recompensa").innerHTML = "";
             document.getElementById("dinero").innerHTML = "Dinero disponible: "+dinero+" septim(s)";
             progresojuego(); 
-        }, 2000);
+        }, 1500);
         progresojuego();
     }
     else {
@@ -124,7 +124,7 @@ function cambiarArmadura() {
         document.getElementById("recompensa").innerHTML = "Armadura mejorada.";
         setTimeout(function() {
             document.getElementById("recompensa").innerHTML = "";
-        }, 2000);
+        }, 1500);
         progreso.value +=5;
         armaduras.shift();
     }
@@ -138,7 +138,7 @@ function cambiarArma() {
             document.getElementById("recompensa").innerHTML = "";
             document.getElementById("dinero").innerHTML = "Dinero disponible: "+dinero+" septim(s)";
             progresojuego(); 
-        }, 2000);
+        }, 1500);
         progresojuego();
     }
     else {
@@ -146,7 +146,7 @@ function cambiarArma() {
         document.getElementById("recompensa").innerHTML = "Arma mejorada.";
         setTimeout(function() {
             document.getElementById("recompensa").innerHTML = "";
-        }, 2000);
+        }, 1500);
         progreso.value +=5;
         armas.shift();
     }
@@ -160,7 +160,7 @@ function mashechizo() {
             document.getElementById("recompensa").innerHTML = "";
             document.getElementById("dinero").innerHTML = "Dinero disponible: "+dinero+" septim(s)";
             progresojuego(); 
-        }, 2000);
+        }, 1500);
         progresojuego();
     }
     else {
@@ -172,7 +172,7 @@ function mashechizo() {
         document.getElementById("recompensa").innerHTML = "Nuevo hechizo aprendido.";
         setTimeout(function() {
             document.getElementById("recompensa").innerHTML = "";
-        }, 2000);
+        }, 1500);
         progreso.value +=5;
         hechizos.shift();
     }
@@ -186,7 +186,7 @@ function masgrito() {
             document.getElementById("recompensa").innerHTML = "";
             document.getElementById("dinero").innerHTML = "Dinero disponible: "+dinero+" septim(s)";
             progresojuego(); 
-        }, 2000);
+        }, 1500);
         progresojuego();
     }
     else {
@@ -198,7 +198,7 @@ function masgrito() {
         document.getElementById("recompensa").innerHTML = "Nuevo grito aprendido.";
         setTimeout(function() {
             document.getElementById("recompensa").innerHTML = "";
-        }, 2000);
+        }, 1500);
         progreso.value +=5;
         gritos.shift();
     }
@@ -215,7 +215,7 @@ function carma() {
         setTimeout(function() {
             document.getElementById("recompensa").innerHTML = "";
             progresojuego(); 
-        }, 2000);
+        }, 1500);
         progresojuego();
     }
 }
@@ -231,7 +231,7 @@ function carmadura() {
         setTimeout(function() {
             document.getElementById("recompensa").innerHTML = "";
             progresojuego(); 
-        }, 2000);
+        }, 1500);
         progresojuego(); 
     }
 }
@@ -247,7 +247,7 @@ function chechizo() {
         setTimeout(function() {
             document.getElementById("recompensa").innerHTML = "";
             progresojuego();
-        }, 2000);
+        }, 1500);
         progresojuego();
     }
 }
@@ -263,7 +263,7 @@ function cgrito() {
         setTimeout(function() {
             document.getElementById("recompensa").innerHTML = "";
             progresojuego();
-        }, 2000);
+        }, 1500);
         progresojuego();
     }
 }
