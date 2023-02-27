@@ -6,7 +6,7 @@ var armas = ["img/armas/acero.png", "img/armas/OrcishSword.png", "img/armas/Daed
 var armaduras = ["img/personaje/hierro.png", "img/personaje/orco.png", "img/personaje/ebano.png", "img/personaje/dragon.png"];
 var hechizos = ["Curación", "Expulsar no muerto", "Explosión elemental", "Conjurar atronach", "LLamada a las armas", "Piel de Dragón"];
 var gritos = ["Fuerza implacable", "Torbellino arrollador", "Invocar Tormenta", "Despejar cielos", "Invocar dragón", "Desgarro de dragones"];
-var dinero = 1000000;
+var dinero = 1075;
 document.getElementById("dinero").innerHTML = "Dinero disponible: "+dinero+" septim(s)";
 var progreso = document.getElementById("barpro")
 // Almacenamos el indice de la imagen que esta en cada recuadro.
@@ -46,12 +46,10 @@ function ruleta() {
 }
 
 function jugar(){
+    progresojuego();
     if (dinero<50){
-        document.getElementById("iniciar").addEventListener("click", function(){ 
-            document.getElementById("recompensa").innerHTML ="Te quedaste sin dinero para tiradas.";
-            setTimeout(function() {
-                document.getElementById("recompensa").innerHTML = "";
-            }, 2000);
+        document.getElementById("iniciar").addEventListener("click", function(){
+            progresojuego();
         })
     }
     else{
@@ -117,7 +115,9 @@ function cambiarArmadura() {
         setTimeout(function() {
             document.getElementById("recompensa").innerHTML = "";
             document.getElementById("dinero").innerHTML = "Dinero disponible: "+dinero+" septim(s)";
-          }, 2000); 
+            progresojuego(); 
+        }, 2000);
+        progresojuego();
     }
     else {
         document.getElementById("armadura").src = armaduras[0];
@@ -133,7 +133,9 @@ function cambiarArma() {
         setTimeout(function() {
             document.getElementById("recompensa").innerHTML = "";
             document.getElementById("dinero").innerHTML = "Dinero disponible: "+dinero+" septim(s)";
-          }, 2000); 
+            progresojuego(); 
+        }, 2000);
+        progresojuego();
     }
     else {
         document.getElementById("arma").src = armas[0];
@@ -149,7 +151,9 @@ function mashechizo() {
         setTimeout(function() {
             document.getElementById("recompensa").innerHTML = "";
             document.getElementById("dinero").innerHTML = "Dinero disponible: "+dinero+" septim(s)";
-          }, 2000); 
+            progresojuego(); 
+        }, 2000);
+        progresojuego();
     }
     else {
         var anadirmagia = document.getElementById("magia");
@@ -169,7 +173,9 @@ function masgrito() {
         setTimeout(function() {
             document.getElementById("recompensa").innerHTML = "";
             document.getElementById("dinero").innerHTML = "Dinero disponible: "+dinero+" septim(s)";
-          }, 2000); 
+            progresojuego(); 
+        }, 2000);
+        progresojuego();
     }
     else {
         var anadirgrito = document.getElementById("gritos");
@@ -192,7 +198,9 @@ function carma() {
         document.getElementById("recompensa").innerHTML ="Saldo insuficiente.";
         setTimeout(function() {
             document.getElementById("recompensa").innerHTML = "";
-          }, 2000); 
+            progresojuego(); 
+        }, 2000);
+        progresojuego();
     }
 }
 
@@ -206,7 +214,9 @@ function carmadura() {
         document.getElementById("recompensa").innerHTML ="Saldo insuficiente.";
         setTimeout(function() {
             document.getElementById("recompensa").innerHTML = "";
-          }, 2000); 
+            progresojuego(); 
+        }, 2000);
+        progresojuego(); 
     }
 }
 
@@ -220,7 +230,9 @@ function chechizo() {
         document.getElementById("recompensa").innerHTML ="Saldo insuficiente.";
         setTimeout(function() {
             document.getElementById("recompensa").innerHTML = "";
-          }, 2000); 
+            progresojuego();
+        }, 2000);
+        progresojuego();
     }
 }
 
@@ -234,10 +246,18 @@ function cgrito() {
         document.getElementById("recompensa").innerHTML ="Saldo insuficiente.";
         setTimeout(function() {
             document.getElementById("recompensa").innerHTML = "";
-          }, 2000); 
+            progresojuego();
+        }, 2000);
+        progresojuego();
     }
 }
 
-if (progreso.value == 100) {
-    document.getElementById("recompensa").innerHTML = "Felicidades lograste obtener todo al maximo.";
+function progresojuego() {
+    if (progreso.value == 100) {
+        document.getElementById("recompensa").innerHTML = "Victoria, fin del juego.";
+        dinero = 0
+    }
+    if (progreso.value != 100 && dinero < 50){
+        document.getElementById("recompensa").innerHTML = "Derrota, te quedaste sin fondos.";
+    }
 }

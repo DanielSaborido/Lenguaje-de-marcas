@@ -77,13 +77,15 @@ img[alt="premios"]{
 }
 
 img[alt="armas"]{
-    height: 280px;
-    width: 125px;
+    height: 40%;
+    width: 35%;
+    float: right;
     margin: 8px;
 }
 
 img[alt="armaduras"]{
-    height: 280px;
+    height: 40%;
+    width: 35%;
     margin: 8px;
 }
 
@@ -169,5 +171,5 @@ img[alt="juego"] {
 
 progress {
     width: 100%;
-    accent-color: hsl(0, 100%, 50%);
-  }
+    accent-color: hsl(212, 61%, 63%);
+}
