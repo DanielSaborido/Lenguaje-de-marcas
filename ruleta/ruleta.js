@@ -6,7 +6,7 @@ var armas = ["img/armas/acero.png", "img/armas/OrcishSword.png", "img/armas/Daed
 var armaduras = ["img/personaje/hierro.png", "img/personaje/orco.png", "img/personaje/ebano.png", "img/personaje/dragon.png"];
 var hechizos = ["Curación", "Expulsar no muerto", "Explosión elemental", "Conjurar atronach", "LLamada a las armas", "Piel de Dragón"];
 var gritos = ["Fuerza implacable", "Torbellino arrollador", "Invocar Tormenta", "Despejar cielos", "Invocar dragón", "Desgarro de dragones"];
-var dinero = 1075;
+var dinero = 20000;
 document.getElementById("dinero").innerHTML = "Dinero disponible: "+dinero+" septim(s)";
 var progreso = document.getElementById("barpro")
 // Almacenamos el indice de la imagen que esta en cada recuadro.
@@ -111,7 +111,7 @@ function circulaSombras() {
 function cambiarArmadura() {
     if (armaduras.length==0){
         dinero+=1000;
-        document.getElementById("recompensa").innerHTML = "Ya tienes todas las armaduras. Armadura vendida por 1000 septins.";
+        document.getElementById("recompensa").innerHTML = "Ya tienes la mejor armadura. Vendiendo la nueva armadura por 1000 septins.";
         setTimeout(function() {
             document.getElementById("recompensa").innerHTML = "";
             document.getElementById("dinero").innerHTML = "Dinero disponible: "+dinero+" septim(s)";
@@ -121,6 +121,10 @@ function cambiarArmadura() {
     }
     else {
         document.getElementById("armadura").src = armaduras[0];
+        document.getElementById("recompensa").innerHTML = "Armadura mejorada.";
+        setTimeout(function() {
+            document.getElementById("recompensa").innerHTML = "";
+        }, 2000);
         progreso.value +=5;
         armaduras.shift();
     }
@@ -129,7 +133,7 @@ function cambiarArmadura() {
 function cambiarArma() {
     if (armas.length==0){
         dinero+=1000;
-        document.getElementById("recompensa").innerHTML = "Ya tienes todas las armas. Arma vendida por 1000 septins.";
+        document.getElementById("recompensa").innerHTML = "Ya tienes la mejor arma. Vendiendo la nueva arma por 1000 septins.";
         setTimeout(function() {
             document.getElementById("recompensa").innerHTML = "";
             document.getElementById("dinero").innerHTML = "Dinero disponible: "+dinero+" septim(s)";
@@ -139,6 +143,10 @@ function cambiarArma() {
     }
     else {
         document.getElementById("arma").src = armas[0];
+        document.getElementById("recompensa").innerHTML = "Arma mejorada.";
+        setTimeout(function() {
+            document.getElementById("recompensa").innerHTML = "";
+        }, 2000);
         progreso.value +=5;
         armas.shift();
     }
@@ -147,7 +155,7 @@ function cambiarArma() {
 function mashechizo() {
     if (hechizos.length==0){
         dinero+=1000;
-        document.getElementById("recompensa").innerHTML = "Ya tienes todos los hechizos. Hechizo vendido por 1000 septins.";
+        document.getElementById("recompensa").innerHTML = "Ya tienes todos los hechizos disponibles. Vendiendo el grimorio por 1000 septins.";
         setTimeout(function() {
             document.getElementById("recompensa").innerHTML = "";
             document.getElementById("dinero").innerHTML = "Dinero disponible: "+dinero+" septim(s)";
@@ -161,6 +169,10 @@ function mashechizo() {
         var tipohechizo = document.createTextNode(hechizos[0]); // Creamos un nodo de texto con el valor del elemento del array
         li.appendChild(tipohechizo); // Agregamos el nodo de texto al elemento LI
         anadirmagia.appendChild(li); // Agregamos el elemento LI al elemento UL
+        document.getElementById("recompensa").innerHTML = "Nuevo hechizo aprendido.";
+        setTimeout(function() {
+            document.getElementById("recompensa").innerHTML = "";
+        }, 2000);
         progreso.value +=5;
         hechizos.shift();
     }
@@ -169,7 +181,7 @@ function mashechizo() {
 function masgrito() {
     if (gritos.length==0){
         dinero+=1000;
-        document.getElementById("recompensa").innerHTML = "Ya tienes todos los gritos. Grito vendido por 1000 septins.";
+        document.getElementById("recompensa").innerHTML = "Ya tienes todos los gritos disponibles. Vendiendo el grito por 1000 septins.";
         setTimeout(function() {
             document.getElementById("recompensa").innerHTML = "";
             document.getElementById("dinero").innerHTML = "Dinero disponible: "+dinero+" septim(s)";
@@ -183,6 +195,10 @@ function masgrito() {
         var tipogrito = document.createTextNode(gritos[0]); // Creamos un nodo de texto con el valor del elemento del array
         li.appendChild(tipogrito); // Agregamos el nodo de texto al elemento LI
         anadirgrito.appendChild(li); // Agregamos el elemento LI al elemento UL
+        document.getElementById("recompensa").innerHTML = "Nuevo grito aprendido.";
+        setTimeout(function() {
+            document.getElementById("recompensa").innerHTML = "";
+        }, 2000);
         progreso.value +=5;
         gritos.shift();
     }
