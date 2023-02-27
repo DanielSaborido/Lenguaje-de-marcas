@@ -6,7 +6,7 @@ var armas = ["img/armas/acero.png", "img/armas/OrcishSword.png", "img/armas/Daed
 var armaduras = ["img/personaje/hierro.png", "img/personaje/orco.png", "img/personaje/ebano.png", "img/personaje/dragon.png"];
 var hechizos = ["Curación", "Expulsar no muerto", "Explosión elemental", "Conjurar atronach", "LLamada a las armas", "Piel de Dragón"];
 var gritos = ["Fuerza implacable", "Torbellino arrollador", "Invocar Tormenta", "Despejar cielos", "Invocar dragón", "Desgarro de dragones"];
-var dinero = 15000;
+var dinero = 200000;
 document.getElementById("dinero").innerHTML = "Dinero disponible: "+dinero+" septim(s)";
 var progreso = document.getElementById("barpro")
 // Almacenamos el indice de la imagen que esta en cada recuadro.
@@ -36,9 +36,9 @@ function ruleta() {
         
         // Genera los intervalos para que cada recuadro cambie de imagen cada centésima de segundo.
         intervaloRuleta[0] = setInterval(function() { cambiaImagen(0);}, 100);
-        intervaloRuleta[1] = setInterval(function() { cambiaImagen(1);}, 150);
-        intervaloRuleta[2] = setInterval(function() { cambiaImagen(2);}, 200);
-        intervaloRuleta[3] = setInterval(function() { cambiaImagen(3);}, 250);
+        intervaloRuleta[1] = setInterval(function() { cambiaImagen(1);}, 100);
+        intervaloRuleta[2] = setInterval(function() { cambiaImagen(2);}, 100);
+        intervaloRuleta[3] = setInterval(function() { cambiaImagen(3);}, 100);
         
         // Al empezar están cambiando los tres recuadros.
         corriendo = 4;
@@ -47,14 +47,14 @@ function ruleta() {
 
 function jugar(){
     progresojuego();
-    if (dinero<50){
+    if (dinero<25){
         document.getElementById("iniciar").addEventListener("click", function(){
             progresojuego();
         })
     }
     else{
         ruleta();
-        dinero -= 50;
+        dinero -= 25;
         document.getElementById("dinero").innerHTML = "Dinero disponible: "+dinero+" septim(s)";
     }    
 }
@@ -64,7 +64,7 @@ function cambiaImagen(x) {
     // Si la imagen es la última paso a la primera.
     //  Si no cambia al asiguiente imagen.
     if(cuadro[x]>=4) cuadro[x]=0;
-        else cuadro[x] = cuadro[x]+1;
+    else cuadro[x] = cuadro[x]+1;
     
     // Cambia la propiedad src de la imagen correspondiente en el html.
     document.getElementById("imag"+x).src = opciones[cuadro[x]];                
@@ -79,7 +79,6 @@ function paraRuleta() {
         corriendo = corriendo - 1;
         // Paramos el intervalo para que deje de cambiar la imagen del recuadro.
         clearInterval(intervaloRuleta[corriendo]);
-        
         // Si hemos parado el último activamos el efecto de las sombras.
         if (corriendo==0) 
             cambiaSombras();
@@ -116,7 +115,7 @@ function cambiarArmadura() {
             document.getElementById("recompensa").innerHTML = "";
             document.getElementById("dinero").innerHTML = "Dinero disponible: "+dinero+" septim(s)";
             progresojuego(); 
-        }, 1500);
+        }, 2000);
         progresojuego();
     }
     else {
@@ -124,7 +123,8 @@ function cambiarArmadura() {
         document.getElementById("recompensa").innerHTML = "Armadura mejorada.";
         setTimeout(function() {
             document.getElementById("recompensa").innerHTML = "";
-        }, 1500);
+            progresojuego();
+        }, 2000);
         progreso.value +=5;
         armaduras.shift();
     }
@@ -138,7 +138,7 @@ function cambiarArma() {
             document.getElementById("recompensa").innerHTML = "";
             document.getElementById("dinero").innerHTML = "Dinero disponible: "+dinero+" septim(s)";
             progresojuego(); 
-        }, 1500);
+        }, 2000);
         progresojuego();
     }
     else {
@@ -146,7 +146,8 @@ function cambiarArma() {
         document.getElementById("recompensa").innerHTML = "Arma mejorada.";
         setTimeout(function() {
             document.getElementById("recompensa").innerHTML = "";
-        }, 1500);
+            progresojuego();
+        }, 2000);
         progreso.value +=5;
         armas.shift();
     }
@@ -160,7 +161,7 @@ function mashechizo() {
             document.getElementById("recompensa").innerHTML = "";
             document.getElementById("dinero").innerHTML = "Dinero disponible: "+dinero+" septim(s)";
             progresojuego(); 
-        }, 1500);
+        }, 2000);
         progresojuego();
     }
     else {
@@ -172,7 +173,8 @@ function mashechizo() {
         document.getElementById("recompensa").innerHTML = "Nuevo hechizo aprendido.";
         setTimeout(function() {
             document.getElementById("recompensa").innerHTML = "";
-        }, 1500);
+            progresojuego();
+        }, 2000);
         progreso.value +=5;
         hechizos.shift();
     }
@@ -186,7 +188,7 @@ function masgrito() {
             document.getElementById("recompensa").innerHTML = "";
             document.getElementById("dinero").innerHTML = "Dinero disponible: "+dinero+" septim(s)";
             progresojuego(); 
-        }, 1500);
+        }, 2000);
         progresojuego();
     }
     else {
@@ -198,7 +200,8 @@ function masgrito() {
         document.getElementById("recompensa").innerHTML = "Nuevo grito aprendido.";
         setTimeout(function() {
             document.getElementById("recompensa").innerHTML = "";
-        }, 1500);
+            progresojuego();
+        }, 2000);
         progreso.value +=5;
         gritos.shift();
     }
@@ -215,7 +218,7 @@ function carma() {
         setTimeout(function() {
             document.getElementById("recompensa").innerHTML = "";
             progresojuego(); 
-        }, 1500);
+        }, 2000);
         progresojuego();
     }
 }
@@ -231,8 +234,8 @@ function carmadura() {
         setTimeout(function() {
             document.getElementById("recompensa").innerHTML = "";
             progresojuego(); 
-        }, 1500);
-        progresojuego(); 
+        }, 2000);
+        progresojuego();
     }
 }
 
@@ -247,7 +250,7 @@ function chechizo() {
         setTimeout(function() {
             document.getElementById("recompensa").innerHTML = "";
             progresojuego();
-        }, 1500);
+        }, 2000);
         progresojuego();
     }
 }
@@ -263,7 +266,7 @@ function cgrito() {
         setTimeout(function() {
             document.getElementById("recompensa").innerHTML = "";
             progresojuego();
-        }, 1500);
+        }, 2000);
         progresojuego();
     }
 }
@@ -273,7 +276,7 @@ function progresojuego() {
         document.getElementById("recompensa").innerHTML = "Victoria, fin del juego.";
         dinero = 0
     }
-    if (progreso.value != 100 && dinero < 50){
+    if (progreso.value != 100 && dinero < 25){
         document.getElementById("recompensa").innerHTML = "Derrota, te quedaste sin fondos.";
     }
 }
