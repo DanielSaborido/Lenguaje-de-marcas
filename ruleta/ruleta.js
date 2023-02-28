@@ -6,13 +6,18 @@ var armas = ["img/armas/acero.png", "img/armas/OrcishSword.png", "img/armas/Daed
 var armaduras = ["img/personaje/hierro.png", "img/personaje/orco.png", "img/personaje/ebano.png", "img/personaje/dragon.png"];
 var hechizos = ["Curación", "Expulsar no muerto", "Explosión elemental", "Conjurar atronach", "LLamada a las armas", "Piel de Dragón"];
 var gritos = ["Fuerza implacable", "Torbellino arrollador", "Invocar Tormenta", "Despejar cielos", "Invocar dragón", "Desgarro de dragones"];
+var lista = [];
+const imagen1 = document.getElementById("imag0");
+const imagen2 = document.getElementById("imag1");
+const imagen3 = document.getElementById("imag2");
+const imagen4 = document.getElementById("imag3");
 var dinero = 200000;
 document.getElementById("dinero").innerHTML = "Dinero disponible: "+dinero+" septim(s)";
 var progreso = document.getElementById("barpro")
 // Almacenamos el indice de la imagen que esta en cada recuadro.
-var cuadro = [0, 0, 0, 0, 0];
+var cuadro = [0, 0, 0, 0];
 // Almacenamos el setInterval de cada recuadro de forma independiente.
-var intervaloRuleta = [null, null, null, null, null];
+var intervaloRuleta = [null, null, null, null];
 // Variable donde almacenamos el numero de recuadros que están cambiando.
 var corriendo = 0;
 // Intervalo del cambio de sombras.
@@ -32,7 +37,7 @@ function ruleta() {
             // Si lo multiplico por tres el dominio pasa a ser [0-3)
             // Esta operación genera decimales, para eliminarlos se usa Math.floor()
         for(i in cuadro)
-            cuadro[i] = Math.floor(Math.random() * 4);
+            cuadro[i] = 1;
         
         // Genera los intervalos para que cada recuadro cambie de imagen cada centésima de segundo.
         intervaloRuleta[0] = setInterval(function() { cambiaImagen(0);}, 100);
@@ -80,9 +85,80 @@ function paraRuleta() {
         // Paramos el intervalo para que deje de cambiar la imagen del recuadro.
         clearInterval(intervaloRuleta[corriendo]);
         // Si hemos parado el último activamos el efecto de las sombras.
-        if (corriendo==0) 
+        if (corriendo==0) { 
+            analisis();
             cambiaSombras();
+        }
     }
+}
+
+function analisis() {
+    const src1 = imagen1.getAttribute("src");
+    const src2 = imagen2.getAttribute("src");
+    const src3 = imagen3.getAttribute("src");
+    const src4 = imagen4.getAttribute("src");
+    lista.push(src1);
+    lista.push(src2);
+    lista.push(src3);
+    lista.push(src4);
+    document.getElementById("recompensa").innerHTML = "Analizando premio";
+    setTimeout(function() {
+        if (lista[0] === lista[1] && lista[2] === lista[3] && lista[0] === lista[3] && lista[0] === opciones[0]){
+            cambiarArma();
+            lista = [];
+        }
+        if (lista[0] === lista[1] && lista[2] === lista[3] && lista[0] === lista[3] && lista[0] === opciones[1]){
+            masgrito();
+            lista = [];
+        }
+        if (lista[0] === opciones[2]){
+            dinero+=250;
+            document.getElementById("recompensa").innerHTML = "Has ganado una bolsa con septims.";
+            document.getElementById("dinero").innerHTML = "Dinero disponible: "+dinero+" septim(s)";
+            setTimeout(function() {
+                document.getElementById("recompensa").innerHTML = "";
+            }, 2000);
+            lista = [];
+        }
+        if (lista[1] === opciones[2]){
+            dinero+=250;
+            document.getElementById("recompensa").innerHTML = "Has ganado una bolsa con septims.";
+            document.getElementById("dinero").innerHTML = "Dinero disponible: "+dinero+" septim(s)";
+            setTimeout(function() {
+                document.getElementById("recompensa").innerHTML = "";
+            }, 2000);
+            lista = [];
+        }
+        if (lista[2] === opciones[2]){
+            dinero+=250;
+            document.getElementById("recompensa").innerHTML = "Has ganado una bolsa con septims.";
+            document.getElementById("dinero").innerHTML = "Dinero disponible: "+dinero+" septim(s)";
+            setTimeout(function() {
+                document.getElementById("recompensa").innerHTML = "";
+            }, 2000);
+            lista = [];
+        }
+        if (lista[3] === opciones[2]){
+            dinero+=250;
+            document.getElementById("recompensa").innerHTML = "Has ganado una bolsa con septims.";
+            document.getElementById("dinero").innerHTML = "Dinero disponible: "+dinero+" septim(s)";
+            setTimeout(function() {
+                document.getElementById("recompensa").innerHTML = "";
+            }, 2000);
+            lista = [];
+        }
+        if (lista[0] === lista[1] && lista[2] === lista[3] && lista[0] === lista[3] && lista[0] === opciones[3]){
+            cambiarArmadura();
+            lista = [];
+        }
+        if (lista[0] === lista[1] && lista[2] === lista[3] && lista[0] === lista[3] && lista[0] === opciones[4]){
+            mashechizo();
+            lista = [];
+        }
+        else{
+            lista = [];
+        }
+    }, 2000);
 }
 
 // Funcion que activa el cambio de las sombras.
@@ -110,7 +186,7 @@ function circulaSombras() {
 function cambiarArmadura() {
     if (armaduras.length==0){
         dinero+=1000;
-        document.getElementById("recompensa").innerHTML = "Ya tienes la mejor armadura. Vendiendo la nueva armadura por 1000 septins.";
+        document.getElementById("recompensa").innerHTML = "Ya tienes la mejor armadura. Vendiendo la nueva armadura por 1000 septims.";
         setTimeout(function() {
             document.getElementById("recompensa").innerHTML = "";
             document.getElementById("dinero").innerHTML = "Dinero disponible: "+dinero+" septim(s)";
@@ -133,7 +209,7 @@ function cambiarArmadura() {
 function cambiarArma() {
     if (armas.length==0){
         dinero+=1000;
-        document.getElementById("recompensa").innerHTML = "Ya tienes la mejor arma. Vendiendo la nueva arma por 1000 septins.";
+        document.getElementById("recompensa").innerHTML = "Ya tienes la mejor arma. Vendiendo la nueva arma por 1000 septims.";
         setTimeout(function() {
             document.getElementById("recompensa").innerHTML = "";
             document.getElementById("dinero").innerHTML = "Dinero disponible: "+dinero+" septim(s)";
@@ -156,7 +232,7 @@ function cambiarArma() {
 function mashechizo() {
     if (hechizos.length==0){
         dinero+=1000;
-        document.getElementById("recompensa").innerHTML = "Ya tienes todos los hechizos disponibles. Vendiendo el grimorio por 1000 septins.";
+        document.getElementById("recompensa").innerHTML = "Ya tienes todos los hechizos disponibles. Vendiendo el grimorio por 1000 septims.";
         setTimeout(function() {
             document.getElementById("recompensa").innerHTML = "";
             document.getElementById("dinero").innerHTML = "Dinero disponible: "+dinero+" septim(s)";
@@ -183,7 +259,7 @@ function mashechizo() {
 function masgrito() {
     if (gritos.length==0){
         dinero+=1000;
-        document.getElementById("recompensa").innerHTML = "Ya tienes todos los gritos disponibles. Vendiendo el grito por 1000 septins.";
+        document.getElementById("recompensa").innerHTML = "Ya tienes todos los gritos disponibles. Vendiendo el grito por 1000 septims.";
         setTimeout(function() {
             document.getElementById("recompensa").innerHTML = "";
             document.getElementById("dinero").innerHTML = "Dinero disponible: "+dinero+" septim(s)";
