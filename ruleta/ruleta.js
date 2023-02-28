@@ -37,13 +37,13 @@ function ruleta() {
             // Si lo multiplico por tres el dominio pasa a ser [0-3)
             // Esta operación genera decimales, para eliminarlos se usa Math.floor()
         for(i in cuadro)
-            cuadro[i] = Math.floor(Math.random * 4);
+            cuadro[i] = Math.floor(Math.random() * 4);
         
         // Genera los intervalos para que cada recuadro cambie de imagen cada centésima de segundo.
-        intervaloRuleta[0] = setInterval(function() { cambiaImagen(0);}, 100);
-        intervaloRuleta[1] = setInterval(function() { cambiaImagen(1);}, 150);
+        intervaloRuleta[0] = setInterval(function() { cambiaImagen(0);}, 150);
+        intervaloRuleta[1] = setInterval(function() { cambiaImagen(1);}, 175);
         intervaloRuleta[2] = setInterval(function() { cambiaImagen(2);}, 200);
-        intervaloRuleta[3] = setInterval(function() { cambiaImagen(3);}, 250);
+        intervaloRuleta[3] = setInterval(function() { cambiaImagen(3);}, 225);
         
         // Al empezar están cambiando los tres recuadros.
         corriendo = 4;
