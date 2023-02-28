@@ -11,7 +11,7 @@ const imagen1 = document.getElementById("imag0");
 const imagen2 = document.getElementById("imag1");
 const imagen3 = document.getElementById("imag2");
 const imagen4 = document.getElementById("imag3");
-var dinero = 200000;
+var dinero = 75;
 document.getElementById("dinero").innerHTML = "Dinero disponible: "+dinero+" septim(s)";
 var progreso = document.getElementById("barpro")
 // Almacenamos el indice de la imagen que esta en cada recuadro.
@@ -37,13 +37,13 @@ function ruleta() {
             // Si lo multiplico por tres el dominio pasa a ser [0-3)
             // Esta operación genera decimales, para eliminarlos se usa Math.floor()
         for(i in cuadro)
-            cuadro[i] = 1;
+            cuadro[i] = Math.floor(Math.random * 4);
         
         // Genera los intervalos para que cada recuadro cambie de imagen cada centésima de segundo.
         intervaloRuleta[0] = setInterval(function() { cambiaImagen(0);}, 100);
-        intervaloRuleta[1] = setInterval(function() { cambiaImagen(1);}, 100);
-        intervaloRuleta[2] = setInterval(function() { cambiaImagen(2);}, 100);
-        intervaloRuleta[3] = setInterval(function() { cambiaImagen(3);}, 100);
+        intervaloRuleta[1] = setInterval(function() { cambiaImagen(1);}, 150);
+        intervaloRuleta[2] = setInterval(function() { cambiaImagen(2);}, 200);
+        intervaloRuleta[3] = setInterval(function() { cambiaImagen(3);}, 250);
         
         // Al empezar están cambiando los tres recuadros.
         corriendo = 4;
@@ -111,42 +111,6 @@ function analisis() {
             masgrito();
             lista = [];
         }
-        if (lista[0] === opciones[2]){
-            dinero+=250;
-            document.getElementById("recompensa").innerHTML = "Has ganado una bolsa con septims.";
-            document.getElementById("dinero").innerHTML = "Dinero disponible: "+dinero+" septim(s)";
-            setTimeout(function() {
-                document.getElementById("recompensa").innerHTML = "";
-            }, 2000);
-            lista = [];
-        }
-        if (lista[1] === opciones[2]){
-            dinero+=250;
-            document.getElementById("recompensa").innerHTML = "Has ganado una bolsa con septims.";
-            document.getElementById("dinero").innerHTML = "Dinero disponible: "+dinero+" septim(s)";
-            setTimeout(function() {
-                document.getElementById("recompensa").innerHTML = "";
-            }, 2000);
-            lista = [];
-        }
-        if (lista[2] === opciones[2]){
-            dinero+=250;
-            document.getElementById("recompensa").innerHTML = "Has ganado una bolsa con septims.";
-            document.getElementById("dinero").innerHTML = "Dinero disponible: "+dinero+" septim(s)";
-            setTimeout(function() {
-                document.getElementById("recompensa").innerHTML = "";
-            }, 2000);
-            lista = [];
-        }
-        if (lista[3] === opciones[2]){
-            dinero+=250;
-            document.getElementById("recompensa").innerHTML = "Has ganado una bolsa con septims.";
-            document.getElementById("dinero").innerHTML = "Dinero disponible: "+dinero+" septim(s)";
-            setTimeout(function() {
-                document.getElementById("recompensa").innerHTML = "";
-            }, 2000);
-            lista = [];
-        }
         if (lista[0] === lista[1] && lista[2] === lista[3] && lista[0] === lista[3] && lista[0] === opciones[3]){
             cambiarArmadura();
             lista = [];
@@ -156,6 +120,7 @@ function analisis() {
             lista = [];
         }
         else{
+            dineropremio();
             lista = [];
         }
     }, 2000);
@@ -181,6 +146,31 @@ function circulaSombras() {
         document.getElementById("imag1").style['boxShadow']=estilo;
         document.getElementById("imag2").style['boxShadow']=estilo;
         document.getElementById("imag3").style['boxShadow']=estilo;
+}
+
+function dineropremio(){
+    var dinpre=0;
+    console.log(lista)
+    for (let i = 0; i < lista.length; i++){
+        if (lista[i] === opciones[2]){
+            dinpre+=250;
+        } 
+    }
+    console.log(dinpre)
+    if (dinpre > 0){
+        document.getElementById("recompensa").innerHTML = "Has obtenido una bolsa con "+dinpre+" septims. Añadiendolo a su cantidad actual.";
+        dinero+=dinpre;
+        setTimeout(function() {
+            document.getElementById("recompensa").innerHTML = "";
+            document.getElementById("dinero").innerHTML = "Dinero disponible: "+dinero+" septim(s)";
+        }, 2000);
+    }
+    if (dinpre==0 && lista.length!=0) {
+        document.getElementById("recompensa").innerHTML = "No has obtenido nada. Intentalo de nuevo.";
+        setTimeout(function() {
+            document.getElementById("recompensa").innerHTML = "";
+        }, 2000);
+    }
 }
 
 function cambiarArmadura() {
