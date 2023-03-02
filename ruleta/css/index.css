@@ -1,0 +1,24 @@
+html {
+    background: url("../img/fondos/idex.jpg");
+    background-size: cover;
+}
+
+body {
+    background: url("../img/fondos/nieve.gif");
+    background-size: contain;
+}
+
+img[alt="logo"]{
+    height: 10%;
+    float: right;
+}
+
+.seleccion{
+    display: inline-block;
+    background-color: rgba(255, 255, 255, 0.548);
+    
+}
+
+.seleccion > div{
+    font-size: 90px;
+}
