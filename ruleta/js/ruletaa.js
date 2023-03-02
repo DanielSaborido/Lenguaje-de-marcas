@@ -1,17 +1,17 @@
 // Almacenamos los nombres de las imágenes en una variable compleja.
 // Se denomina tabla y se accede a los valores mediante el indice (empezando por 0).
 // Por ejemplo: opciones[0] contiene "rajoy.png"
-var opciones = ["../img/premios/espadas.png", "../img/premios/grito.png", "../img/premios/moneda.png", "../img/premios/armadura.png", "../img/premios/grimorio.png"];
-var armas = ["../img/armas/espadas/OrcishSword.png", "../img/armas/espadas/Daedricsword.png", "../img/armas/espadas/Dragonsword.png"];
-var armaduras = ["../img/personaje/guerrero/orco.png", "../img/personaje/guerrero/ebano.png", "../img/personaje/guerrero/dragon.png"];
-var hechizos = ["Curación", "Expulsar no muerto", "Explosión elemental", "Conjurar atronach", "LLamada a las armas", "Piel de Dragón"];
-var gritos = ["Fuerza implacable", "Torbellino arrollador", "Invocar Tormenta", "Despejar cielos", "Invocar dragón", "Desgarro de dragones"];
+var opciones = ["../img/premios/dagas.png", "../img/premios/grimorios/ilusion.png", "../img/premios/moneda.png", "../img/premios/armadura.png", "../img/premios/arcos.png"];
+var dagas = ["../img/armas/dagas/acero.png", "../img/armas/dagas/elfo.png", "../img/armas/dagas/cristal.png", "../img/armas/dagas/merunes.png"];
+var armaduras = ["../img/personaje/asesino/piel.png", "../img/personaje/asesino/elfo.png", "../img/personaje/asesino/cristal.png", "../img/personaje/asesino/dragon.png"];
+var arco = ["../img/armas/arcos/caza.png", "../img/armas/arcos/elfo.png", "../img/armas/arcos/cristal.png", "../img/armas/arcos/ruisenor.png"];
+var ilusion = ["Valor", "Clarividencia", "Frenesis", "Invisibilidad", "Pacificar"];
 var lista = [];
 const imagen1 = document.getElementById("imag0");
 const imagen2 = document.getElementById("imag1");
 const imagen3 = document.getElementById("imag2");
 const imagen4 = document.getElementById("imag3");
-var dinero = 500;
+var dinero = 500000;
 document.getElementById("dinero").innerHTML = "Dinero disponible: "+dinero+" septim(s)";
 var progreso = document.getElementById("barpro")
 // Almacenamos el indice de la imagen que esta en cada recuadro.
@@ -108,7 +108,7 @@ function analisis() {
             lista = [];
         }
         if (lista[0] === lista[1] && lista[2] === lista[3] && lista[0] === lista[3] && lista[0] === opciones[1]){
-            masgrito();
+            masilusion();
             lista = [];
         }
         if (lista[0] === lista[1] && lista[2] === lista[3] && lista[0] === lista[3] && lista[0] === opciones[3]){
@@ -116,7 +116,7 @@ function analisis() {
             lista = [];
         }
         if (lista[0] === lista[1] && lista[2] === lista[3] && lista[0] === lista[3] && lista[0] === opciones[4]){
-            mashechizo();
+            cambiarArco();
             lista = [];
         }
         else{
@@ -174,8 +174,8 @@ function dineropremio(){
 
 function cambiarArmadura() {
     if (armaduras.length==0){
-        dinero+=1000;
-        document.getElementById("recompensa").innerHTML = "Ya tienes la mejor armadura. Vendiendo la nueva armadura por 1000 septims.";
+        dinero+=1250;
+        document.getElementById("recompensa").innerHTML = "Ya tienes la mejor armadura. Vendiendo la nueva armadura por 1250 septims.";
         setTimeout(function() {
             document.getElementById("recompensa").innerHTML = "";
             document.getElementById("dinero").innerHTML = "Dinero disponible: "+dinero+" septim(s)";
@@ -190,15 +190,15 @@ function cambiarArmadura() {
             document.getElementById("recompensa").innerHTML = "";
             progresojuego();
         }, 2000);
-        progreso.value +=5;
+        progreso.value +=1;
         armaduras.shift();
     }
 }
 
 function cambiarArma() {
-    if (armas.length==0){
-        dinero+=1000;
-        document.getElementById("recompensa").innerHTML = "Ya tienes la mejor arma. Vendiendo la nueva arma por 1000 septims.";
+    if (dagas.length==0){
+        dinero+=1250;
+        document.getElementById("recompensa").innerHTML = "Ya tienes la mejor daga. Vendiendo la nueva daga por 1250 septims.";
         setTimeout(function() {
             document.getElementById("recompensa").innerHTML = "";
             document.getElementById("dinero").innerHTML = "Dinero disponible: "+dinero+" septim(s)";
@@ -207,21 +207,21 @@ function cambiarArma() {
         progresojuego();
     }
     else {
-        document.getElementById("arma").src = armas[0];
-        document.getElementById("recompensa").innerHTML = "Arma mejorada.";
+        document.getElementById("arma").src = dagas[0];
+        document.getElementById("recompensa").innerHTML = "Daga mejorada.";
         setTimeout(function() {
             document.getElementById("recompensa").innerHTML = "";
             progresojuego();
         }, 2000);
-        progreso.value +=5;
-        armas.shift();
+        progreso.value +=1;
+        dagas.shift();
     }
 }
 
-function mashechizo() {
-    if (hechizos.length==0){
-        dinero+=1000;
-        document.getElementById("recompensa").innerHTML = "Ya tienes todos los hechizos disponibles. Vendiendo el grimorio por 1000 septims.";
+function cambiarArco() {
+    if (arco.length==0){
+        dinero+=1250;
+        document.getElementById("recompensa").innerHTML = "Ya tienes el mejor arco. Vendiendo el nuevo arco por 1250 septims.";
         setTimeout(function() {
             document.getElementById("recompensa").innerHTML = "";
             document.getElementById("dinero").innerHTML = "Dinero disponible: "+dinero+" septim(s)";
@@ -230,25 +230,21 @@ function mashechizo() {
         progresojuego();
     }
     else {
-        var anadirmagia = document.getElementById("magia");
-        var li = document.createElement("li"); 
-        var tipohechizo = document.createTextNode(hechizos[0]); // Creamos un nodo de texto con el valor del elemento del array
-        li.appendChild(tipohechizo); // Agregamos el nodo de texto al elemento LI
-        anadirmagia.appendChild(li); // Agregamos el elemento LI al elemento UL
-        document.getElementById("recompensa").innerHTML = "Nuevo hechizo aprendido.";
+        document.getElementById("arco").src = arco[0];
+        document.getElementById("recompensa").innerHTML = "Arco mejorado.";
         setTimeout(function() {
             document.getElementById("recompensa").innerHTML = "";
             progresojuego();
         }, 2000);
-        progreso.value +=5;
-        hechizos.shift();
+        progreso.value +=1;
+        arco.shift();
     }
 }
 
-function masgrito() {
-    if (gritos.length==0){
-        dinero+=1000;
-        document.getElementById("recompensa").innerHTML = "Ya tienes todos los gritos disponibles. Vendiendo el grito por 1000 septims.";
+function masilusion() {
+    if (ilusion.length==0){
+        dinero+=1250;
+        document.getElementById("recompensa").innerHTML = "Ya tienes todos los hechizos ilusion aprendidos. Vendiendo el grimorio por 1250 septims.";
         setTimeout(function() {
             document.getElementById("recompensa").innerHTML = "";
             document.getElementById("dinero").innerHTML = "Dinero disponible: "+dinero+" septim(s)";
@@ -257,18 +253,18 @@ function masgrito() {
         progresojuego();
     }
     else {
-        var anadirgrito = document.getElementById("gritos");
+        var anadirilusion = document.getElementById("ilusion");
         var li = document.createElement("li"); 
-        var tipogrito = document.createTextNode(gritos[0]); // Creamos un nodo de texto con el valor del elemento del array
-        li.appendChild(tipogrito); // Agregamos el nodo de texto al elemento LI
-        anadirgrito.appendChild(li); // Agregamos el elemento LI al elemento UL
-        document.getElementById("recompensa").innerHTML = "Nuevo grito aprendido.";
+        var tipoilusion = document.createTextNode(ilusion[0]); // Creamos un nodo de texto con el valor del elemento del array
+        li.appendChild(tipoilusion); // Agregamos el nodo de texto al elemento LI
+        anadirilusion.appendChild(li); // Agregamos el elemento LI al elemento UL
+        document.getElementById("recompensa").innerHTML = "Nuevo hechizo de ilusion aprendido.";
         setTimeout(function() {
             document.getElementById("recompensa").innerHTML = "";
             progresojuego();
         }, 2000);
-        progreso.value +=5;
-        gritos.shift();
+        progreso.value +=1;
+        ilusion.shift();
     }
 }
 
@@ -304,11 +300,11 @@ function carmadura() {
     }
 }
 
-function chechizo() {
+function carco() {
     if (dinero>=1000){ 
         dinero-=1000;
         document.getElementById("dinero").innerHTML = "Dinero disponible: "+dinero+" septim(s)";
-        mashechizo();
+        cambiarArco();
     } 
     else {
         document.getElementById("recompensa").innerHTML ="Saldo insuficiente.";
@@ -320,11 +316,11 @@ function chechizo() {
     }
 }
 
-function cgrito() {
+function cilusion() {
     if (dinero>=1000){ 
         dinero-=1000;
         document.getElementById("dinero").innerHTML = "Dinero disponible: "+dinero+" septim(s)";
-        masgrito();
+        masilusion();
     } 
     else {
         document.getElementById("recompensa").innerHTML ="Saldo insuficiente.";
@@ -337,11 +333,11 @@ function cgrito() {
 }
 
 function progresojuego() {
-    if (progreso.value == 100) {
+    if (progreso.value == 17) {
         document.getElementById("recompensa").innerHTML = "Victoria, fin del juego.";
         dinero = 0
     }
-    if (progreso.value != 100 && dinero < 25){
+    if (progreso.value != 17 && dinero < 25){
         document.getElementById("recompensa").innerHTML = "Derrota, te quedaste sin fondos.";
     }
 }

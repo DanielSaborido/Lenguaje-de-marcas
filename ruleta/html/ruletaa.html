@@ -2,12 +2,12 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>La ruleta de guerrero</title>
+        <title>La ruleta de Asesino</title>
         <link href='../css/ruletag.css' rel='stylesheet' type='text/css'>
     </head>
     <header>
         <img src="../img/logo/milogo.png" alt="logo">
-        <h1>Ruta del Guerrero</h1>
+        <h1>Ruta del Asesino</h1>
     </header>
     <body onload="cambiaSombras();">
         <div class="premios">
@@ -16,21 +16,21 @@
             <img alt="premios" src="../img/premios/armadura.png">
             <img alt="premios" src="../img/premios/armadura.png">
             <img alt="premios" src="../img/premios/armadura.png">
-            <h2>Mejora del arma</h2>
-            <img alt="premios" src="../img/premios/espadas.png">
-            <img alt="premios" src="../img/premios/espadas.png">
-            <img alt="premios" src="../img/premios/espadas.png">
-            <img alt="premios" src="../img/premios/espadas.png">
-            <h2>Hechizo nuevo</h2>
-            <img alt="premios" src="../img/premios/grimorio.png">
-            <img alt="premios" src="../img/premios/grimorio.png">
-            <img alt="premios" src="../img/premios/grimorio.png">
-            <img alt="premios" src="../img/premios/grimorio.png">
-            <h2>Grito nuevo</h2>
-            <img alt="premios" src="../img/premios/grito.png">
-            <img alt="premios" src="../img/premios/grito.png">
-            <img alt="premios" src="../img/premios/grito.png">
-            <img alt="premios" src="../img/premios/grito.png">
+            <h2>Mejora de la daga</h2>
+            <img alt="premios" src="../img/premios/dagas.png">
+            <img alt="premios" src="../img/premios/dagas.png">
+            <img alt="premios" src="../img/premios/dagas.png">
+            <img alt="premios" src="../img/premios/dagas.png">
+            <h2>Hechizo ilusorio</h2>
+            <img alt="premios" src="../img/premios/grimorios/ilusion.png">
+            <img alt="premios" src="../img/premios/grimorios/ilusion.png">
+            <img alt="premios" src="../img/premios/grimorios/ilusion.png">
+            <img alt="premios" src="../img/premios/grimorios/ilusion.png">
+            <h2>Mejora del arco</h2>
+            <img alt="premios" src="../img/premios/arcos.png">
+            <img alt="premios" src="../img/premios/arcos.png">
+            <img alt="premios" src="../img/premios/arcos.png">
+            <img alt="premios" src="../img/premios/arcos.png">
             <h2>250 septim</h2>
             <img alt="premios" src="../img/premios/moneda.png">
             <h2>500 septims</h2>
@@ -47,15 +47,12 @@
             <img alt="premios" src="../img/premios/moneda.png">
         </div>
         <div class="equipamientos">
-            <img src="../img/personaje/guerrero/hierro.png" id="armadura" alt="armaduras">
-            <img src="../img/armas/espadas/acero.png" id="arma" alt="armas">
-            <div class="hechizos">
-                <h2>Hechizos obtenidos</h2>
-                <ul id="magia"></ul>
-            </div>
+            <img src="../img/personaje/guerrero/desnudo.png" id="armadura" alt="armaduras">
+            <img src="" id="arma" alt="dagas">
+            <img src="" id="arco" alt="arcos">
             <div class="gritos">
-                <h2>Gritos desbloqueados</h2>
-                <ul id="gritos"></ul>
+                <h2>Hechizos aprendidos</h2>
+                <ul id="ilusion"></ul>
             </div>
         </div>
         <div class="contenedor">
@@ -77,13 +74,13 @@
         </div>
         <div class="progreso">
             <p id="dinero"></p>
-            <progress id="barpro" value="0" max="100"></progress>
+            <progress id="barpro" value="0" max="17"></progress>
             <div class="compra">
                 <div id="titulo">Comprar equipamiento (1000 septims por objeto)</div>
                 <div id="carma" onclick="carma();">Comprar Arma</div>
                 <div id="carmadura" onclick="carmadura();">Comprar Armadura</div>
-                <div id="chechizo" onclick="chechizo();">Comprar Hechizo</div>
-                <div id="cgrito" onclick="cgrito();">Comprar Grito</div>
+                <div id="carco" onclick="carco();">Comprar Arco</div>
+                <div id="cilusion" onclick="cilusion();">Comprar grimorio de ilusion</div>
             </div>
         </div>
     </body>

@@ -83,6 +83,13 @@ img[alt="armas"]{
     margin: 8px;
 }
 
+img[alt="dagas"]{
+    height: 40%;
+    width: auto;
+    float: right;
+    margin: 10px;
+}
+
 img[alt="armaduras"]{
     height: 40%;
     width: 35%;
@@ -93,6 +100,12 @@ img[alt="escudos"]{
     height: 25%;
     width: auto;
     margin: 8px;
+}
+
+img[alt="arcos"]{
+    height: 25%;
+    width: auto;
+    margin: 12px;
 }
 
 img[alt="juego"] {
