@@ -334,7 +334,7 @@ function cilusion() {
 
 function progresojuego() {
     if (progreso.value == 17) {
-        document.getElementById("recompensa").innerHTML = "Victoria, fin del juego.";
+        document.getElementById("recompensa").innerHTML = "¡Felicidades! Lograste alganzar el rango del Oyente, la senda del asesino fue completada.";
         dinero = 0
     }
     if (progreso.value != 17 && dinero < 25){

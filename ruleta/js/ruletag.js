@@ -334,7 +334,7 @@ function cgrito() {
 
 function progresojuego() {
     if (progreso.value == 18) {
-        document.getElementById("recompensa").innerHTML = "Victoria, fin del juego.";
+        document.getElementById("recompensa").innerHTML = "¡Felicidades! Lograste alganzar el rango de Heraldo, la senda del guerrero fue completada.";
         dinero = 0
     }
     if (progreso.value != 18 && dinero < 25){

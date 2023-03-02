@@ -345,7 +345,7 @@ function cr() {
 
 function progresojuego() {
     if (progreso.value == 20) {
-        document.getElementById("recompensa").innerHTML = "Victoria, fin del juego.";
+        document.getElementById("recompensa").innerHTML = "¡Felicidades! Lograste alganzar el rango de Archimago, la senda del mago fue completada.";
         dinero = 0
     }
     if (progreso.value != 20 && dinero < 25){
