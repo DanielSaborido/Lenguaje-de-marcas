@@ -1,3 +1,13 @@
+@font-face {
+    font-family: 'fuenteskyrim';
+    src: url("../fuentes/skyrim.ttf");
+}
+
+@font-face {
+    font-family: 'godofwar';
+    src: url("../fuentes/GODOFWAR.TTF");
+}
+
 html {
     background: url("../img/fondos/idex.jpg");
     background-size: cover;
@@ -13,12 +23,26 @@ img[alt="logo"]{
     float: right;
 }
 
+h1 {
+    font-size: 80px;
+    text-align: center;
+    color: azure;
+    font-family: 'fuenteskyrim';
+}
+
 .seleccion{
-    display: inline-block;
+    display: inline;
     background-color: rgba(255, 255, 255, 0.548);
     
 }
 
 .seleccion > div{
-    font-size: 90px;
+    font-size: 45px;
+}
+
+h2 {
+    font-size: 60px;
+    text-align: left;
+    color: azure;
+    font-family: 'godofwar';
 }

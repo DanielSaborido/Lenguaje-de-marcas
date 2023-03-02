@@ -89,6 +89,12 @@ img[alt="armaduras"]{
     margin: 8px;
 }
 
+img[alt="escudos"]{
+    height: 25%;
+    width: auto;
+    margin: 8px;
+}
+
 img[alt="juego"] {
     width: 125px;
     height: 125px;

@@ -1,11 +1,11 @@
 // Almacenamos los nombres de las imágenes en una variable compleja.
 // Se denomina tabla y se accede a los valores mediante el indice (empezando por 0).
 // Por ejemplo: opciones[0] contiene "rajoy.png"
-var opciones = ["../img/premios/espadas.png", "../img/premios/grito.png", "../img/premios/moneda.png", "../img/premios/armadura.png", "../img/premios/grimorio.png"];
-var armas = ["../img/armas/espadas/OrcishSword.png", "../img/armas/espadas/Daedricsword.png", "../img/armas/espadas/Dragonsword.png"];
-var armaduras = ["../img/personaje/guerrero/orco.png", "../img/personaje/guerrero/ebano.png", "../img/personaje/guerrero/dragon.png"];
-var hechizos = ["Curación", "Expulsar no muerto", "Explosión elemental", "Conjurar atronach", "LLamada a las armas", "Piel de Dragón"];
-var gritos = ["Fuerza implacable", "Torbellino arrollador", "Invocar Tormenta", "Despejar cielos", "Invocar dragón", "Desgarro de dragones"];
+var opciones = ["../img/premios/grimorios/destruccion.png", "../img/premios/grimorios/SkillRestorati.png", "../img/premios/moneda.png", "../img/premios/grimorios/SkillConjurati.png", "../img/premios/grimorios/ilusion.png"];
+var destruccion = ["Llamas", "Bola de fuego", "Explosion elemental", "Torementa electrica", "Muro de hielo"];
+var conjuracion = ["Invocar familiar", "Arma vinculada", "Trampa de alma", "Esclavo muerto", "Ritual de sacrificio"];
+var ilusion = ["Valor", "Clarividencia", "Frenesis", "Invisibilidad", "Pacificar"];
+var restauracion = ["Curacion", "Expulsar no muertos", "Custodia increbrantable", "Circulo guardian", "Cerrar heridas"];
 var lista = [];
 const imagen1 = document.getElementById("imag0");
 const imagen2 = document.getElementById("imag1");
@@ -104,19 +104,19 @@ function analisis() {
     document.getElementById("recompensa").innerHTML = "Analizando premio";
     setTimeout(function() {
         if (lista[0] === lista[1] && lista[2] === lista[3] && lista[0] === lista[3] && lista[0] === opciones[0]){
-            cambiarArma();
+            masdestruccion();
             lista = [];
         }
         if (lista[0] === lista[1] && lista[2] === lista[3] && lista[0] === lista[3] && lista[0] === opciones[1]){
-            masgrito();
+            massanacion();
             lista = [];
         }
         if (lista[0] === lista[1] && lista[2] === lista[3] && lista[0] === lista[3] && lista[0] === opciones[3]){
-            cambiarArmadura();
+            nuevaconjuracion();
             lista = [];
         }
         if (lista[0] === lista[1] && lista[2] === lista[3] && lista[0] === lista[3] && lista[0] === opciones[4]){
-            mashechizo();
+            masilusion();
             lista = [];
         }
         else{
@@ -155,7 +155,6 @@ function dineropremio(){
             dinpre+=250;
         } 
     }
-    console.log(dinpre)
     if (dinpre > 0){
         document.getElementById("recompensa").innerHTML = "Has obtenido una bolsa con "+dinpre+" septims. Añadiendolo a su cantidad actual.";
         dinero+=dinpre;
@@ -172,10 +171,10 @@ function dineropremio(){
     }
 }
 
-function cambiarArmadura() {
-    if (armaduras.length==0){
+function nuevaconjuracion() {
+    if (conjuracion.length==0){
         dinero+=1000;
-        document.getElementById("recompensa").innerHTML = "Ya tienes la mejor armadura. Vendiendo la nueva armadura por 1000 septims.";
+        document.getElementById("recompensa").innerHTML = "Ya tienes todos los hechizos de esta escuela aprendidos. Vendiendo el grimorio por 1000 septims.";
         setTimeout(function() {
             document.getElementById("recompensa").innerHTML = "";
             document.getElementById("dinero").innerHTML = "Dinero disponible: "+dinero+" septim(s)";
@@ -184,71 +183,25 @@ function cambiarArmadura() {
         progresojuego();
     }
     else {
-        document.getElementById("armadura").src = armaduras[0];
-        document.getElementById("recompensa").innerHTML = "Armadura mejorada.";
-        setTimeout(function() {
-            document.getElementById("recompensa").innerHTML = "";
-            progresojuego();
-        }, 2000);
-        progreso.value +=5;
-        armaduras.shift();
-    }
-}
-
-function cambiarArma() {
-    if (armas.length==0){
-        dinero+=1000;
-        document.getElementById("recompensa").innerHTML = "Ya tienes la mejor arma. Vendiendo la nueva arma por 1000 septims.";
-        setTimeout(function() {
-            document.getElementById("recompensa").innerHTML = "";
-            document.getElementById("dinero").innerHTML = "Dinero disponible: "+dinero+" septim(s)";
-            progresojuego(); 
-        }, 2000);
-        progresojuego();
-    }
-    else {
-        document.getElementById("arma").src = armas[0];
-        document.getElementById("recompensa").innerHTML = "Arma mejorada.";
-        setTimeout(function() {
-            document.getElementById("recompensa").innerHTML = "";
-            progresojuego();
-        }, 2000);
-        progreso.value +=5;
-        armas.shift();
-    }
-}
-
-function mashechizo() {
-    if (hechizos.length==0){
-        dinero+=1000;
-        document.getElementById("recompensa").innerHTML = "Ya tienes todos los hechizos disponibles. Vendiendo el grimorio por 1000 septims.";
-        setTimeout(function() {
-            document.getElementById("recompensa").innerHTML = "";
-            document.getElementById("dinero").innerHTML = "Dinero disponible: "+dinero+" septim(s)";
-            progresojuego(); 
-        }, 2000);
-        progresojuego();
-    }
-    else {
-        var anadirmagia = document.getElementById("magia");
+        var anadirmagia = document.getElementById("conjuracion");
         var li = document.createElement("li"); 
-        var tipohechizo = document.createTextNode(hechizos[0]); // Creamos un nodo de texto con el valor del elemento del array
+        var tipohechizo = document.createTextNode(conjuracion[0]); // Creamos un nodo de texto con el valor del elemento del array
         li.appendChild(tipohechizo); // Agregamos el nodo de texto al elemento LI
         anadirmagia.appendChild(li); // Agregamos el elemento LI al elemento UL
-        document.getElementById("recompensa").innerHTML = "Nuevo hechizo aprendido.";
+        document.getElementById("recompensa").innerHTML = "Nuevo hechizo nigromantico aprendido.";
         setTimeout(function() {
             document.getElementById("recompensa").innerHTML = "";
             progresojuego();
         }, 2000);
-        progreso.value +=5;
-        hechizos.shift();
+        progreso.value +=1;
+        conjuracion.shift();
     }
 }
 
-function masgrito() {
-    if (gritos.length==0){
+function masdestruccion() {
+    if (destruccion.length==0){
         dinero+=1000;
-        document.getElementById("recompensa").innerHTML = "Ya tienes todos los gritos disponibles. Vendiendo el grito por 1000 septims.";
+        document.getElementById("recompensa").innerHTML = "Ya tienes todos los hechizos de esta escuela aprendidos. Vendiendo el grimorio por 1000 septims.";
         setTimeout(function() {
             document.getElementById("recompensa").innerHTML = "";
             document.getElementById("dinero").innerHTML = "Dinero disponible: "+dinero+" septim(s)";
@@ -257,26 +210,80 @@ function masgrito() {
         progresojuego();
     }
     else {
-        var anadirgrito = document.getElementById("gritos");
+        var anadirmagia = document.getElementById("destruccion");
         var li = document.createElement("li"); 
-        var tipogrito = document.createTextNode(gritos[0]); // Creamos un nodo de texto con el valor del elemento del array
+        var tipohechizo = document.createTextNode(destruccion[0]); // Creamos un nodo de texto con el valor del elemento del array
+        li.appendChild(tipohechizo); // Agregamos el nodo de texto al elemento LI
+        anadirmagia.appendChild(li); // Agregamos el elemento LI al elemento UL
+        document.getElementById("recompensa").innerHTML = "Nuevo hechizo destructor aprendido.";
+        setTimeout(function() {
+            document.getElementById("recompensa").innerHTML = "";
+            progresojuego();
+        }, 2000);
+        progreso.value +=1;
+        destruccion.shift();
+    }
+}
+
+function masilusion() {
+    if (ilusion.length==0){
+        dinero+=1000;
+        document.getElementById("recompensa").innerHTML = "Ya tienes todos los hechizos de esta escuela aprendidos. Vendiendo el grimorio por 1000 septims.";
+        setTimeout(function() {
+            document.getElementById("recompensa").innerHTML = "";
+            document.getElementById("dinero").innerHTML = "Dinero disponible: "+dinero+" septim(s)";
+            progresojuego(); 
+        }, 2000);
+        progresojuego();
+    }
+    else {
+        var anadirmagia = document.getElementById("ilusion");
+        var li = document.createElement("li"); 
+        var tipohechizo = document.createTextNode(ilusion[0]); // Creamos un nodo de texto con el valor del elemento del array
+        li.appendChild(tipohechizo); // Agregamos el nodo de texto al elemento LI
+        anadirmagia.appendChild(li); // Agregamos el elemento LI al elemento UL
+        document.getElementById("recompensa").innerHTML = "Nuevo hechizo ilusorio aprendido.";
+        setTimeout(function() {
+            document.getElementById("recompensa").innerHTML = "";
+            progresojuego();
+        }, 2000);
+        progreso.value +=1;
+        ilusion.shift();
+    }
+}
+
+function massanacion() {
+    if (restauracion.length==0){
+        dinero+=1000;
+        document.getElementById("recompensa").innerHTML = "Ya tienes todos los hechizos de esta escuela aprendidos. Vendiendo el grimorio por 1000 septims.";
+        setTimeout(function() {
+            document.getElementById("recompensa").innerHTML = "";
+            document.getElementById("dinero").innerHTML = "Dinero disponible: "+dinero+" septim(s)";
+            progresojuego(); 
+        }, 2000);
+        progresojuego();
+    }
+    else {
+        var anadirgrito = document.getElementById("restauracion");
+        var li = document.createElement("li"); 
+        var tipogrito = document.createTextNode(restauracion[0]); // Creamos un nodo de texto con el valor del elemento del array
         li.appendChild(tipogrito); // Agregamos el nodo de texto al elemento LI
         anadirgrito.appendChild(li); // Agregamos el elemento LI al elemento UL
-        document.getElementById("recompensa").innerHTML = "Nuevo grito aprendido.";
+        document.getElementById("recompensa").innerHTML = "Nuevo hechizo sanador aprendido.";
         setTimeout(function() {
             document.getElementById("recompensa").innerHTML = "";
             progresojuego();
         }, 2000);
-        progreso.value +=5;
-        gritos.shift();
+        progreso.value +=1;
+        restauracion.shift();
     }
 }
 
-function carma() {
+function cd() {
     if (dinero>=1000){ 
         dinero-=1000;
         document.getElementById("dinero").innerHTML = "Dinero disponible: "+dinero+" septim(s)";
-        cambiarArma();
+        masdestruccion();
     } 
     else {
         document.getElementById("recompensa").innerHTML ="Saldo insuficiente.";
@@ -288,11 +295,11 @@ function carma() {
     }
 }
 
-function carmadura() {
+function cc() {
     if (dinero>=1000){ 
         dinero-=1000;
         document.getElementById("dinero").innerHTML = "Dinero disponible: "+dinero+" septim(s)";
-        cambiarArmadura();
+        nuevaconjuracion();
     } 
     else {
         document.getElementById("recompensa").innerHTML ="Saldo insuficiente.";
@@ -304,11 +311,11 @@ function carmadura() {
     }
 }
 
-function chechizo() {
+function ci() {
     if (dinero>=1000){ 
         dinero-=1000;
         document.getElementById("dinero").innerHTML = "Dinero disponible: "+dinero+" septim(s)";
-        mashechizo();
+        masilusion();
     } 
     else {
         document.getElementById("recompensa").innerHTML ="Saldo insuficiente.";
@@ -320,11 +327,11 @@ function chechizo() {
     }
 }
 
-function cgrito() {
+function cr() {
     if (dinero>=1000){ 
         dinero-=1000;
         document.getElementById("dinero").innerHTML = "Dinero disponible: "+dinero+" septim(s)";
-        masgrito();
+        massanacion();
     } 
     else {
         document.getElementById("recompensa").innerHTML ="Saldo insuficiente.";
@@ -337,11 +344,11 @@ function cgrito() {
 }
 
 function progresojuego() {
-    if (progreso.value == 100) {
+    if (progreso.value == 20) {
         document.getElementById("recompensa").innerHTML = "Victoria, fin del juego.";
         dinero = 0
     }
-    if (progreso.value != 100 && dinero < 25){
+    if (progreso.value != 20 && dinero < 25){
         document.getElementById("recompensa").innerHTML = "Derrota, te quedaste sin fondos.";
     }
 }
