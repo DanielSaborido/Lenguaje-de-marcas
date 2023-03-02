@@ -24,6 +24,10 @@ h1 {
     font-family: 'fuenteskyrim';
 }
 
+button{
+    float: left;
+}
+
 .premios {
     width: 20%;
     height: 50%;
