@@ -11,7 +11,7 @@ const imagen1 = document.getElementById("imag0");
 const imagen2 = document.getElementById("imag1");
 const imagen3 = document.getElementById("imag2");
 const imagen4 = document.getElementById("imag3");
-var dinero = 75;
+var dinero = 75000;
 document.getElementById("dinero").innerHTML = "Dinero disponible: "+dinero+" septim(s)";
 var progreso = document.getElementById("barpro")
 // Almacenamos el indice de la imagen que esta en cada recuadro.
@@ -40,10 +40,10 @@ function ruleta() {
             cuadro[i] = Math.floor(Math.random() * 4);
         
         // Genera los intervalos para que cada recuadro cambie de imagen cada centésima de segundo.
-        intervaloRuleta[0] = setInterval(function() { cambiaImagen(0);}, 150);
-        intervaloRuleta[1] = setInterval(function() { cambiaImagen(1);}, 175);
-        intervaloRuleta[2] = setInterval(function() { cambiaImagen(2);}, 200);
-        intervaloRuleta[3] = setInterval(function() { cambiaImagen(3);}, 225);
+        intervaloRuleta[0] = setInterval(function() { cambiaImagen(0);}, 350);
+        intervaloRuleta[1] = setInterval(function() { cambiaImagen(1);}, 300);
+        intervaloRuleta[2] = setInterval(function() { cambiaImagen(2);}, 450);
+        intervaloRuleta[3] = setInterval(function() { cambiaImagen(3);}, 400);
         
         // Al empezar están cambiando los tres recuadros.
         corriendo = 4;
@@ -150,7 +150,6 @@ function circulaSombras() {
 
 function dineropremio(){
     var dinpre=0;
-    console.log(lista)
     for (let i = 0; i < lista.length; i++){
         if (lista[i] === opciones[2]){
             dinpre+=250;
