@@ -8,18 +8,13 @@
     src: url("../fuentes/GODOFWAR.TTF");
 }
 
-html {
+body {
     background: url("../img/fondos/idex.jpg");
     background-size: cover;
 }
 
-body {
-    background: url("../img/fondos/nieve.gif");
-    background-size: contain;
-}
-
 img[alt="logo"]{
-    height: 10%;
+    height: 90px;
     float: right;
 }
 
@@ -36,9 +31,21 @@ h1 {
     
 }
 
-.seleccion > div{
+.seleccion > ul > li{
     font-size: 45px;
+    list-style: "▷";
+    color: rgb(19, 104, 69);
 }
+
+a {
+    color: rgb(59, 189, 128);
+    font-style: italic;
+    text-decoration: none;
+}
+
+a:hover{
+    font-size: 65px;
+  }
 
 h2 {
     font-size: 60px;
