@@ -334,8 +334,14 @@ function cilusion() {
 
 function progresojuego() {
     if (progreso.value == 17) {
-        document.getElementById("recompensa").innerHTML = "¡Felicidades! Lograste alganzar el rango del Oyente, la senda del asesino fue completada.";
         dinero = 0
+        document.getElementById("recompensa").innerHTML = "¡Felicidades! Lograste alganzar el rango del Oyente, la senda del asesino fue completada.";
+        setTimeout(function() {
+            document.getElementById("recompensa").innerHTML = "Vas a salir de la senda en breve";
+            setTimeout(function() {
+                window.close();
+            }, 2000);
+        }, 2000);
     }
     if (progreso.value != 17 && dinero < 25){
         document.getElementById("recompensa").innerHTML = "Derrota, te quedaste sin fondos.";

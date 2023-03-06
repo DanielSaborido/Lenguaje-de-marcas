@@ -347,6 +347,12 @@ function progresojuego() {
     if (progreso.value == 20) {
         document.getElementById("recompensa").innerHTML = "¡Felicidades! Lograste alganzar el rango de Archimago, la senda del mago fue completada.";
         dinero = 0
+        setTimeout(function() {
+            document.getElementById("recompensa").innerHTML = "Vas a salir de la senda en breve";
+            setTimeout(function() {
+                window.close();
+            }, 2000);
+        }, 2000);
     }
     if (progreso.value != 20 && dinero < 25){
         document.getElementById("recompensa").innerHTML = "Derrota, te quedaste sin fondos.";
