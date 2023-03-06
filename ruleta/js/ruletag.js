@@ -340,8 +340,8 @@ function progresojuego() {
             document.getElementById("recompensa").innerHTML = "Vas a salir de la senda en breve";
             setTimeout(function() {
                 window.close();
-            }, 2000);
-        }, 2000);
+            }, 3000);
+        }, 4000);
     }
     if (progreso.value != 18 && dinero < 25){
         document.getElementById("recompensa").innerHTML = "Derrota, te quedaste sin fondos.";
