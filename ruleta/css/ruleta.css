@@ -8,12 +8,22 @@
     src: url("../fuentes/GODOFWAR.TTF");
 }
 
-html {
-    background: url("../img/fondos/fondo.jpg");
+#fguerrero {
+    background: url("../img/fondos/guerrero.png");
     background-size: cover;
 }
 
-body {
+#fmago {
+    background: url("../img/fondos/mago.jpg");
+    background-size: cover;
+}
+
+#fasesino {
+    background: url("../img/fondos/asesino.jpeg");
+    background-size: cover;
+}
+
+#nieve {
     background: url("../img/fondos/nieve.gif");
     background-size: contain;
 }
