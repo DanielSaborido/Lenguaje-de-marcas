@@ -1,8 +1,8 @@
-var numero=prompt("Escribe un número para calcular su factorial")
-var factorial=1
-numero=parseInt(numero)
-for (i=numero;i>0;i--){
-    factorial=factorial*i
-    console.log(factorial)
+const articulos = ["Camisa", "Pantalón", "Zapatos", "Sombrero"];
+const precios = [25, 40, 60, 20];
+
+let ventasTotales = 0;
+for (let i = 0; i < articulos.length; i++) {
+  ventasTotales += precios[i];
 }
-alert("El factorial de "+numero+" es: "+factorial)
+document.write("Las ventas totales son: "+ventasTotales)

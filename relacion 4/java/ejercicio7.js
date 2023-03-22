@@ -1,14 +1,7 @@
-var entrada=prompt("Escribe algo", "desconocido")
-console.log(entrada)
-if (entrada=="desconocido"){
-    alert("No se introdujo ningún valor, el valor por defecto fue aplicado")
+const numeros = [25, 40, 60, 20];
+
+let suma = 0;
+for (let i = 0; i < numeros.length; i++) {
+  suma += numeros[i];
 }
-if (entrada== entrada.match(/^[A-Z][a-z]+$/)){
-    alert("Hola, "+entrada)
-}
-if (entrada==entrada.match(/\s/g)){
-    alert("Espacio en blanco")
-}
-if (entrada==null){
-    alert("Cancelado")
-}
+document.write("La suma de todos los elementos de la lista es: "+suma)

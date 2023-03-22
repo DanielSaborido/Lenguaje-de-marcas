@@ -1,13 +1,7 @@
-var edad=prompt("Escriba su edad")
-var saldo=prompt("Introduzca su saldo")
-edad=parseInt(edad)
-saldo=parseInt(saldo)
-if (edad>=18 & saldo>=50){
-    alert("Puedes seguir jugando")
+const numeros = [25, 40, 60, 20];
+const suma = 6
+
+for (let i = 0; i < numeros.length; i++) {
+  numeros[i] += suma;
 }
-if (edad<18){
-    alert("No puedes seguir jugando por ser menor de edad")
-}
-if (saldo<50){
-    alert("No puedes seguir jugando por saldo insuficiente")
-}
+document.write("el resultado de sumar " +suma+" a cada elemento de la lista da: "+numeros)
