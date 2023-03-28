@@ -30,6 +30,9 @@ function multriplicacion(){
 }
 
 function reseteo(){
-    document.getElementById("tabla").innerHTML = "";
+    var estilo = "";
+    var tabla = document.getElementById("tabla");
+    tabla.innerHTML = "";
+    tabla.style['boxShadow']= estilo;
     document.getElementById("num").value = "";
 }
