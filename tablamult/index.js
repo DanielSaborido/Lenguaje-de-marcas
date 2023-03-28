@@ -7,7 +7,10 @@ function multriplicacion(){
             document.getElementById("num").value = "";
         }
         else{
+            var estilo = "0px 0px 46px 25px rgba(26, 255, 0, 1), 0px 0px 27px 50px rgba(178, 12, 196, 1), 0px 0px 67px 75px rgba(0, 183, 255, 0.79)";
             var tabla = document.getElementById("tabla");
+            tabla.innerHTML = "";
+            tabla.style['boxShadow']= estilo;
             for (var i = 0; i <= 10; i++) {
                 var fila = tabla.insertRow();
                 var celda1 = fila.insertCell();
