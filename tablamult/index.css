@@ -17,22 +17,14 @@ table, tr {
     padding: 5px;
     font-size: 25px;
     text-align: center;
-    background: linear-gradient(
-    180deg,
-    rgba(15, 37, 110, 1) 0%,
-    rgba(0, 255, 217, 1) 25%,
-    rgba(60, 255, 0, 1) 50%,
-    rgba(255, 230, 0, 1) 75%,
-    rgba(255, 0, 0, 1) 100%
-  );
-  background-blend-mode: normal;
+    border: 1px solid black;
+    background-color: rgba(185, 184, 184, 0.466);
 }
 
 table {
     box-shadow:
     0px 0px 28px 40px rgba(0, 255, 68, 0.31),
     0px 0px 20px 18px rgba(64, 0, 255, 0.3);
-    border: 1px solid black;
 }
 
 h1, label {
@@ -56,5 +48,5 @@ h1, label {
     text-align: center;
     margin-top: 10px;
     margin-left: 10px;
-    width: 20%;
+    width: 30%;
 }
