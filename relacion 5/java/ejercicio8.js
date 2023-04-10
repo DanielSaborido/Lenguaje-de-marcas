@@ -1,7 +1,7 @@
-const numeros = [25, 40, 60, 20];
-const suma = 6
+var nombre = "Don Quijote";
+nombre = nombre + " de La Mancha";
+document.getElementById("nom1").innerHTML = nombre;
 
-for (let i = 0; i < numeros.length; i++) {
-  numeros[i] += suma;
-}
-document.write("el resultado de sumar " +suma+" a cada elemento de la lista da: "+numeros)
+var nombre2 = "Don Quijote";
+nombre2 = nombre2.concat(" de La Mancha");
+document.getElementById("nom2").innerHTML = nombre2;

@@ -1,9 +1,16 @@
-var numeros = [2,3,7,4,9,5]
-for (var numero in numeros){
-    numero = parseInt(numero)
-    if (numero == 0 || numero == 1 || numero == 4) numeros.pop(numero);
-    for (let x = 2; x < numero / 2; x++) {
-        if (numero % x == 0) numeros.pop(numero);
-    }
+var pruebas = "Hola y adios";
+const letra = "a"
+const primeraletra = pruebas.indexOf(letra);
+const ultimaletra = pruebas.lastIndexOf(letra);
+
+if (primeraletra === -1) {
+  document.getElementById("prim").innerHTML = "No se encontró la letra "+letra+" en la cadena.";
+} else {
+  document.getElementById("prim").innerHTML = "La primera letra "+letra+" se encuentra en la posición "+primeraletra;
 }
-document.write("Los numeros primos de la lista son: "+numeros)
+
+if (ultimaletra === -1) {
+  document.getElementById("ult").innerHTML = "No se encontró la letra "+letra+" en la cadena.";
+} else {
+  document.getElementById("ult").innerHTML = "La última letra "+letra+" se encuentra en la posición "+ultimaletra;
+}

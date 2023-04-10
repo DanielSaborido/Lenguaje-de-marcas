@@ -1,8 +1,10 @@
-const articulos = ["Camisa", "Pantalón", "Zapatos", "Sombrero"];
-const precios = [25, 40, 60, 20];
-
-let ventasTotales = 0;
-for (let i = 0; i < articulos.length; i++) {
-  ventasTotales += precios[i];
+var dni = "12345678A";
+var numeros = "";
+for (var i = 0; i < dni.length; i++) {
+  var caracter = dni.charAt(i);
+  if (isNaN(caracter)) {} 
+  else {
+    numeros += caracter;
+  }
 }
-document.write("Las ventas totales son: "+ventasTotales)
+document.getElementById("numeros").innerHTML = "Los numeros del dni son: "+numeros;

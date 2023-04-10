@@ -1,9 +1,10 @@
-var numeros = [2,3,7,4,9,5]
-for (var numero in numeros){
-    numero = parseInt(numero)
-    if (numero == 0 || numero == 1 || numero == 4) numeros.pop(numero);
-    for (let x = 2; x < numero / 2; x++) {
-        if (numero % x == 0) numeros.pop(numero);
+var pruebas = "abcdefghijklmn";
+for (var i = 0; i < pruebas.length; i++) {
+    var caracter = pruebas.charAt(i);
+    if (caracter == "f") {
+      document.getElementById("f").innerHTML="La letra f se encuentra en la posicion: "+i;
+    }
+    if (i == 11){
+      document.getElementById("11").innerHTML="La letra que se encuentra en la posicion 11 es: "+caracter;
     }
 }
-document.write("La cantidad de numeros primos de la lista son: "+numeros.length())
