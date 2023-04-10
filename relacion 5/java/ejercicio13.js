@@ -1,8 +1,7 @@
-const numeros = [25, 40, 60, 20];
-
-let media = 0;
-for (let i = 0; i < numeros.length; i++) {
-  media += numeros[i];
+var dni = "12345678A";
+var letra = "";
+for (var i = 0; i < dni.length; i++) {
+  var caracter = dni.charAt(i);
+  if (isNaN(caracter)) {letra += caracter;}
 }
-media = media/numeros.length();
-document.write("La media de los elementos de la lista es: "+media)
+document.getElementById("letra").innerHTML = "La letra del dni es: "+letra;

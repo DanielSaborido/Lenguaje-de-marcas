@@ -1,8 +1,5 @@
-const articulos = ["Camisa", "Pantalón", "Zapatos", "Sombrero"];
-const precios = [25, 40, 60, 20];
+const email = prompt("Introduce tu dirección de correo electrónico:");
+const [usuario, dominio] = email.split("@");
 
-let ventasTotales = 0;
-for (let i = 0; i < articulos.length; i++) {
-  ventasTotales += precios[i];
-}
-document.write("Las ventas totales son: "+ventasTotales)
+document.getElementById("usuario").innerHTML = `El nombre de usuario del correo es: ${usuario}`;
+document.getElementById("dominio").innerHTML = `El dominio del correo es: ${dominio}`;

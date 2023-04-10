@@ -1,9 +1,15 @@
-var numeros = [2,3,7,4,9,5]
-for (var numero in numeros){
-    numero = parseInt(numero)
-    if (numero == 0 || numero == 1 || numero == 4) numeros.pop(numero);
-    for (let x = 2; x < numero / 2; x++) {
-        if (numero % x == 0) numeros.pop(numero);
-    }
+var dni = "12345678A";
+var numeros = "";
+var caracteres = "";
+for (var i = 0; i < dni.length; i++) {
+  var caracter = dni.charAt(i);
+  if (isNaN(caracter)) {} 
+  else {
+    numeros += caracter;
+  }
 }
-document.write("Los numeros primos de la lista son: "+numeros)
+for (var i = 0; i < numeros.length; i++) {
+  var caracter = numeros.charAt(i);
+  if (i>=((numeros.length)-4)) {caracteres += caracter;}
+}
+document.getElementById("caracteres").innerHTML = "Los cuatro ultimos digitos del dni son: "+caracteres;
