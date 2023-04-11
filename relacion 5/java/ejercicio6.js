@@ -19,10 +19,10 @@ if (!nombre) {
     const [apell1, apell2] = apellidos.split(" ");
     if (!validarNombre(nombre)) {
         alert("El nombre es muy corto o contiene caracteres especiales.");
-    } else if (!validarApellido(apell1)) {
-        alert("El primer apellido es muy corto o contiene caracteres especiales.");
     } else if (!apell2) {
         alert("El segundo apellido no se introdujo.");
+    } else if (!validarApellido(apell1)) {
+        alert("El primer apellido es muy corto o contiene caracteres especiales.");
     } else if (!validarApellido(apell2)) {
         alert("El segundo apellido es muy corto o contiene caracteres especiales.");
     } else {
