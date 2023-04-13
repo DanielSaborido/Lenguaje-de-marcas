@@ -1,2 +1,2 @@
-var text = "Esta frase \n tiene dos \n saltos de linea"
+var text = "Esta frase <br> tiene dos <br> saltos de linea"
 document.getElementById("oracion").innerHTML  = text;
