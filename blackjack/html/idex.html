@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Examen</title>
+        <link href='../css/index.css' rel='stylesheet' type='text/css'>
+    </head>
+    <header>
+        <img src="../img/milogo.png" alt="logo">
+        <h1>Daniel Saborido Torres</h1>
+        <h1>Black Jack</h1>
+    </header>
+    <body>
+        <div class="calculadora">
+            <input class="celdatodo" type="text" id="primernum" placeholder="Primer numero"/>
+            <input class="celdatodo" type="text" id="segundonum" placeholder="Segundo numero"/>
+            <div class="celdatodo" id="resultado">0</div>
+            <div class="celda-" onclick="resta();">-</div>
+            <div class="celda+" onclick="suma();">+</div>
+            <div class="celda*" onclick="multriplicacion();">*</div>
+            <div class="celda/" onclick="division();">/</div>
+            <acronym title="Solo funciona con el primer numero">
+                <div class="celda√" onclick="raizcua();">√</div>
+            </acronym>
+            <div class="celdaᶺ" onclick="producto();">ᶺ</div>
+            <div class="celda%" onclick="porcentaje();">%</div>
+        </div>
+        <acronym title="Solo funciona con el primer numero">
+            <div class="botones">
+                <div class="boton" id="Binario" onclick="binario();">Binario</div>
+                <div class="boton" id="Hexadecimal" onclick="hexadecimal();">Hexadecimal</div>
+                <div class="boton" id="Octal" onclick="octal();">Octal</div>
+            </div>
+        </acronym>
+        <div class="botones">
+            <div class="boton" id="BorrarR" onclick="reseteo();">Borrar Datos</div>
+            <div class="boton" id="Cierra" onclick="window.close();">Cerrar calculadora</div>
+        </div>
+    </body>
+<script src="../js/index.js"></script>
+</html>
