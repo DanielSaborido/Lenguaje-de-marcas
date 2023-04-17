@@ -40,7 +40,6 @@ img[alt="logo"]{
     display: inline-block;
     border: 1px solid black;
     border-radius: 10px;
-    /* Usamos la fuente cargada de google fonts. */
     background-color: #c5bbbb8f;
     font-size: 30px;
     text-align: center;
