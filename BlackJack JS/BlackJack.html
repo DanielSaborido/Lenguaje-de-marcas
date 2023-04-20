@@ -10,30 +10,19 @@
 
 <body>
     <h1>BLACKJACK AMERICANO</h1>
-    <button class="boton-margin" onclick="empezarPartida()">Empezar Partida</button>
-    <button class="boton-center" onclick="plantarse()">Plantarse</button>
-    <button class="boton-padding" onclick="tomarCarta()">Tomar Carta</button>
-    <div class="Normas">
-        <h1 class="normas-titulo">NORMAS BLACKJACK AMERICANO</h1>
-        <P>El crupier reparte dos cartas visibles a cada jugador. El valor del As es 11 o 1, las figuras valen 10, y las cartas numéricas su valor original. <br>
-            El valor del As puede cambiarse según la necesidad de no pasarse del número 21. <br>
-            Si a un jugador le sale un As junto con una carta de valor 10, obtiene blackjack automáticamente, ganando la apuesta salvo que el crupier obtenga también blackjack. <br> <br> 
-            Al terminar de repartir las dos primeras cartas a cada jugador, el crupier pondrá luego su primera carta boca arriba de manera que sea visible para el resto de jugadores, <br>
-            quienes podrán tomar sus decisiones en función de esa carta, mientras que el crupier tendrá una segunda carta boca abajo en espera de su turno. <br>
-            Si la carta del crupier es un As una figura o una carta de valor 10 la mostrara en la primera mano. <br> <br>
-            Cada jugador compite únicamente contra el crupier, siendo indiferente a las cartas que tengan el resto de los demás jugadores. <br>
-            Cada jugador tiene la posibilidad de plantarse y quedarse con cualquier puntuación, o de pedir más cartas hasta alcanzar los 21 puntos. <br>
-             Si al pedir una nueva carta se pasa de 21, el jugador pierde automáticamente la partida. <br>
-              Cuando el jugador pida carta el crupier mostrará su segunda carta boca abajo. <br>
-            En caso de que tanto el jugador como el dealer tenga la misma puntuacion y el jugador decida plantarse se considerara un empate y se devolvera la apuesta.</P>
+    <div class="Normas">  
+        <button onclick="empezarPartida()">Empezar Partida</button>
+        <button onclick="plantarse()">Plantarse</button>
+        <button onclick="tomarCarta()">Tomar Carta</button>
+        <button onclick="rendirse()">Rendirse</button>
     </div>
     <div class="menu-apuesta">
-        <h2 id="tus-fichas">Tus fichas: 300</h2>
+        <h2 id="tus-fichas"></h2>
         <button class="botones-apuesta" onclick="apostarFichas(10)">10</button>
         <button class="botones-apuesta" onclick="apostarFichas(50)">50</button>
         <button class="botones-apuesta" onclick="apostarFichas(100)">100</button>
         <button class="boton-allin" onclick="apostarFichas()">ALL IN</button>
-        <h2 id="fichas-apostadas">Tu apuesta actual: </h2>
+        <h2 id="fichas-apostadas"></h2>
         <button class="limpiar" onclick="limpiarApuesta()">LIMPIAR APUESTA</button>
     </div>
 

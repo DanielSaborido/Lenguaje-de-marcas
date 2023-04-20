@@ -22,38 +22,18 @@ button {
   transition: background-color 0.2s ease-in-out;
 }
 
-.boton-margin {
-  margin-left: 34%;
-  padding-left: 20px;
-  padding-right: 20px;
-  margin-right: 1%;
-}
-
-.boton-padding {
-  padding-left: 30px;
-  padding-right: 30px;
-}
-
-.boton-center {
-  padding-left: 30px;
-  padding-right: 30px;
-  margin-right: 20px;
-}
-
 button:hover {
   background-color: #515151;
 }
 
-#jugador,
-#dealer {
+#jugador, #dealer {
   margin-top: 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-#Puntos-J,
-#Puntos-D {
+#Puntos-J, #Puntos-D {
   margin-top: 20px;
   display: flex;
   flex-direction: column;

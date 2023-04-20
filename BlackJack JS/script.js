@@ -8,8 +8,10 @@ const tusfichas = document.getElementById('tus-fichas')
 const fichasApostadas = document.getElementById('fichas-apostadas')
 const jugadorCartas = []
 const dealerCartas = []
-var fichas = 300
+var fichas = 600
 var apuesta = 0
+tusfichas.innerHTML = `Tus fichas: ${fichas}`
+fichasApostadas.innerHTML = `Tu apuesta actual: ${apuesta}`
 
 // Función para crear una baraja de poker con palos y puntuaciones y barajarla de forma aleatoria
 function crearBaraja() {
@@ -58,14 +60,14 @@ function empezarPartida() {
         dealerCartas.push(baraja.shift())
     }
     if (sumarPuntaje(jugadorCartas) == 21) {
-        resultado.innerHTML = `<h2>HAS GANADO!!!</h2>`
+        resultado.innerHTML = `<h2>Has ganado</h2>`
         fichas += apuesta * 2
         apuesta = 0
         tusfichas.innerHTML = `Tus fichas: ${fichas}`
         fichasApostadas.innerHTML = `Tu apuesta actual: ${apuesta}`
     }
     else if (sumarPuntaje(dealerCartas) == 21) {
-        resultado.innerHTML = `<h2>HAS PERDIDO :(</h2>`
+        resultado.innerHTML = `<h2>Has perdido</h2>`
         apuesta = 0
         tusfichas.innerHTML = `Tus fichas: ${fichas}`
         fichasApostadas.innerHTML = `Tu apuesta actual: ${apuesta}`
@@ -90,14 +92,14 @@ function tomarCarta() {
     PuntosD.innerHTML = `<h2>Puntuacion del Dealer: ${sumarPuntaje(dealerCartas)}</h2>`
 
     if (sumarPuntaje(jugadorCartas) == 21) {
-        resultado.innerHTML = `<h2>HAS GANADO!!!</h2>`
+        resultado.innerHTML = `<h2>Has ganado</h2>`
         fichas += apuesta * 2
         apuesta = 0
         tusfichas.innerHTML = `Tus fichas: ${fichas}`
         fichasApostadas.innerHTML = `Tu apuesta actual: ${apuesta}`
     }
     else if (sumarPuntaje(jugadorCartas) >= 22) {
-        resultado.innerHTML = `<h2>HAS PERDIDO :(</h2>`
+        resultado.innerHTML = `<h2>Has perdido</h2>`
         apuesta = 0
         tusfichas.innerHTML = `Tus fichas: ${fichas}`
         fichasApostadas.innerHTML = `Tu apuesta actual: ${apuesta}`
@@ -141,34 +143,34 @@ function determinarGanador(puntajeJugador = 0, puntajeDealer = 0) {
         apuesta = 0
         tusfichas.innerHTML = `Tus fichas: ${fichas}`
         fichasApostadas.innerHTML = `Tu apuesta actual: ${apuesta}`
-        return 'EL GANADOR ES EL DEALER :('
+        return 'Ganó el dealer'
     }
     else if (puntajeDealer > 21) {
         fichas += apuesta * 2
         apuesta = 0
         tusfichas.innerHTML = `Tus fichas: ${fichas}`
         fichasApostadas.innerHTML = `Tu apuesta actual: ${apuesta}`
-        return 'EL GANADOR ES EL JUGADOR!!!'
+        return 'Ganaste'
     }
     else if (puntajeJugador > puntajeDealer) {
         fichas += apuesta * 2
         apuesta = 0
         tusfichas.innerHTML = `Tus fichas: ${fichas}`
         fichasApostadas.innerHTML = `Tu apuesta actual: ${apuesta}`
-        return 'EL GANADOR ES EL JUGADOR!!!'
+        return 'Ganaste'
     }
     else if (puntajeDealer > puntajeJugador) {
         apuesta = 0
         tusfichas.innerHTML = `Tus fichas: ${fichas}`
         fichasApostadas.innerHTML = `Tu apuesta actual: ${apuesta}`
-        return 'EL GANADOR ES EL DEALER :('
+        return 'Ganó el dealer'
     }
     else if (puntajeJugador = puntajeDealer) {
         fichas += apuesta
         apuesta = 0
         tusfichas.innerHTML = `Tus fichas: ${fichas}`
         fichasApostadas.innerHTML = `Tu apuesta actual: ${apuesta}`
-        return 'ES UN EMPATE!!!'
+        return 'Empataste'
     }
 }
 
@@ -192,3 +194,11 @@ function limpiarApuesta() {
     fichasApostadas.innerHTML = `Tu apuesta actual: ${apuesta}`
 
 }
+
+function rendirse() {
+    resultado.innerHTML = `<h2>Te has rendido</h2>`;
+    fichas += apuesta / 2;
+    apuesta = 0;
+    tusfichas.innerHTML = `Tus fichas: ${fichas}`;
+    fichasApostadas.innerHTML = `Tu apuesta actual: ${apuesta}`;
+  }
