@@ -189,6 +189,7 @@ function apostarFichas(apostados = fichas) {
 
 //Función que limpia la apuesta establecida
 function limpiarApuesta() {
+    fichas += apuesta
     apuesta = 0
     tusfichas.innerHTML = `Tus fichas: ${fichas}`
     fichasApostadas.innerHTML = `Tu apuesta actual: ${apuesta}`
