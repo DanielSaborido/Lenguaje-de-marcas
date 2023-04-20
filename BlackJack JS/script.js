@@ -37,10 +37,12 @@ function crearBaraja() {
 // Función para empezar una partida de blackjack
 function empezarPartida() {
     if (fichas <= 0 || apuesta == 0) {
+        alert('No has realizado ninguna apuesta')
         return false
     }
     crearBaraja()
     fichas -= apuesta
+    tusfichas.innerHTML = `Tus fichas: ${fichas}`
     resultado.innerHTML = ''
     jugadorCartas.push(baraja.shift(), baraja.shift())
     dealerCartas.push(baraja.shift())
