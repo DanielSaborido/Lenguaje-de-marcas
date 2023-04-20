@@ -43,7 +43,6 @@ function empezarPartida() {
         return false
     }
     crearBaraja()
-    fichas -= apuesta
     tusfichas.innerHTML = `Tus fichas: ${fichas}`
     resultado.innerHTML = ''
     jugadorCartas.push(baraja.shift(), baraja.shift())
@@ -182,6 +181,7 @@ function apostarFichas(apostados = fichas) {
     if (apuesta >= fichas || apuesta + apostados > fichas) {
         return false
     }
+    fichas -= apostados
     tusfichas.innerHTML = `Tus fichas: ${fichas}`
     apuesta += apostados
     fichasApostadas.innerHTML = `Tu apuesta actual: ${apuesta}`
