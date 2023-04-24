@@ -2,7 +2,7 @@ const baraja = []
 const jugadorDiv = document.getElementById('jugador')
 const croupierDiv = document.getElementById('croupier')
 const PuntosJ = document.getElementById('Puntos-J')
-const PuntosD = document.getElementById('Puntos-D')
+const PuntosC = document.getElementById('Puntos-C')
 const resultado = document.getElementById('resultado')
 const tusfichas = document.getElementById('tus-fichas')
 const fichasApostadas = document.getElementById('fichas-apostadas')
@@ -47,17 +47,10 @@ function empezarPartida() {
     resultado.innerHTML = ''
     jugadorCartas.push(baraja.shift(), baraja.shift())
     croupierCartas.push(baraja.shift())
-    if (sumarPuntaje(croupierCartas) >= 10) {
-        croupierCartas.push(baraja.shift())
-        croupierDiv.innerHTML = `<h2>Cartas del Croupier</h2><ul><img src='cartas/${croupierCartas[0]}.png'><img src='cartas/${croupierCartas[1]}.png'></ul>`
-    }
     jugadorDiv.innerHTML = `<h2>Cartas del Jugador</h2><ul><img src='cartas/${jugadorCartas[0]}.png'><img src='cartas/${jugadorCartas[1]}.png'></ul>`
+    croupierDiv.innerHTML = `<h2>Cartas del Croupier</h2><ul><img src='cartas/${croupierCartas[0]}.png'></ul>`
     PuntosJ.innerHTML = `<h2>Puntuacion del Jugador: ${sumarPuntaje(jugadorCartas)}</h2>`
-    PuntosD.innerHTML = `<h2>Puntuacion del Croupier: ${sumarPuntaje(croupierCartas)}</h2>`
-    if (croupierCartas.length < 2) {
-        croupierDiv.innerHTML = `<h2>Cartas del Croupier</h2><ul><img src='cartas/${croupierCartas[0]}.png'></ul>`
-        croupierCartas.push(baraja.shift())
-    }
+    PuntosC.innerHTML = `<h2>Puntuacion del Croupier: ${sumarPuntaje(croupierCartas)}</h2>`
     if (sumarPuntaje(jugadorCartas) == 21) {
         resultado.innerHTML = `Has ganado`
         fichas += apuesta * 2
@@ -84,17 +77,17 @@ function tomarCarta() {
     }
 
     const cartaJ = baraja.shift()
-    const cartaD = baraja.shift()
+    const cartaC = baraja.shift()
     jugadorCartas.push(cartaJ)
     const jugadorDiv = document.getElementById('jugador').getElementsByTagName('ul')[0]
     jugadorDiv.innerHTML += `<img src='cartas/${cartaJ}.png'>`
     if (sumarPuntaje(croupierCartas) < 17){
-        croupierCartas.push(cartaD)
+        croupierCartas.push(cartaC)
         const croupierDiv = document.getElementById('croupier').getElementsByTagName('ul')[0]
-        croupierDiv.innerHTML += `<img src='cartas/${cartaD}.png'>`
+        croupierDiv.innerHTML += `<img src='cartas/${cartaC}.png'>`
     }
     PuntosJ.innerHTML = `<h2>Puntuacion del Jugador: ${sumarPuntaje(jugadorCartas)}</h2>`
-    PuntosD.innerHTML = `<h2>Puntuacion del Croupier: ${sumarPuntaje(croupierCartas)}</h2>`
+    PuntosC.innerHTML = `<h2>Puntuacion del Croupier: ${sumarPuntaje(croupierCartas)}</h2>`
 
     if (sumarPuntaje(jugadorCartas) == 21) {
         resultado.innerHTML = `Has ganado`
@@ -235,9 +228,66 @@ function doblar() {
         alert('La partida no ha empezado.')
         return false
     }
-    resultado.innerHTML = `Te has rendido`;
-    fichas += apuesta / 2;
-    apuesta = 0;
-    tusfichas.innerHTML = `Tus fichas: ${fichas}`;
-    fichasApostadas.innerHTML = `Tu apuesta actual: ${apuesta}`;
+    if(sumarPuntaje(jugadorCartas) == 9 || sumarPuntaje(jugadorCartas) == 10 || sumarPuntaje(jugadorCartas) == 11 && fichas >= apuesta){
+        const seguro = apuesta
+        fichas -= seguro;
+        apuesta += seguro;
+        tusfichas.innerHTML = `Tus fichas: ${fichas}`;
+        fichasApostadas.innerHTML = `Tu apuesta actual: ${apuesta}`;
+        const cartaJ = baraja.shift()
+        jugadorCartas.push(cartaJ)
+        const jugadorDiv = document.getElementById('jugador').getElementsByTagName('ul')[0]
+        jugadorDiv.innerHTML += `<img src='cartas/${cartaJ}.png'>`
+        PuntosJ.innerHTML = `<h2>Puntuacion del Jugador: ${sumarPuntaje(jugadorCartas)}</h2>`
+        if (sumarPuntaje(jugadorCartas) > sumarPuntaje(croupierCartas)) {
+            resultado.innerHTML = `Has ganado`
+            fichas += apuesta * 2
+            apuesta = 0
+            tusfichas.innerHTML = `Tus fichas: ${fichas}`
+            fichasApostadas.innerHTML = `Tu apuesta actual: ${apuesta}`
+        }
+        else{
+            resultado.innerHTML = `Has perdido`
+            apuesta = 0
+            tusfichas.innerHTML = `Tus fichas: ${fichas}`
+            fichasApostadas.innerHTML = `Tu apuesta actual: ${apuesta}`
+        }
+    }
+    else {
+        alert("No se cumplen las condiciones para esta accion")
+        return false
+    }
+}
+
+function seguro() {
+    if(sumarPuntaje(jugadorCartas) == 0){
+        alert('La partida no ha empezado.')
+        return false
+    }
+    if(sumarPuntaje(croupierCartas) == 11 && croupierCartas.length < 2 && fichas >= apuesta / 2){
+        const seguro = apuesta / 2
+        fichas -= seguro;
+        apuesta += seguro;
+        tusfichas.innerHTML = `Tus fichas: ${fichas}`;
+        fichasApostadas.innerHTML = `Tu apuesta actual: ${apuesta}`;
+        const cartaC = baraja.shift()
+        croupierCartas.push(cartaC)
+        const croupierDiv = document.getElementById('croupier').getElementsByTagName('ul')[0]
+        croupierDiv.innerHTML += `<img src='cartas/${cartaC}.png'>`
+        PuntosC.innerHTML = `<h2>Puntuacion del Croupier: ${sumarPuntaje(croupierCartas)}</h2>`
+        if (sumarPuntaje(croupierCartas) == 21) {
+            resultado.innerHTML = `Has acertado`
+            fichas += apuesta * 2
+            apuesta = 0
+            tusfichas.innerHTML = `Tus fichas: ${fichas}`
+            fichasApostadas.innerHTML = `Tu apuesta actual: ${apuesta}`
+        }
+        else{
+            apuesta -= seguro;
+        }
+    }
+    else {
+        alert("No se cumplen las condiciones para esta accion")
+        return false
+    }
 }
