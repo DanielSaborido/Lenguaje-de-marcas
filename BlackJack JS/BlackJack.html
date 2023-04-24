@@ -7,30 +7,34 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=0.5">
 </head>
-
+<header>
+    <img src="fotos/milogo.png" alt="logo">
+    <h1>Blackjack</h1>
+</header>
 <body>
-    <h1>BLACKJACK AMERICANO</h1>
     <div class="Normas">  
         <button onclick="empezarPartida()">Empezar Partida</button>
         <button onclick="plantarse()">Plantarse</button>
         <button onclick="tomarCarta()">Tomar Carta</button>
         <button onclick="rendirse()">Rendirse</button>
+        <button onclick="doblar()">Doblar</button>
+        <button onclick="window.close();">Dejar la ludopatia</button>
     </div>
     <div class="menu-apuesta">
-        <h2 id="tus-fichas"></h2>
-        <button class="botones-apuesta" onclick="apostarFichas(1)">1</button>
-        <button class="botones-apuesta" onclick="apostarFichas(2)">2</button>
-        <button class="botones-apuesta" onclick="apostarFichas(5)">5</button>
-        <button class="botones-apuesta" onclick="apostarFichas(10)">10</button>
-        <button class="botones-apuesta" onclick="apostarFichas(20)">20</button>
-        <button class="botones-apuesta" onclick="apostarFichas(25)">25</button>
-        <button class="botones-apuesta" onclick="apostarFichas(50)">50</button>
-        <button class="botones-apuesta" onclick="apostarFichas(100)">100</button>
-        <button class="botones-apuesta" onclick="apostarFichas(500)">500</button>
-        <button class="botones-apuesta" onclick="apostarFichas(1000)">1000</button>
-        <button class="botones-apuesta" onclick="apostarFichas(5000)">5000</button>
+        <h2 class="anuncio" id="tus-fichas"></h2>
+        <img src="fichas/1.png" onclick="apostarFichas(1)"/>
+        <img src="fichas/2.png" onclick="apostarFichas(2)"/>
+        <img src="fichas/5.png" onclick="apostarFichas(5)"/>
+        <img src="fichas/10.png" onclick="apostarFichas(10)"/>
+        <img src="fichas/20.png" onclick="apostarFichas(20)"/>
+        <img src="fichas/25.png" onclick="apostarFichas(25)"/>
+        <img src="fichas/50.png" onclick="apostarFichas(50)"/>
+        <img src="fichas/100.png" onclick="apostarFichas(100)"/>
+        <img src="fichas/500.png" onclick="apostarFichas(500)"/>
+        <img src="fichas/1000.png" onclick="apostarFichas(1000)"/>
+        <img src="fichas/5000.png" onclick="apostarFichas(5000)"/>
         <button class="boton-allin" onclick="apostarFichas()">ALL IN</button>
-        <h2 id="fichas-apostadas"></h2>
+        <h2 class="anuncio" id="fichas-apostadas"></h2>
         <button class="limpiar" onclick="limpiarApuesta()">LIMPIAR APUESTA</button>
     </div>
 
@@ -50,9 +54,6 @@
         <ul></ul>
     </div>
 </body>
-<footer>
-    <br> <br> <br> <br> <br>
-</footer>
 <script src="script.js"></script>
 
 </html>

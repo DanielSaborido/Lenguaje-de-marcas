@@ -75,7 +75,7 @@ function empezarPartida() {
 
 // Función para agregar una nueva carta a la mano del jugador
 function tomarCarta() {
-    if(apuesta == 0){
+    if(sumarPuntaje(jugadorCartas) == 0){
         alert('La partida no ha empezado.')
         return false
     }
@@ -83,11 +83,16 @@ function tomarCarta() {
         return false
     }
 
-    const carta = baraja.shift()
-    jugadorCartas.push(carta)
+    const cartaJ = baraja.shift()
+    const cartaD = baraja.shift()
+    jugadorCartas.push(cartaJ)
     const jugadorDiv = document.getElementById('jugador').getElementsByTagName('ul')[0]
-    jugadorDiv.innerHTML += `<img src='cartas/${carta}.png'>`
-    dealerDiv.innerHTML = `<h2>Cartas del Dealer</h2><ul><img src='cartas/${dealerCartas[0]}.png'><img src='cartas/${dealerCartas[1]}.png'></ul>`
+    jugadorDiv.innerHTML += `<img src='cartas/${cartaJ}.png'>`
+    if (sumarPuntaje(dealerCartas) < 17){
+        dealerCartas.push(cartaD)
+        const dealerDiv = document.getElementById('dealer').getElementsByTagName('ul')[0]
+        dealerDiv.innerHTML += `<img src='cartas/${cartaD}.png'>`
+    }
     PuntosJ.innerHTML = `<h2>Puntuacion del Jugador: ${sumarPuntaje(jugadorCartas)}</h2>`
     PuntosD.innerHTML = `<h2>Puntuacion del Dealer: ${sumarPuntaje(dealerCartas)}</h2>`
 
@@ -104,11 +109,24 @@ function tomarCarta() {
         tusfichas.innerHTML = `Tus fichas: ${fichas}`
         fichasApostadas.innerHTML = `Tu apuesta actual: ${apuesta}`
     }
+    else if (sumarPuntaje(dealerCartas) == 21) {
+        resultado.innerHTML = `Has perdido`
+        apuesta = 0
+        tusfichas.innerHTML = `Tus fichas: ${fichas}`
+        fichasApostadas.innerHTML = `Tu apuesta actual: ${apuesta}`
+    }
+    else if (sumarPuntaje(dealerCartas) >= 22) {
+        resultado.innerHTML = `Has ganado`
+        fichas += apuesta * 2
+        apuesta = 0
+        tusfichas.innerHTML = `Tus fichas: ${fichas}`
+        fichasApostadas.innerHTML = `Tu apuesta actual: ${apuesta}`
+    }
 }
 
 //Función para finalizar la mano del jugador
 function plantarse() {
-    if(apuesta == 0){
+    if(sumarPuntaje(jugadorCartas) == 0){
         alert('La partida no ha empezado.')
         return false
     }
@@ -178,7 +196,11 @@ function determinarGanador(puntajeJugador = 0, puntajeDealer = 0) {
 //Función que permite hacer apuestas con fichas
 function apostarFichas(apostados = fichas) {
     if (fichas <= 0) {
-        alert("No tienes mas dinero para apostar")
+        alert("No tienes mas dinero para apostar.")
+        return false
+    }
+    if (fichas < apostados) {
+        alert("No tienes el dinero suficiente para apostar esta cantidad.")
         return false
     }
     fichas -= apostados
@@ -197,7 +219,7 @@ function limpiarApuesta() {
 }
 
 function rendirse() {
-    if(apuesta == 0){
+    if(sumarPuntaje(jugadorCartas) == 0){
         alert('La partida no ha empezado.')
         return false
     }
@@ -206,4 +228,16 @@ function rendirse() {
     apuesta = 0;
     tusfichas.innerHTML = `Tus fichas: ${fichas}`;
     fichasApostadas.innerHTML = `Tu apuesta actual: ${apuesta}`;
-  }
+}
+
+function doblar() {
+    if(sumarPuntaje(jugadorCartas) == 0){
+        alert('La partida no ha empezado.')
+        return false
+    }
+    resultado.innerHTML = `Te has rendido`;
+    fichas += apuesta / 2;
+    apuesta = 0;
+    tusfichas.innerHTML = `Tus fichas: ${fichas}`;
+    fichasApostadas.innerHTML = `Tu apuesta actual: ${apuesta}`;
+}

@@ -1,7 +1,13 @@
 body {
-  background-color: #2f2e2e;
+  background: url("fotos/fondo.jpg");
+  background-size: cover;
   color: #fff;
   font-family: 'Arial', sans-serif;
+}
+
+img[alt="logo"]{
+  height: 5%;
+  float: right;
 }
 
 h1 {
@@ -73,7 +79,7 @@ img {
 }
 
 .Normas {
-  width: 400px;
+  width: 25%;
   height: 600px;
   background-color: rgba(128, 128, 128, 0.61);
   padding: 10px;
@@ -85,14 +91,10 @@ img {
   right: 10px;
 }
 
-.normas-titulo {
-  font-size: 35px;
-  color: rgb(163, 35, 35)
-}
-
 .menu-apuesta {
-  width: 400px;
-  height: 300px;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  width: 25%;
   background-color: rgba(128, 128, 128, 0.61);
   padding: 10px;
   border: 3px solid rgb(255, 255, 255);
@@ -102,23 +104,23 @@ img {
   left: 10px;
 }
 
-.botones-apuesta{
-  width: 20%;
-  height: 15%;
-  font-size: 16px;
+.menu-apuesta > img{
+  width: 85%;
 }
 
 .boton-allin{
-  width: 20%;
-  height: 15%;
+  width: 100%;
   font-size: 14px;
   background-color: rgb(153, 35, 35);
   
 }
 .limpiar{
-  width: 60%;
-  height: 15%;
+  width: 100%;
   font-size: 20px;
   font-weight: bold;
-
+  grid-column-start: span 4;
+}
+.anuncio{
+  width: 100%;
+  grid-column-start: span 4;
 }
