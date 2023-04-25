@@ -48,8 +48,8 @@ function empezarPartida() {
     resultado.innerHTML = ''
     jugadorCartas.push(baraja.shift(), baraja.shift())
     croupierCartas.push(baraja.shift())
-    jugadorDiv.innerHTML = `<h2>Cartas del Jugador</h2><ul><img src='cartas/${jugadorCartas[0]}.png'><img src='cartas/${jugadorCartas[1]}.png'></ul>`
-    croupierDiv.innerHTML = `<h2>Cartas del Croupier</h2><ul><img src='cartas/${croupierCartas[0]}.png'></ul>`
+    jugadorDiv.innerHTML = `<h2>Cartas del Jugador</h2><ul><img src='cartas/${jugadorCartas[0]}.png' alt="cartas"><img src='cartas/${jugadorCartas[1]}.png' alt="cartas"></ul>`
+    croupierDiv.innerHTML = `<h2>Cartas del Croupier</h2><ul><img src='cartas/${croupierCartas[0]}.png' alt="cartas"></ul>`
     PuntosJ.innerHTML = `<h2>Puntuacion del Jugador: ${sumarPuntaje(jugadorCartas)}</h2>`
     PuntosC.innerHTML = `<h2>Puntuacion del Croupier: ${sumarPuntaje(croupierCartas)}</h2>`
     if (sumarPuntaje(jugadorCartas) == 21) {
@@ -81,11 +81,11 @@ function tomarCarta() {
     const cartaC = baraja.shift()
     jugadorCartas.push(cartaJ)
     const jugadorDiv = document.getElementById('jugador').getElementsByTagName('ul')[0]
-    jugadorDiv.innerHTML += `<img src='cartas/${cartaJ}.png'>`
+    jugadorDiv.innerHTML += `<img src='cartas/${cartaJ}.png' alt="cartas">`
     if (sumarPuntaje(croupierCartas) < 17){
         croupierCartas.push(cartaC)
         const croupierDiv = document.getElementById('croupier').getElementsByTagName('ul')[0]
-        croupierDiv.innerHTML += `<img src='cartas/${cartaC}.png'>`
+        croupierDiv.innerHTML += `<img src='cartas/${cartaC}.png' alt="cartas">`
     }
     PuntosJ.innerHTML = `<h2>Puntuacion del Jugador: ${sumarPuntaje(jugadorCartas)}</h2>`
     PuntosC.innerHTML = `<h2>Puntuacion del Croupier: ${sumarPuntaje(croupierCartas)}</h2>`
@@ -132,7 +132,7 @@ function plantarse() {
         const cartaC = baraja.shift()
         croupierCartas.push(cartaC)
         const croupierDiv = document.getElementById('croupier').getElementsByTagName('ul')[0]
-        croupierDiv.innerHTML += `<img src='cartas/${cartaC}.png'>`
+        croupierDiv.innerHTML += `<img src='cartas/${cartaC}.png' alt="cartas">`
     }
     PuntosC.innerHTML = `<h2>Puntuacion del Croupier: ${sumarPuntaje(croupierCartas)}</h2>`
     resultado.innerHTML = `${determinarGanador(sumarPuntaje(jugadorCartas), sumarPuntaje(croupierCartas))}`
@@ -266,13 +266,13 @@ function doblar() {
         const cartaJ = baraja.shift()
         jugadorCartas.push(cartaJ)
         const jugadorDiv = document.getElementById('jugador').getElementsByTagName('ul')[0]
-        jugadorDiv.innerHTML += `<img src='cartas/${cartaJ}.png'>`
+        jugadorDiv.innerHTML += `<img src='cartas/${cartaJ}.png' alt="cartas">`
         PuntosJ.innerHTML = `<h2>Puntuacion del Jugador: ${sumarPuntaje(jugadorCartas)}</h2>`
         while (sumarPuntaje(croupierCartas) < 17 || sumarPuntaje(croupierCartas) < sumarPuntaje(jugadorCartas)){
             const cartaC = baraja.shift()
             croupierCartas.push(cartaC)
             const croupierDiv = document.getElementById('croupier').getElementsByTagName('ul')[0]
-            croupierDiv.innerHTML += `<img src='cartas/${cartaC}.png'>`
+            croupierDiv.innerHTML += `<img src='cartas/${cartaC}.png' alt="cartas">`
         }
         PuntosC.innerHTML = `<h2>Puntuacion del Croupier: ${sumarPuntaje(croupierCartas)}</h2>`
         if (sumarPuntaje(jugadorCartas) > sumarPuntaje(croupierCartas)) {
@@ -313,7 +313,7 @@ function seguro() {
         const cartaC = baraja.shift()
         croupierCartas.push(cartaC)
         const croupierDiv = document.getElementById('croupier').getElementsByTagName('ul')[0]
-        croupierDiv.innerHTML += `<img src='cartas/${cartaC}.png'>`
+        croupierDiv.innerHTML += `<img src='cartas/${cartaC}.png' alt="cartas">`
         PuntosC.innerHTML = `<h2>Puntuacion del Croupier: ${sumarPuntaje(croupierCartas)}</h2>`
         if (sumarPuntaje(croupierCartas) == 21) {
             resultado.innerHTML = `Has acertado`

@@ -15,8 +15,12 @@ body {
 }
 
 img[alt="logo"]{
-  height: 5%;
-  float: right;
+  height: 100px;
+  float: left;
+}
+
+img[alt="cartas"]{
+  height: 150px;
 }
 
 h1 {
@@ -42,27 +46,26 @@ button:hover {
 }
 
 #jugador, #croupier {
-  margin-top: 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 #Puntos-J, #Puntos-C {
-  margin-top: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 #resultado {
-  margin-top: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   font-weight: solid;
   font-size: 45px;
   color: rgb(255, 0, 0);
+  grid-row-start: span 4;
+  align-self: center;
 }
 
 ul {
@@ -74,17 +77,6 @@ ul {
 li {
   font-size: 1.5rem;
   margin: 0.5rem 0;
-}
-
-img {
-  width: 130px;
-  margin-right: 25px;
-}
-
-.img-dealer {
-  width: 150px;
-  margin-right: 25px;
-  margin-bottom: 100px;
 }
 
 .menu-apuesta {
@@ -117,13 +109,8 @@ img {
   width: 100%;
   height: 100%;
   grid-template-columns: auto auto;
-  grid-template-rows: auto auto auto auto;
+  grid-template-rows: 7.5% auto 7.5% auto;
   background-color: #000000;
-}
-
-.ganador{
-  grid-row-start: span 4;
-  align-self: center;
 }
 
 .botones{
