@@ -123,6 +123,10 @@ function plantarse() {
         alert('La partida no ha empezado.')
         return false
     }
+    if(resultado.innerHTML != ''){
+        alert('La partida no ha empezado.')
+        return false
+    }
     resultado.innerHTML = `${determinarGanador(sumarPuntaje(jugadorCartas), sumarPuntaje(croupierCartas))}`
 }
 
@@ -216,6 +220,10 @@ function rendirse() {
         alert('La partida no ha empezado.')
         return false
     }
+    if(resultado.innerHTML != ''){
+        alert('La partida no ha empezado.')
+        return false
+    }
     resultado.innerHTML = `Te has rendido`;
     fichas += apuesta / 2;
     apuesta = 0;
@@ -225,6 +233,10 @@ function rendirse() {
 
 function doblar() {
     if(sumarPuntaje(jugadorCartas) == 0){
+        alert('La partida no ha empezado.')
+        return false
+    }
+    if(resultado.innerHTML != ''){
         alert('La partida no ha empezado.')
         return false
     }
@@ -261,6 +273,10 @@ function doblar() {
 
 function seguro() {
     if(sumarPuntaje(jugadorCartas) == 0){
+        alert('La partida no ha empezado.')
+        return false
+    }
+    if(resultado.innerHTML != ''){
         alert('La partida no ha empezado.')
         return false
     }
