@@ -6,6 +6,7 @@ const PuntosC = document.getElementById('Puntos-C')
 const resultado = document.getElementById('resultado')
 const tusfichas = document.getElementById('tus-fichas')
 const fichasApostadas = document.getElementById('fichas-apostadas')
+const apuestaManual = document.getElementById('manual')
 const jugadorCartas = []
 const croupierCartas = []
 var fichas = 1000
@@ -212,6 +213,15 @@ function apostarFichas(apostados = fichas) {
     apuesta += apostados
     fichasApostadas.innerHTML = `Tu apuesta actual: ${apuesta}`
 }
+
+apuestaManual.addEventListener('keydown', function(event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        var value = parseInt(this.value);
+        apostarFichas(value);
+        this.value='';
+    }
+});
 
 //Función que limpia la apuesta establecida
 function limpiarApuesta() {

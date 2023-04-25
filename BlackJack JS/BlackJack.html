@@ -12,49 +12,56 @@
     <h1>Blackjack</h1>
 </header>
 <body>
-    <div class="Normas">  
-        <button onclick="empezarPartida()">Empezar Partida</button>
-        <button onclick="plantarse()">Plantarse</button>
-        <button onclick="tomarCarta()">Tomar Carta</button>
-        <button onclick="rendirse()">Rendirse</button>
-        <button onclick="doblar()">Doblar</button>
-        <button onclick="seguro()">Seguro</button>
-        <button onclick="window.close();">Dejar la ludopatia</button>
-    </div>
-    <div class="menu-apuesta">
-        <h2 class="anuncio" id="tus-fichas"></h2>
-        <img src="fichas/1.png" onclick="apostarFichas(1)"/>
-        <img src="fichas/2.png" onclick="apostarFichas(2)"/>
-        <img src="fichas/5.png" onclick="apostarFichas(5)"/>
-        <img src="fichas/10.png" onclick="apostarFichas(10)"/>
-        <img src="fichas/20.png" onclick="apostarFichas(20)"/>
-        <img src="fichas/25.png" onclick="apostarFichas(25)"/>
-        <img src="fichas/50.png" onclick="apostarFichas(50)"/>
-        <img src="fichas/100.png" onclick="apostarFichas(100)"/>
-        <img src="fichas/500.png" onclick="apostarFichas(500)"/>
-        <img src="fichas/1000.png" onclick="apostarFichas(1000)"/>
-        <img src="fichas/5000.png" onclick="apostarFichas(5000)"/>
-        <button class="boton-allin" onclick="apostarFichas()">ALL IN</button>
-        <h2 class="anuncio" id="fichas-apostadas"></h2>
-        <button class="limpiar" onclick="limpiarApuesta()">LIMPIAR APUESTA</button>
+    <div class="tablero">
+        <div class="botones">
+            <button onclick="empezarPartida()">Empezar Partida</button>
+            <button onclick="plantarse()">Plantarse</button>
+            <button onclick="tomarCarta()">Tomar Carta</button>
+            <button onclick="rendirse()">Rendirse</button>
+            <button onclick="doblar()">Doblar</button>
+            <button onclick="dividir()">Dividir</button>
+            <button onclick="seguro()">Seguro</button>
+            <button onclick="window.close();">Dejar la ludopatia</button>
+        </div>
+
+        <div class="menu-apuesta">
+            <h2 class="anuncio" id="tus-fichas"></h2>
+            <img src="fichas/1.png" onclick="apostarFichas(1)"/>
+            <img src="fichas/2.png" onclick="apostarFichas(2)"/>
+            <img src="fichas/5.png" onclick="apostarFichas(5)"/>
+            <img src="fichas/10.png" onclick="apostarFichas(10)"/>
+            <img src="fichas/20.png" onclick="apostarFichas(20)"/>
+            <img src="fichas/25.png" onclick="apostarFichas(25)"/>
+            <img src="fichas/50.png" onclick="apostarFichas(50)"/>
+            <img src="fichas/100.png" onclick="apostarFichas(100)"/>
+            <img src="fichas/500.png" onclick="apostarFichas(500)"/>
+            <img src="fichas/1000.png" onclick="apostarFichas(1000)"/>
+            <img src="fichas/5000.png" onclick="apostarFichas(5000)"/>
+            <img src="fichas/todo.png" onclick="apostarFichas()"/>
+            <h2 class="anuncio" id="fichas-apostadas"></h2>
+            <input id="manual" class="anuncio" type="number"/>
+            <button class="limpiar" onclick="limpiarApuesta()">Limpiar Apuesta</button>
+        </div>
+
+        <div class="partida">
+            <div id="Puntos-J">
+                <h2>Puntuacion del Jugador: </h2>
+            </div>
+            <div class="ganador" id="resultado"></div>
+            <div id="jugador">
+                <h2>Cartas del Jugador</h2>
+                <ul></ul>
+            </div>
+            <div id="Puntos-C">
+                <h2>Puntuacion del Croupier: </h2>
+            </div>
+            <div id="croupier">
+                <h2>Cartas del Croupier</h2>
+                <ul></ul>
+            </div>
+        </div>
     </div>
 
-    <div id="resultado"></div>
-    <div id="Puntos-J">
-        <h2>Puntuacion del Jugador: </h2>
-    </div>
-    <div id="jugador">
-        <h2>Cartas del Jugador</h2>
-        <ul></ul>
-    </div>
-    <div id="Puntos-C">
-        <h2>Puntuacion del Croupier: </h2>
-    </div>
-    <div id="croupier">
-        <h2>Cartas del Croupier</h2>
-        <ul></ul>
-    </div>
 </body>
 <script src="script.js"></script>
-
 </html>
