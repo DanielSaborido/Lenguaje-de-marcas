@@ -127,6 +127,13 @@ function plantarse() {
         alert('La partida no ha empezado.')
         return false
     }
+    while (sumarPuntaje(croupierCartas) < 17 || sumarPuntaje(croupierCartas) < sumarPuntaje(jugadorCartas)){
+        const cartaC = baraja.shift()
+        croupierCartas.push(cartaC)
+        const croupierDiv = document.getElementById('croupier').getElementsByTagName('ul')[0]
+        croupierDiv.innerHTML += `<img src='cartas/${cartaC}.png'>`
+    }
+    PuntosC.innerHTML = `<h2>Puntuacion del Croupier: ${sumarPuntaje(croupierCartas)}</h2>`
     resultado.innerHTML = `${determinarGanador(sumarPuntaje(jugadorCartas), sumarPuntaje(croupierCartas))}`
 }
 
@@ -251,6 +258,13 @@ function doblar() {
         const jugadorDiv = document.getElementById('jugador').getElementsByTagName('ul')[0]
         jugadorDiv.innerHTML += `<img src='cartas/${cartaJ}.png'>`
         PuntosJ.innerHTML = `<h2>Puntuacion del Jugador: ${sumarPuntaje(jugadorCartas)}</h2>`
+        while (sumarPuntaje(croupierCartas) < 17 || sumarPuntaje(croupierCartas) < sumarPuntaje(jugadorCartas)){
+            const cartaC = baraja.shift()
+            croupierCartas.push(cartaC)
+            const croupierDiv = document.getElementById('croupier').getElementsByTagName('ul')[0]
+            croupierDiv.innerHTML += `<img src='cartas/${cartaC}.png'>`
+        }
+        PuntosC.innerHTML = `<h2>Puntuacion del Croupier: ${sumarPuntaje(croupierCartas)}</h2>`
         if (sumarPuntaje(jugadorCartas) > sumarPuntaje(croupierCartas)) {
             resultado.innerHTML = `Has ganado`
             fichas += apuesta * 2
