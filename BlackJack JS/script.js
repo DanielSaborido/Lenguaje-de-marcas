@@ -104,18 +104,21 @@ function tomarCarta() {
         apuesta = 0
         tusfichas.innerHTML = `Tus fichas: ${fichas}`
         fichasApostadas.innerHTML = `Tu apuesta actual: ${apuesta}`
+        jugadorCartas = [];
     }
     else if (sumarPuntaje(jugadorCartas) >= 22) {
         resultado.innerHTML = `Has perdido`
         apuesta = 0
         tusfichas.innerHTML = `Tus fichas: ${fichas}`
         fichasApostadas.innerHTML = `Tu apuesta actual: ${apuesta}`
+        jugadorCartas = [];
     }
     else if (sumarPuntaje(croupierCartas) == 21) {
         resultado.innerHTML = `Has perdido`
         apuesta = 0
         tusfichas.innerHTML = `Tus fichas: ${fichas}`
         fichasApostadas.innerHTML = `Tu apuesta actual: ${apuesta}`
+        jugadorCartas = [];
     }
     else if (sumarPuntaje(croupierCartas) >= 22) {
         resultado.innerHTML = `Has ganado`
@@ -123,6 +126,7 @@ function tomarCarta() {
         apuesta = 0
         tusfichas.innerHTML = `Tus fichas: ${fichas}`
         fichasApostadas.innerHTML = `Tu apuesta actual: ${apuesta}`
+        jugadorCartas = [];
     }
 }
 
@@ -351,7 +355,7 @@ function dividir() {
         alert('No se cumplen las condiciones para esta accion.')
         return false
     }
-    if(cartaExtra.length > 1){
+    if(cartaExtra.length > 0){
         alert('Ya tienes una carta almacenada.')
         return false
     }
@@ -374,6 +378,13 @@ function usar() {//pendiente de completar
         alert('Te recomiendo no usar esta carta.')
         return false
     }
+    const cartaJ = cartaExtra.shift()
+    jugadorCartas.push(cartaJ)
+    const jugadorDiv = document.getElementById('jugador').getElementsByTagName('ul')[0]
+    jugadorDiv.innerHTML += `<img src='cartas/${cartaJ}.png' alt="cartas">`
+    PuntosJ.innerHTML = `<h2>Puntuacion del Jugador: ${sumarPuntaje(jugadorCartas)}</h2>`
+    const almacenDiv = document.getElementById('almacencarta').getElementsByTagName('ul')[0]
+    almacenDiv.innerHTML = ``
 }
 
 function compararCartas(mano) {
