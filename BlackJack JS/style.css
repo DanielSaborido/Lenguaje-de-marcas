@@ -26,6 +26,7 @@ img[alt="cartas"]{
 h1 {
   text-align: center;
   font-size: 3rem;
+  background-color: rgba(128, 128, 128, 0.61);
 }
 
 button {
@@ -62,8 +63,12 @@ button:hover {
   font-weight: solid;
   font-size: 45px;
   color: rgb(255, 0, 0);
-  grid-row-start: span 4;
+  grid-row-start: span 3;
   align-self: center;
+}
+
+#almacencarta > img{
+  width: 85%;
 }
 
 ul {
@@ -83,7 +88,9 @@ li {
   height: 100%;
   grid-template-columns: auto auto auto auto;
   background-color: rgba(128, 128, 128, 0.61);
-  border: 3px solid rgb(255, 255, 255);
+  border-bottom: 2px solid rgb(255, 255, 255);
+  border-top: 2px solid rgb(255, 255, 255);
+  border-left: 2px solid rgb(255, 255, 255);
 }
 
 .menu-apuesta > img{
@@ -98,7 +105,7 @@ li {
 }
 
 .anuncio{
-  width: 100%;
+  width: 97.5%;
   grid-column-start: span 4;
 }
 
@@ -108,10 +115,14 @@ li {
   height: 100%;
   grid-template-columns: auto auto;
   grid-template-rows: 7.5% auto 7.5% auto;
-  background-color: #000000;
+  background-color: rgba(128, 128, 128, 0.61);
+  border-bottom: 2px solid rgb(255, 255, 255);
+  border-top: 2px solid rgb(255, 255, 255);
+  border-right: 2px solid rgb(255, 255, 255);
 }
 
 .botones{
   grid-column-start: span 2;
   width: 100%;
+  margin-bottom: 15px;
 }
