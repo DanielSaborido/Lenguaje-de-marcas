@@ -44,7 +44,7 @@ button:hover {
   background-color: #515151;
 }
 
-#jugador, #croupier {
+#jugador, #croupier, #almacencarta {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -67,7 +67,7 @@ button:hover {
   align-self: center;
 }
 
-#almacencarta > img{
+#almacencarta > img {
   width: 85%;
 }
 

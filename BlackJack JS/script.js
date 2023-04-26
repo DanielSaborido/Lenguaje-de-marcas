@@ -64,12 +64,14 @@ function empezarPartida() {
         apuesta = 0
         tusfichas.innerHTML = `Tus fichas: ${fichas}`
         fichasApostadas.innerHTML = `Tu apuesta actual: ${apuesta}`
+        jugadorCartas = [];
     }
     else if (sumarPuntaje(croupierCartas) == 21) {
         resultado.innerHTML = `Has perdido`
         apuesta = 0
         tusfichas.innerHTML = `Tus fichas: ${fichas}`
         fichasApostadas.innerHTML = `Tu apuesta actual: ${apuesta}`
+        jugadorCartas = [];
     }
 }
 
@@ -301,7 +303,7 @@ function doblar() {
         }
     }
     else {
-        alert("No se cumplen las condiciones para esta accion")
+        alert('No se cumplen las condiciones para esta accion.')
         return false
     }
 }
@@ -335,41 +337,51 @@ function seguro() {
         }
     }
     else {
-        alert("No se cumplen las condiciones para esta accion")
+        alert('No se cumplen las condiciones para esta accion.')
         return false
     }
 }
 
-function dividir() {//pendiente de completar
+function dividir() {
     if(sumarPuntaje(jugadorCartas) == 0){
         alert('La partida no ha empezado.')
         return false
     }
-    if(jugadorCartas[0] == jugadorCartas[1]){
-        const seguro = apuesta / 2
-        fichas -= seguro;
-        apuesta += seguro;
-        tusfichas.innerHTML = `Tus fichas: ${fichas}`;
-        fichasApostadas.innerHTML = `Tu apuesta actual: ${apuesta}`;
-        const cartaC = baraja.shift()
-        croupierCartas.push(cartaC)
-        const croupierDiv = document.getElementById('croupier').getElementsByTagName('ul')[0]
-        croupierDiv.innerHTML += `<img src='cartas/${cartaC}.png' alt="cartas">`
-        PuntosC.innerHTML = `<h2>Puntuacion del Croupier: ${sumarPuntaje(croupierCartas)}</h2>`
-        if (sumarPuntaje(croupierCartas) == 21) {
-            resultado.innerHTML = `Has acertado`
-            fichas += apuesta * 2
-            apuesta = 0
-            tusfichas.innerHTML = `Tus fichas: ${fichas}`
-            fichasApostadas.innerHTML = `Tu apuesta actual: ${apuesta}`
-            jugadorCartas = [];
-        }
-        else{
-            apuesta -= seguro;
-        }
+    if(jugadorCartas.length > 2){
+        alert('No se cumplen las condiciones para esta accion.')
+        return false
+    }
+    if(cartaExtra.length > 1){
+        alert('Ya tienes una carta almacenada.')
+        return false
+    }
+    if(compararCartas(jugadorCartas)){
+        cartaExtra.push(jugadorCartas.pop())
+        const jugadorDiv = document.getElementById('jugador').getElementsByTagName('ul')[0]
+        jugadorDiv.innerHTML = `<img src='cartas/${jugadorCartas[0]}.png' alt="cartas">`
+        PuntosJ.innerHTML = `<h2>Puntuacion del Jugador: ${sumarPuntaje(jugadorCartas)}</h2>`
+        const almacenDiv = document.getElementById('almacencarta').getElementsByTagName('ul')[0]
+        almacenDiv.innerHTML += `<img src='cartas/${cartaExtra}.png' onclick="usar()" alt="cartas">`
     }
     else {
-        alert("No se cumplen las condiciones para esta accion")
+        alert('No se cumplen las condiciones para esta accion.')
         return false
+    }
+}
+
+function usar() {//pendiente de completar
+    if(sumarPuntaje(jugadorCartas) + sumarPuntaje(cartaExtra) > 21){
+        alert('Te recomiendo no usar esta carta.')
+        return false
+    }
+}
+
+function compararCartas(mano) {
+    const carta = []
+    for (let i = 0; i < mano.length; i++) {
+        carta.push(mano[i].split(' ')[0])
+    }
+    if (carta[0] === carta[1]) {
+        return true
     }
 }
