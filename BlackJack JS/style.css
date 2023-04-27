@@ -63,7 +63,7 @@ button:hover {
   font-weight: solid;
   font-size: 45px;
   color: rgb(255, 0, 0);
-  grid-row-start: span 3;
+  grid-row-start: span 2;
   align-self: center;
 }
 

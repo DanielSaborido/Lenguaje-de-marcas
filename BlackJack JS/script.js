@@ -4,15 +4,18 @@ const croupierDiv = document.getElementById('croupier')
 const almacenDiv = document.getElementById('almacencarta')
 const PuntosJ = document.getElementById('Puntos-J')
 const PuntosC = document.getElementById('Puntos-C')
+const PuntosA = document.getElementById('Puntos-A')
 const resultado = document.getElementById('resultado')
 const tusfichas = document.getElementById('tus-fichas')
 const fichasApostadas = document.getElementById('fichas-apostadas')
+const fichasApostadasE = document.getElementById('fichas-apostadas2')
 const apuestaManual = document.getElementById('manual')
 var jugadorCartas = []
 const croupierCartas = []
-const cartaExtra = []
+var cartaExtra = []
 var fichas = 1000
 var apuesta = 0
+var apuestaE = 0
 tusfichas.innerHTML = `Tus fichas: ${fichas}`
 fichasApostadas.innerHTML = `Tu apuesta actual: ${apuesta}`
 
@@ -50,6 +53,12 @@ function empezarPartida() {
         return false
     }
     crearBaraja()
+    const almacenTit = document.getElementById('almacencarta').getElementsByTagName('h2')[0]
+    PuntosA.innerHTML = `<h2> </h2>`
+    almacenTit.innerHTML = ` `
+    const almacenDiv = document.getElementById('almacencarta').getElementsByTagName('ul')[0]
+    almacenDiv.innerHTML = ` `
+    fichasApostadasE.innerHTML = ` `
     tusfichas.innerHTML = `Tus fichas: ${fichas}`
     resultado.innerHTML = ''
     jugadorCartas.push(baraja.shift(), baraja.shift())
@@ -84,13 +93,33 @@ function tomarCarta() {
     if (resultado.innerHTML != '') {
         return false
     }
-
+    if(cartaExtra.length > 0){
+        const cartaA = baraja.shift()
+        cartaExtra.push(cartaA)
+        const almacenDiv = document.getElementById('almacencarta').getElementsByTagName('ul')[0]
+        almacenDiv.innerHTML += `<img src='cartas/${cartaA}.png' alt="cartas">`
+        PuntosA.innerHTML = `<h2>Puntuacion del Croupier: ${sumarPuntaje(cartaExtra)}</h2>`
+        if (sumarPuntaje(cartaExtra) == 21) {
+            resultado.innerHTML = `Has ganado la segunda mano`
+            fichas += apuestaE * 2
+            apuestaE = 0
+            tusfichas.innerHTML = `Tus fichas: ${fichas}`
+            fichasApostadasE.innerHTML = ` `
+            cartaExtra = [];
+        }
+        else if (sumarPuntaje(cartaExtra) >= 22) {
+            resultado.innerHTML = `Has perdido la segunda mano`
+            apuestaE = 0
+            fichasApostadasE.innerHTML = ` `
+            cartaExtra = [];
+        }
+    }
     const cartaJ = baraja.shift()
-    const cartaC = baraja.shift()
     jugadorCartas.push(cartaJ)
     const jugadorDiv = document.getElementById('jugador').getElementsByTagName('ul')[0]
     jugadorDiv.innerHTML += `<img src='cartas/${cartaJ}.png' alt="cartas">`
     if (sumarPuntaje(croupierCartas) < 17){
+        const cartaC = baraja.shift()
         croupierCartas.push(cartaC)
         const croupierDiv = document.getElementById('croupier').getElementsByTagName('ul')[0]
         croupierDiv.innerHTML += `<img src='cartas/${cartaC}.png' alt="cartas">`
@@ -171,7 +200,7 @@ function sumarPuntaje(mano) {
 }
 
 // Establece las normas del BlackJack a partir de las puntuaciones obtenidas
-function determinarGanador(puntajeJugador = 0, puntajecroupier = 0) {
+function determinarGanador(puntajeJugador = 0, puntajecroupier = 0, puntajealmacen = 0) {
     if (puntajeJugador > 21) {
         apuesta = 0
         tusfichas.innerHTML = `Tus fichas: ${fichas}`
@@ -360,31 +389,24 @@ function dividir() {
         return false
     }
     if(compararCartas(jugadorCartas)){
+        apuesta -= apuesta/2
+        apuestaE = apuesta
+        fichasApostadas.innerHTML = `Tu apuesta actual: ${apuesta}`
+        fichasApostadasE.innerHTML = `Tu segunda apuesta: ${apuesta}`
         cartaExtra.push(jugadorCartas.pop())
         const jugadorDiv = document.getElementById('jugador').getElementsByTagName('ul')[0]
         jugadorDiv.innerHTML = `<img src='cartas/${jugadorCartas[0]}.png' alt="cartas">`
         PuntosJ.innerHTML = `<h2>Puntuacion del Jugador: ${sumarPuntaje(jugadorCartas)}</h2>`
+        const almacenTit = document.getElementById('almacencarta').getElementsByTagName('h2')[0]
+        PuntosA.innerHTML = `<h2>Puntuacion de segunda mano: ${sumarPuntaje(cartaExtra)}</h2>`
+        almacenTit.innerHTML = `Carta almacenada`
         const almacenDiv = document.getElementById('almacencarta').getElementsByTagName('ul')[0]
-        almacenDiv.innerHTML += `<img src='cartas/${cartaExtra}.png' onclick="usar()" alt="cartas">`
+        almacenDiv.innerHTML += `<img src='cartas/${cartaExtra}.png' alt="cartas">`
     }
     else {
         alert('No se cumplen las condiciones para esta accion.')
         return false
     }
-}
-
-function usar() {//pendiente de completar
-    if(sumarPuntaje(jugadorCartas) + sumarPuntaje(cartaExtra) > 21){
-        alert('Te recomiendo no usar esta carta.')
-        return false
-    }
-    const cartaJ = cartaExtra.shift()
-    jugadorCartas.push(cartaJ)
-    const jugadorDiv = document.getElementById('jugador').getElementsByTagName('ul')[0]
-    jugadorDiv.innerHTML += `<img src='cartas/${cartaJ}.png' alt="cartas">`
-    PuntosJ.innerHTML = `<h2>Puntuacion del Jugador: ${sumarPuntaje(jugadorCartas)}</h2>`
-    const almacenDiv = document.getElementById('almacencarta').getElementsByTagName('ul')[0]
-    almacenDiv.innerHTML = ``
 }
 
 function compararCartas(mano) {
