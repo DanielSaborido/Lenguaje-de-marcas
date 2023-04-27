@@ -86,11 +86,12 @@ function empezarPartida() {
 
 // Función para agregar una nueva carta a la mano del jugador
 function tomarCarta() {
-    if(sumarPuntaje(jugadorCartas) == 0){
+    if(sumarPuntaje(jugadorCartas) == 0 && sumarPuntaje(cartaExtra) == 0){
         alert('La partida no ha empezado.')
         return false
     }
     if (resultado.innerHTML != '') {
+        alert('La partida no ha empezado.')
         return false
     }
     if(cartaExtra.length > 0){
@@ -165,14 +166,14 @@ function plantarse() {
         alert('La partida no ha empezado.')
         return false
     }
-    while (sumarPuntaje(croupierCartas) < 17 || sumarPuntaje(croupierCartas) < sumarPuntaje(jugadorCartas)){
+    while (sumarPuntaje(croupierCartas) < 17 || sumarPuntaje(croupierCartas) < sumarPuntaje(jugadorCartas) || sumarPuntaje(croupierCartas) < sumarPuntaje(cartaExtra)){
         const cartaC = baraja.shift()
         croupierCartas.push(cartaC)
         const croupierDiv = document.getElementById('croupier').getElementsByTagName('ul')[0]
         croupierDiv.innerHTML += `<img src='cartas/${cartaC}.png' alt="cartas">`
     }
     PuntosC.innerHTML = `<h2>Puntuacion del Croupier: ${sumarPuntaje(croupierCartas)}</h2>`
-    resultado.innerHTML = `${determinarGanador(sumarPuntaje(jugadorCartas), sumarPuntaje(croupierCartas))}`
+    resultado.innerHTML = `${determinarGanador(sumarPuntaje(jugadorCartas), sumarPuntaje(croupierCartas), sumarPuntaje(cartaExtra))}`
     jugadorCartas = [];
 }
 
@@ -203,41 +204,93 @@ function sumarPuntaje(mano) {
 function determinarGanador(puntajeJugador = 0, puntajecroupier = 0, puntajealmacen = 0) {
     if (puntajeJugador > 21) {
         apuesta = 0
+        apuestaE = 0
+        fichasApostadasE.innerHTML = ` `
         tusfichas.innerHTML = `Tus fichas: ${fichas}`
         fichasApostadas.innerHTML = `Tu apuesta actual: ${apuesta}`
         jugadorCartas = [];
+        cartaExtra = [];
         return 'Ganó el croupier'
     }
     else if (puntajecroupier > 21) {
         fichas += apuesta * 2
+        fichas += apuestaE * 2
         apuesta = 0
+        apuestaE = 0
+        fichasApostadasE.innerHTML = ` `
         tusfichas.innerHTML = `Tus fichas: ${fichas}`
         fichasApostadas.innerHTML = `Tu apuesta actual: ${apuesta}`
         jugadorCartas = [];
+        cartaExtra = [];
         return 'Ganaste'
     }
     else if (puntajeJugador > puntajecroupier) {
         fichas += apuesta * 2
+        fichas += apuestaE * 2
         apuesta = 0
+        apuestaE = 0
+        fichasApostadasE.innerHTML = ` `
         tusfichas.innerHTML = `Tus fichas: ${fichas}`
         fichasApostadas.innerHTML = `Tu apuesta actual: ${apuesta}`
         jugadorCartas = [];
+        cartaExtra = [];
         return 'Ganaste'
     }
-    else if (puntajecroupier > puntajeJugador) {
+    else if (puntajealmacen > puntajecroupier) {
+        fichas += apuesta * 2
+        fichas += apuestaE * 2
         apuesta = 0
+        apuestaE = 0
+        fichasApostadasE.innerHTML = ` `
         tusfichas.innerHTML = `Tus fichas: ${fichas}`
         fichasApostadas.innerHTML = `Tu apuesta actual: ${apuesta}`
         jugadorCartas = [];
+        cartaExtra = [];
+        return 'Ganaste'
+    }
+    else if (puntajecroupier > puntajeJugador && puntajecroupier > puntajealmacen) {
+        apuesta = 0
+        apuestaE = 0
+        fichasApostadasE.innerHTML = ` `
+        tusfichas.innerHTML = `Tus fichas: ${fichas}`
+        fichasApostadas.innerHTML = `Tu apuesta actual: ${apuesta}`
+        jugadorCartas = [];
+        cartaExtra = [];
         return 'Ganó el croupier'
     }
     else if (puntajeJugador = puntajecroupier) {
         fichas += apuesta
+        fichas += apuestaE
         apuesta = 0
+        apuestaE = 0
+        fichasApostadasE.innerHTML = ` `
         tusfichas.innerHTML = `Tus fichas: ${fichas}`
         fichasApostadas.innerHTML = `Tu apuesta actual: ${apuesta}`
         jugadorCartas = [];
+        cartaExtra = [];
         return 'Empataste'
+    }
+    else if (puntajealmacen > 21) {
+        apuesta = 0
+        apuestaE = 0
+        fichasApostadasE.innerHTML = ` `
+        tusfichas.innerHTML = `Tus fichas: ${fichas}`
+        fichasApostadas.innerHTML = `Tu apuesta actual: ${apuesta}`
+        jugadorCartas = [];
+        cartaExtra = [];
+        return 'Ganó el croupier'
+    }
+    else if (puntajealmacen = puntajecroupier) {
+        fichas += apuesta
+        fichas += apuestaE
+        apuesta = 0
+        apuestaE = 0
+        fichasApostadasE.innerHTML = ` `
+        tusfichas.innerHTML = `Tus fichas: ${fichas}`
+        fichasApostadas.innerHTML = `Tu apuesta actual: ${apuesta}`
+        jugadorCartas = [];
+        cartaExtra = [];
+        return 'Empataste la segunda mano'
     }
 }
 
@@ -264,7 +317,8 @@ function apostarFichas(apostados = fichas) {
 apuestaManual.addEventListener('keydown', function(event) {
     if (event.key === "Enter") {
         event.preventDefault();
-        var value = parseInt(this.value);
+        var value = parseFloat(this.value);
+        value = Number(value.toFixed(2));
         apostarFichas(value);
         this.value='';
     }
@@ -284,16 +338,21 @@ function limpiarApuesta() {
 }
 
 function rendirse() {
-    if(sumarPuntaje(jugadorCartas) == 0){
+    if(sumarPuntaje(jugadorCartas) == 0 && sumarPuntaje(cartaExtra) == 0){
         alert('La partida no ha empezado.')
         return false
     }
     resultado.innerHTML = `Te has rendido`;
     fichas += apuesta / 2;
+    fichas += apuestaE / 2;
     apuesta = 0;
+    apuestaE = 0;
+    fichas = Number(fichas.toFixed(2))
+    fichasApostadasE.innerHTML = ` `
     tusfichas.innerHTML = `Tus fichas: ${fichas}`;
     fichasApostadas.innerHTML = `Tu apuesta actual: ${apuesta}`;
     jugadorCartas = [];
+    cartaExtra = [];
 }
 
 function doblar() {
@@ -384,15 +443,11 @@ function dividir() {
         alert('No se cumplen las condiciones para esta accion.')
         return false
     }
-    if(cartaExtra.length > 0){
-        alert('Ya tienes una carta almacenada.')
-        return false
-    }
     if(compararCartas(jugadorCartas)){
-        apuesta -= apuesta/2
-        apuestaE = apuesta
-        fichasApostadas.innerHTML = `Tu apuesta actual: ${apuesta}`
-        fichasApostadasE.innerHTML = `Tu segunda apuesta: ${apuesta}`
+        apuestaE = apuesta / 2
+        fichas -= apuestaE
+        tusfichas.innerHTML = `Tus fichas: ${fichas}`
+        fichasApostadasE.innerHTML = `Tu segunda apuesta: ${apuestaE}`
         cartaExtra.push(jugadorCartas.pop())
         const jugadorDiv = document.getElementById('jugador').getElementsByTagName('ul')[0]
         jugadorDiv.innerHTML = `<img src='cartas/${jugadorCartas[0]}.png' alt="cartas">`
