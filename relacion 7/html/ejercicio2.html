@@ -10,21 +10,24 @@
     <h1>Cliente</h1>
     <form method="post">
         <label>Nombre: </label>
-        <input type="text" id="nombre" placeholder="Inserta su nombre." required/><br>
+        <input type="text" id="nombre" required/><br>
         <label>Apellidos: </label>
-        <input type="text" id="apellidos" placeholder="Inserta sus apellidos." required/><br>
+        <input type="text" id="apellidos" required/><br>
         <label>Edad: </label>
-        <input type="text" id="edad" placeholder="Inserta su edad." required/>
+        <input type="date" id="edad" required/>
     </form>
     <h1>Domicilio</h1>
     <form method="post">
-        <label>Apellidos: </label>
-        <input type="text" id="apellidos" placeholder="Inserta sus apellidos." required/><br>
-        <label>Edad: </label>
-        <input id="manual" class="anuncio" step="0.01" type="number"/><br>
-        <label>Nº Telf.: </label>
-        <input id="manual" class="anuncio" step="0.01" type="number"/>
+        <label>Calle: </label>
+        <input type="text" id="calle" required/><br>
+        <label>Numero: </label>
+        <input type="number" id="numero" required/><br>
+        <label>C.P.: </label>
+        <input type="number" id="codigop" required/>
     </form>
+    <input type="submit" value="Enviar" onclick="Validacion()"/>
+    <input type="reset"/>
+    <div id="resultado"></div>
 </body>
     <script src="../java/ejercicio2.js"></script>
 </html>
