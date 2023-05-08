@@ -7,10 +7,24 @@
     <title>Ejercicio 3</title>
 </head>
 <body>
-    <h1>Relacion 5</h1>
-    <h2>Actividad 3</h2>
-    <p>Muestre la cadena de texto “Otra nueva ley de ‘Educación’ nos viene encima y los dos principales “partidos” sin ponerse de acuerdo..” </p>
-    <p id="oracion"></p>
+    <form method="post">
+        <label>Nombre: </label>
+        <input type="text" id="nombre" required/><br>
+        <label>Edad: </label>
+        <input type="number" id="edad" required/><br>
+        <label for="opciones">Interes:</label>
+        <select id="opciones" name="opciones">
+          <option value="Elegir">Elegir</option>
+          <option value="jesus">jesus</option>
+          <option value="jesus">jesus</option>
+          <option value="jesus">jesus</option>
+          <option value="jesus">jesus</option>
+          <option value="jesus">jesus</option>
+        </select><br>
+        <input type="submit" value="Enviar" onclick="Validacion()"/>
+        <input type="reset"/>
+    </form>
+    <div id="resultado"></div>
 </body>
     <script src="../java/ejercicio3.js"></script>
 </html>

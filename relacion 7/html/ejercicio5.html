@@ -7,10 +7,19 @@
     <title>Ejercicio 5</title>
 </head>
 <body>
-    <h1>Relacion 5</h1>
-    <h2>Actividad 5</h2>
-    <p>Mostrar una cadena de texto que incluya dos saltos de línea. </p>
-    <p id="oracion"></p>
+    <form method="post">
+        <label>Campo 1: </label>
+        <input type="text" id="campo1" required/><br>
+        <label>Campo 2 (numerico): </label>
+        <input type="number" id="campo2" required/><br>
+        <label>Codigo Postal: </label>
+        <input type="number" id="codigopost" required/><br>
+        <label>DNI: </label>
+        <input type="text" id="dni" required/><br>
+        <label>Correo: </label>
+        <input type="text" id="correo" required/><br>
+    </form>
+    <div id="resultado"></div>
 </body>
     <script src="../java/ejercicio5.js"></script>
 </html>
