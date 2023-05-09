@@ -10,12 +10,34 @@
     <form method="post">
         <label>Nombre: </label>
         <input type="text" id="nombre" required/><br>
+        <label>Apellidos: </label>
+        <input type="text" id="apellidos" required/><br>
+        <label>Direccion: </label>
+        <input type="text" id="direccion" required/><br>
+        <label>Comentarios: </label>
+        <input type="text" id="comentarios" required/><br>
+        <label>Codigo postal: </label>
+        <input type="number" id="codigop" required/><br>
+        <label>Telefono: </label>
+        <input type="number" id="telefono" required/><br>
         <label>Edad: </label>
         <input type="number" id="edad" required/><br>
         <label>Correo: </label>
         <input type="text" id="correo" required/><br>
-        <label for="opciones">Sexo:</label>
-        <select id="opciones" name="opciones">
+        <label for="provincias">Provincia:</label>
+        <select id="provincias" name="provincias">
+          <option value="Elegir">Valor por defecto</option>
+          <option value="cadiz">cadiz</option>
+          <option value="sevilla">sevilla</option>
+          <option value="malaga">malaga</option>
+          <option value="cordoba">cordoba</option>
+          <option value="huelva">huelva</option>
+          <option value="granada">granada</option>
+          <option value="almeria">almeria</option>
+          <option value="jaen">jaen</option>
+        </select><br>
+        <label for="genero">Sexo:</label>
+        <select id="genero" name="genero">
           <option value="Elegir">Valor por defecto</option>
           <option value="hombre">hombre</option>
           <option value="mujer">mujer</option>
@@ -24,18 +46,10 @@
           <option value="otros">otros</option>
           <option value="si porfavor">si por favor</option>
         </select><br>
-        <label>Un checkbox: </label>
-        <input type="checkbox" id="caja" name="caja" value="Bike">
-        <label for="caja"> Haz clik en mi</label><br>
-        <label>Selecciona una opcion: </label><br>
-        <input type="radio" id="boton1" name="fav_language" value="boton1">
-        <label for="boton1">Boton 1</label><br>
-        <input type="radio" id="boton2" name="fav_language" value="boton2">
-        <label for="boton2">Boton 2</label><br>
-        <input type="radio" id="boton3" name="fav_language" value="boton3">
-        <label for="boton3">Boton 3</label><br>
-        <input type="submit" value="Enviar" onclick="Validacion()"/>
-        <input type="reset"/>
+        <input type="checkbox" id="condiciones" name="condiciones">
+        <label for="condiciones"> Condiciones Generales</label><br>
+        <input type="checkbox" id="aviso" name="aviso">
+        <label for="aviso"> Avisos Legales</label><br>
 </body>
     <script src="../java/ejercicio6.js"></script>
 </html>

@@ -4,13 +4,18 @@ resultado.innerHTML = ''
 function Validacion() {
     var nombre = document.getElementById("nombre").value;
     var apellidos = document.getElementById("apellidos").value;
-    var calle = document.getElementById("calle").value;
+    var direccion = document.getElementById("direccion").value;
+    var comentarios = document.getElementById("comentarios").value;
+    var telefono = document.getElementById("telefono").value;
     var codigop = document.getElementById("codigop").value;
     var edad = document.getElementById("edad").value;
     var correo = document.getElementById("correo").value;
-    var opcion = document.getElementById("opciones").value;
+    var provincia = document.getElementById("provincias").value;
+    var sexo = document.getElementById("genero").value;
+    var condiciones = document.getElementById("condiciones").checked;
+	var aviso = document.getElementById("aviso").checked;
 
-    if (nombre == "" || edad == "" || correo == "") {
+    if (nombre == "" || apellidos == "" || direccion == "" || comentarios == "" || telefono == "" || edad == "" || codigop == "" || correo == "") {
         alert("Faltan datos por introducirse.");
         return false;
     }
@@ -24,6 +29,11 @@ function Validacion() {
     letras = /^[A-Za-z]+( [A-Za-z]+)*$/;
     if (!apellidos.match(letras) || apellidos.split(' ').some(a => a.length < 3)) {
         alert("El apellido no es valido.");
+        return false;
+    }
+
+    if (telefono.length != 9 || isNaN(telefono)) {
+        alert("El telefono no es valido.");
         return false;
     }
 
@@ -43,8 +53,13 @@ function Validacion() {
         return false;
     }
 
-    if (opcion == "Elegir") {
+    if (provincia == "Elegir" || sexo == "Elegir") {
         alert("No has modificado el select.");
+        return false;
+    }
+
+    if (!condiciones || !aviso) {
+        alert("Debe aceptar las Condiciones Generales y Avisos Legales para continuar.");
         return false;
     }
 
