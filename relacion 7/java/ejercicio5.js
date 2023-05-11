@@ -7,6 +7,11 @@ function Validacion() {
     var codigopost = document.getElementById("codigopost").value;
     var dni = document.getElementById("dni").value;
     var correo = document.getElementById("correo").value;
+    var codigosCadiz = [];
+
+    for (var i = 11000; i <= 11999; i++) {
+        codigosCadiz.push(i);
+    }
 
     if (campo1 == "" || campo2 == "" || codigopost == "" || dni == "" || correo == "") {
         alert("Faltan datos por introducirse.");
@@ -19,7 +24,7 @@ function Validacion() {
         return false;
     }
 
-    if (codigopost.length != 5 || isNaN(codigopost)) {
+    if (codigopost.length != 5 || isNaN(codigopost) || !codigosCadiz.includes(codigopost)) {
         alert("El codigo postal no es valido.");
         return false;
     }
