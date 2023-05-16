@@ -3,13 +3,28 @@
 <head>
     <meta enctype="utf-8">
     <title>Cuenta Atras</title>
+</head>
+<body>
+    <div id="numeros">
+        <img src="0.png" id="cuenta4">
+        <img src="0.png" id="cuenta3">
+        <img src="0.png" id="cuenta2">
+        <img src="0.png" id="cuenta1">
+    </div>
+	<input type="number" id="cuentaInput" oninput="inputModificado()">
+    <button id="reiniciarBoton1" onclick="detenerCuenta()">Detener</button>
+    <button id="reiniciarBoton2" onclick="reanudarCuenta()">Reanudar</button>
+    <button id="reiniciarBoton3" onclick="reiniciarCuenta()">Reiniciar</button>
+</body>
     <script>
         var intervalId; // Variable para almacenar el ID del intervalo
+		const tiempo = document.getElementById('cuentaInput')
+		var reinicio;
 
         // Variables de la cuenta regresiva
         var m = 0;
         var c = 0;
-        var d = 2;
+        var d = 0;
         var u = 0;
 
         // Función que se ejecuta al abrir la página y define lo que se hace cada segundo
@@ -22,11 +37,7 @@
 
         // Función para reiniciar la cuenta regresiva
         function reiniciarCuenta() {
-			m = 0;
-			c = 0;
-			d = 2;
-			u = 0;
-            actualizarNumeros();
+			inputModificado(reinicio)
         }
 
         // Función para detener la cuenta regresiva
@@ -36,7 +47,7 @@
 
         // Función para reanudar la cuenta regresiva
         function reanudarCuenta() {
-            clearInterval(intervalId);
+            detenerCuenta();
             intervalId = setInterval(marchaAtras, 500);
         }
 
@@ -69,25 +80,56 @@
                 m -= 1;
             }
             if (u == 0 && d == 0 && c == 0 && m == 0) {
-				document.getElementById("reiniciarBoton").style.display = "none";
+				document.getElementById("cuentaInput").style.display = "none";
+				document.getElementById("reiniciarBoton1").style.display = "none";
+				document.getElementById("reiniciarBoton2").style.display = "none";
+				document.getElementById("reiniciarBoton3").style.display = "none";
                 setTimeout(function() {
+					alert('Se te acabo el tiempo.')
                     window.close();
-                }, 2500);
+                }, 1000);
             }
-
             actualizarNumeros();
         }
+		
+        // Función que se ejecuta cuando se modifica el input
+        function inputModificado(numero) {
+            if (numero.length === 4) {
+                m = parseInt(numero.charAt(0));
+                c = parseInt(numero.charAt(1));
+                d = parseInt(numero.charAt(2));
+                u = parseInt(numero.charAt(3));
+			}
+            if (numero.length === 3) {
+				m = 0;
+                c = parseInt(numero.charAt(0));
+                d = parseInt(numero.charAt(1));
+                u = parseInt(numero.charAt(2));
+			}
+            if (numero.length === 2) {
+                m = 0;
+                c = 0;
+                d = parseInt(numero.charAt(0));
+                u = parseInt(numero.charAt(1));
+			}
+            if (numero.length === 1) {
+                m = 0;
+                c = 0;
+                d = 0;
+                u = parseInt(numero.charAt(0));
+			}
+			actualizarNumeros();
+			detenerCuenta();
+			cuentaAtras();
+        }
+		tiempo.addEventListener('keydown', function(event) {
+			if (event.key === "Enter") {
+				event.preventDefault();
+				var valor = this.value;
+				reinicio = valor;
+				inputModificado(valor);
+				this.value='';
+			}
+		});
     </script>
-</head>
-<body onload="cuentaAtras()">
-    <div id="numeros">
-        <img src="" id="cuenta4">
-        <img src="" id="cuenta3">
-        <img src="" id="cuenta2">
-        <img src="" id="cuenta1">
-    </div>
-    <button onclick="detenerCuenta()">Detener</button>
-    <button onclick="reanudarCuenta()">Reanudar</button>
-    <button id="reiniciarBoton" onclick="reiniciarCuenta()">Reiniciar</button>
-</body>
 </html>
