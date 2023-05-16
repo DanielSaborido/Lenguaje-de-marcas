@@ -8,7 +8,7 @@
 
         // Variables de la cuenta regresiva
         var m = 0;
-        var c = 1;
+        var c = 0;
         var d = 2;
         var u = 0;
 
@@ -20,6 +20,15 @@
             intervalId = setInterval(marchaAtras, 500);
         }
 
+        // Función para reiniciar la cuenta regresiva
+        function reiniciarCuenta() {
+			m = 0;
+			c = 0;
+			d = 2;
+			u = 0;
+            actualizarNumeros();
+        }
+
         // Función para detener la cuenta regresiva
         function detenerCuenta() {
             clearInterval(intervalId);
@@ -27,6 +36,7 @@
 
         // Función para reanudar la cuenta regresiva
         function reanudarCuenta() {
+            clearInterval(intervalId);
             intervalId = setInterval(marchaAtras, 500);
         }
 
@@ -59,9 +69,10 @@
                 m -= 1;
             }
             if (u == 0 && d == 0 && c == 0 && m == 0) {
+				document.getElementById("reiniciarBoton").style.display = "none";
                 setTimeout(function() {
                     window.close();
-                }, 2000);
+                }, 2500);
             }
 
             actualizarNumeros();
@@ -77,5 +88,6 @@
     </div>
     <button onclick="detenerCuenta()">Detener</button>
     <button onclick="reanudarCuenta()">Reanudar</button>
+    <button id="reiniciarBoton" onclick="reiniciarCuenta()">Reiniciar</button>
 </body>
 </html>
