@@ -22,10 +22,13 @@
 		var reinicio;
 
         // Variables de la cuenta regresiva
-        var m = 0;
-        var c = 0;
-        var d = 0;
-        var u = 0;
+		
+        var h2 = 0;
+        var h1 = 0;
+        var m2 = 0;
+        var m1 = 0;
+        var s2 = 0;
+        var s1 = 0;
 
         // Función que se ejecuta al abrir la página y define lo que se hace cada segundo
         function cuentaAtras() {
@@ -53,33 +56,48 @@
 
         // Función que actualiza los números de la cuenta regresiva
         function actualizarNumeros() {
-            document.getElementById("cuenta1").src = u + ".png";
-            document.getElementById("cuenta2").src = d + ".png";
-            document.getElementById("cuenta3").src = c + ".png";
-            document.getElementById("cuenta4").src = m + ".png";
+            document.getElementById("cuenta1").src = s1 + ".png";
+            document.getElementById("cuenta2").src = s2 + ".png";
+            document.getElementById("cuenta3").src = m1 + ".png";
+            document.getElementById("cuenta4").src = m2 + ".png";
         }
 
         // Función que se ejecuta cada segundo para la cuenta regresiva
         function marchaAtras() {
-            if (u > 0) {
-                u -= 1;
+            if (s1 > 0) {
+                s1 -= 1;
             }
-            if (u == 0 && d > 0) {
-                u = 9;
-                d -= 1;
+            if (s1 == 0 && s2 > 0) {
+                s1 = 9;
+                s2 -= 1;
             }
-            if (u == 0 && d == 0 && c > 0) {
-                u = 9;
-                d = 9;
-                c -= 1;
+            if (s1 == 0 && s2 == 0 && m1 > 0) {
+                s1 = 9;
+                s2 = 5;
+                m1 -= 1;
             }
-            if (u == 0 && d == 0 && c == 0 && m > 0) {
-                u = 9;
-                d = 9;
-                c = 9;
-                m -= 1;
+            if (s1 == 0 && s2 == 0 && m1 == 0 && m2 > 0) {
+                s1 = 9;
+                s2 = 5;
+                m1 = 9;
+                m2 -= 1;
             }
-            if (u == 0 && d == 0 && c == 0 && m == 0) {
+            if (s1 == 0 && s2 == 0 && m1 == 0 && m2 == 0 && h1 > 0) {
+                s1 = 9;
+                s2 = 5;
+                m1 = 9;
+                m2 = 5;
+                h1 -= 1;
+            }
+            if (s1 == 0 && s2 == 0 && m1 == 0 && m2 == 0 && h1 == 0 && h2 > 0) {
+                s1 = 9;
+                s2 = 5;
+                m1 = 9;
+                m2 = 5;
+                h1 = 9;
+                h2 -= 1;
+            }
+            if (s1 == 0 && s2 == 0 && m1 == 0 && m2 == 0 && h1 == 0 && h2 == 0) {
 				document.getElementById("cuentaInput").style.display = "none";
 				document.getElementById("reiniciarBoton1").style.display = "none";
 				document.getElementById("reiniciarBoton2").style.display = "none";
@@ -94,29 +112,53 @@
 		
         // Función que se ejecuta cuando se modifica el input
         function inputModificado(numero) {
+            if (numero.length === 6) {
+                h2 = parseInt(numero.charAt(0));
+                h1 = parseInt(numero.charAt(1));
+                m2 = parseInt(numero.charAt(2));
+                m1 = parseInt(numero.charAt(3));
+                s2 = parseInt(numero.charAt(4));
+                s1 = parseInt(numero.charAt(5));
+			}
+            if (numero.length === 5) {
+                h2 = 0;
+                h1 = parseInt(numero.charAt(0));
+				m2 = parseInt(numero.charAt(1));
+                m1 = parseInt(numero.charAt(2));
+                s2 = parseInt(numero.charAt(3));
+                s1 = parseInt(numero.charAt(4));
+			}
             if (numero.length === 4) {
-                m = parseInt(numero.charAt(0));
-                c = parseInt(numero.charAt(1));
-                d = parseInt(numero.charAt(2));
-                u = parseInt(numero.charAt(3));
+                h2 = 0;
+                h1 = 0;
+                m2 = parseInt(numero.charAt(0));
+                m1 = parseInt(numero.charAt(1));
+                s2 = parseInt(numero.charAt(2));
+                s1 = parseInt(numero.charAt(3));
 			}
             if (numero.length === 3) {
-				m = 0;
-                c = parseInt(numero.charAt(0));
-                d = parseInt(numero.charAt(1));
-                u = parseInt(numero.charAt(2));
+                h2 = 0;
+                h1 = 0;
+				m2 = 0;
+                m1 = parseInt(numero.charAt(0));
+                s2 = parseInt(numero.charAt(1));
+                s1 = parseInt(numero.charAt(2));
 			}
             if (numero.length === 2) {
-                m = 0;
-                c = 0;
-                d = parseInt(numero.charAt(0));
-                u = parseInt(numero.charAt(1));
+                h2 = 0;
+                h1 = 0;
+                m2 = 0;
+                m1 = 0;
+                s2 = parseInt(numero.charAt(0));
+                s1 = parseInt(numero.charAt(1));
 			}
             if (numero.length === 1) {
-                m = 0;
-                c = 0;
-                d = 0;
-                u = parseInt(numero.charAt(0));
+                h2 = 0;
+                h1 = 0;
+                m2 = 0;
+                m1 = 0;
+                s2 = 0;
+                s1 = parseInt(numero.charAt(0));
 			}
 			actualizarNumeros();
 			detenerCuenta();
