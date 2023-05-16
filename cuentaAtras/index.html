@@ -1,66 +1,81 @@
 <!doctype html5>
 <html>
 <head>
-	<meta enctype="utf-8">
-	<title>Cuenta Atras</title>
-	<script>
-		// Una variable es un espacio para almacenar datos (por ahora simples).
-		var m = 0;
-		var c = 0;
-		var d = 2;
-		var u = 0;
-		
-		// Funcion que se ejecuta al abrir la pagina y que define lo se hace cada segundo
-		function cuentaAtras() {
-			// Con setInterval definimos acciones que se realizan cada cierto tiempo.
-			// El tiempo se expresa en mil�simas de segundo.
-			// En este caso se ejecuta marchaAtras cada segundo = 1000 milisegundos.
-			setInterval(marchaAtras, 500);
-		}
+    <meta enctype="utf-8">
+    <title>Cuenta Atras</title>
+    <script>
+        var intervalId; // Variable para almacenar el ID del intervalo
 
-		// 
-		function marchaAtras() {
-			// Esta instrucci�n ejecuta c�digo condicional.
-			// La parte del 'if' si se cumple la condici�n y 
-			// la del 'else' si no se cumple.
-			if (u > 0){
-				u -= 1;
-			}
-			if (u == 0 && d > 0){
-				u = 9;
-				d -= 1;
-			}
-			if (u == 0 && d == 0 && c > 0){
-				u = 9;
-				d = 9;
-				c -= 1;
-			}
-			if (u == 0 && d == 0 && c == 0 && m > 0){
-				u = 9;
-				d = 9;
-				c = 9;
-				m -= 1;
-			}
-			if (u == 0 && d == 0 && c == 0 && m == 0){
-				setTimeout(function() {
-					window.close();
-				}, 2000);
-			}
+        // Variables de la cuenta regresiva
+        var m = 0;
+        var c = 1;
+        var d = 2;
+        var u = 0;
 
-			// Cambiamos parte de la p�gina usando DOM
-			document.getElementById("cuenta1").src = u + ".png";
-			document.getElementById("cuenta2").src = d + ".png";
-			document.getElementById("cuenta3").src = c + ".png";
-			document.getElementById("cuenta4").src = m + ".png";
-		}
-	</script>
+        // Función que se ejecuta al abrir la página y define lo que se hace cada segundo
+        function cuentaAtras() {
+            // Definimos acciones que se realizan cada cierto tiempo usando setInterval
+            // El tiempo se expresa en milisegundos.
+            // En este caso, se ejecuta marchaAtras cada 500 milisegundos.
+            intervalId = setInterval(marchaAtras, 500);
+        }
+
+        // Función para detener la cuenta regresiva
+        function detenerCuenta() {
+            clearInterval(intervalId);
+        }
+
+        // Función para reanudar la cuenta regresiva
+        function reanudarCuenta() {
+            intervalId = setInterval(marchaAtras, 500);
+        }
+
+        // Función que actualiza los números de la cuenta regresiva
+        function actualizarNumeros() {
+            document.getElementById("cuenta1").src = u + ".png";
+            document.getElementById("cuenta2").src = d + ".png";
+            document.getElementById("cuenta3").src = c + ".png";
+            document.getElementById("cuenta4").src = m + ".png";
+        }
+
+        // Función que se ejecuta cada segundo para la cuenta regresiva
+        function marchaAtras() {
+            if (u > 0) {
+                u -= 1;
+            }
+            if (u == 0 && d > 0) {
+                u = 9;
+                d -= 1;
+            }
+            if (u == 0 && d == 0 && c > 0) {
+                u = 9;
+                d = 9;
+                c -= 1;
+            }
+            if (u == 0 && d == 0 && c == 0 && m > 0) {
+                u = 9;
+                d = 9;
+                c = 9;
+                m -= 1;
+            }
+            if (u == 0 && d == 0 && c == 0 && m == 0) {
+                setTimeout(function() {
+                    window.close();
+                }, 2000);
+            }
+
+            actualizarNumeros();
+        }
+    </script>
 </head>
 <body onload="cuentaAtras()">
-	<div id="numeros">
-		<img src="" id="cuenta4">
-		<img src="" id="cuenta3">
-		<img src="" id="cuenta2">
-		<img src="" id="cuenta1">
-	</div>
+    <div id="numeros">
+        <img src="" id="cuenta4">
+        <img src="" id="cuenta3">
+        <img src="" id="cuenta2">
+        <img src="" id="cuenta1">
+    </div>
+    <button onclick="detenerCuenta()">Detener</button>
+    <button onclick="reanudarCuenta()">Reanudar</button>
 </body>
 </html>
