@@ -6,8 +6,12 @@
 </head>
 <body>
     <div id="numeros">
+        <img src="0.png" id="cuenta6">
+        <img src="0.png" id="cuenta5">
+        <img src="puntos.jpeg" id="puntos">
         <img src="0.png" id="cuenta4">
         <img src="0.png" id="cuenta3">
+        <img src="puntos.jpeg" id="puntos">
         <img src="0.png" id="cuenta2">
         <img src="0.png" id="cuenta1">
     </div>
@@ -60,6 +64,8 @@
             document.getElementById("cuenta2").src = s2 + ".png";
             document.getElementById("cuenta3").src = m1 + ".png";
             document.getElementById("cuenta4").src = m2 + ".png";
+            document.getElementById("cuenta5").src = h1 + ".png";
+            document.getElementById("cuenta6").src = h2 + ".png";
         }
 
         // Función que se ejecuta cada segundo para la cuenta regresiva
@@ -119,6 +125,10 @@
                 m1 = parseInt(numero.charAt(3));
                 s2 = parseInt(numero.charAt(4));
                 s1 = parseInt(numero.charAt(5));
+				if (s2 > 5 || m2 > 5){
+					alert('Se introdujo un valor inexistente.');
+					return false;
+				}
 			}
             if (numero.length === 5) {
                 h2 = 0;
@@ -127,6 +137,10 @@
                 m1 = parseInt(numero.charAt(2));
                 s2 = parseInt(numero.charAt(3));
                 s1 = parseInt(numero.charAt(4));
+				if (s2 > 5 || m2 > 5){
+					alert('Se introdujo un valor inexistente.');
+					return false;
+				}
 			}
             if (numero.length === 4) {
                 h2 = 0;
@@ -135,6 +149,10 @@
                 m1 = parseInt(numero.charAt(1));
                 s2 = parseInt(numero.charAt(2));
                 s1 = parseInt(numero.charAt(3));
+				if (s2 > 5 || m2 > 5){
+					alert('Se introdujo un valor inexistente.');
+					return false;
+				}
 			}
             if (numero.length === 3) {
                 h2 = 0;
@@ -143,6 +161,10 @@
                 m1 = parseInt(numero.charAt(0));
                 s2 = parseInt(numero.charAt(1));
                 s1 = parseInt(numero.charAt(2));
+				if (s2 > 5){
+					alert('Se introdujo un valor inexistente.');
+					return false;
+				}
 			}
             if (numero.length === 2) {
                 h2 = 0;
@@ -151,6 +173,10 @@
                 m1 = 0;
                 s2 = parseInt(numero.charAt(0));
                 s1 = parseInt(numero.charAt(1));
+				if (s2 > 5){
+					alert('Se introdujo un valor inexistente.');
+					return false;
+				}
 			}
             if (numero.length === 1) {
                 h2 = 0;
