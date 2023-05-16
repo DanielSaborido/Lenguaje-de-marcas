@@ -5,31 +5,62 @@
 	<title>Cuenta Atras</title>
 	<script>
 		// Una variable es un espacio para almacenar datos (por ahora simples).
-		var n = 9;
+		var m = 0;
+		var c = 0;
+		var d = 2;
+		var u = 0;
 		
 		// Funcion que se ejecuta al abrir la pagina y que define lo se hace cada segundo
 		function cuentaAtras() {
 			// Con setInterval definimos acciones que se realizan cada cierto tiempo.
-			// El tiempo se expresa en milésimas de segundo.
+			// El tiempo se expresa en milï¿½simas de segundo.
 			// En este caso se ejecuta marchaAtras cada segundo = 1000 milisegundos.
-			setInterval(marchaAtras, 1000);
+			setInterval(marchaAtras, 500);
 		}
 
 		// 
 		function marchaAtras() {
-			// Esta instrucción ejecuta código condicional.
-			// La parte del 'if' si se cumple la condición y 
+			// Esta instrucciï¿½n ejecuta cï¿½digo condicional.
+			// La parte del 'if' si se cumple la condiciï¿½n y 
 			// la del 'else' si no se cumple.
-			if(n>0) n = n-1;
-				else n = 9;
-			// Cambiamos parte de la página usando DOM
-			document.getElementById("cuenta").src = n + ".png";
+			if (u > 0){
+				u -= 1;
+			}
+			if (u == 0 && d > 0){
+				u = 9;
+				d -= 1;
+			}
+			if (u == 0 && d == 0 && c > 0){
+				u = 9;
+				d = 9;
+				c -= 1;
+			}
+			if (u == 0 && d == 0 && c == 0 && m > 0){
+				u = 9;
+				d = 9;
+				c = 9;
+				m -= 1;
+			}
+			if (u == 0 && d == 0 && c == 0 && m == 0){
+				setTimeout(function() {
+					window.close();
+				}, 2000);
+			}
+
+			// Cambiamos parte de la pï¿½gina usando DOM
+			document.getElementById("cuenta1").src = u + ".png";
+			document.getElementById("cuenta2").src = d + ".png";
+			document.getElementById("cuenta3").src = c + ".png";
+			document.getElementById("cuenta4").src = m + ".png";
 		}
 	</script>
 </head>
 <body onload="cuentaAtras()">
 	<div id="numeros">
-		<img src="9.png" id="cuenta">
+		<img src="" id="cuenta4">
+		<img src="" id="cuenta3">
+		<img src="" id="cuenta2">
+		<img src="" id="cuenta1">
 	</div>
 </body>
 </html>
