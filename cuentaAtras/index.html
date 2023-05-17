@@ -137,7 +137,7 @@
 
     // Función que se ejecuta cuando se modifica el input
     function inputModificado(tiempo) {
-        var regex = /^(\d{2}|--)?:?(\d{2}|--)?:?(\d{2}|--)$/; // Expresión regular para validar el formato hh:mm:ss
+        var regex = /^(\d{2}):(\d{2}):(\d{2})$/; // Expresión regular para validar el formato hh:mm:ss
 
         if (regex.test(tiempo)) {
             var tiempoArray = tiempo.split(":");
