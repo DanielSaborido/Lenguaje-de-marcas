@@ -129,10 +129,25 @@
                 m1 = parseInt(numero.charAt(3));
                 s2 = parseInt(numero.charAt(4));
                 s1 = parseInt(numero.charAt(5));
-				if (s2 > 5 || m2 > 5){
-					alert('Se introdujo un valor inexistente.');
-					return false;
+				if (s2 > 5){
+                    s2-=5;
+                    m1+=1;
 				}
+                if (m1 = 10){
+                    m1=0;
+                    m2*=1;
+                }
+                if (m2 > 5){
+                    m2-=5;
+                    h1+=1;
+                }
+                if (h1 = 10){
+                    h1=0;
+                    h2+=1;
+                }
+                if (h2 = 10){
+                    
+                }
 			}
             if (numero.length === 5) {
                 h2 = 0;
