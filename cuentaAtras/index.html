@@ -34,7 +34,7 @@
             <img src="0.png" id="cuenta1" alt="numero">
         </div>
         <div id="botones">
-            <input type="time" step="1" id="cuentaInput">
+            <input type="time" step="1" id="cuentaInput" value="00:00:00">
             <button id="reiniciarBoton1" onclick="detenerCuenta()">Detener</button>
             <button id="reiniciarBoton2" onclick="reanudarCuenta()">Reanudar</button>
             <button id="reiniciarBoton3" onclick="reiniciarCuenta()">Reiniciar</button>
@@ -64,8 +64,7 @@
 
     // Función para reiniciar la cuenta regresiva
     function reiniciarCuenta() {
-        var tiempo = document.getElementById('cuentaInput').value;
-        inputModificado(tiempo);
+        inputModificado(reinicio);
     }
 
     // Función para detener la cuenta regresiva
@@ -76,7 +75,7 @@
     // Función para reanudar la cuenta regresiva
     function reanudarCuenta() {
         detenerCuenta();
-        intervalId = setInterval(marchaAtras, 500);
+        intervalId = setInterval(marchaAtras, 1000);
     }
 
     // Función que actualiza los números de la cuenta regresiva
@@ -137,8 +136,7 @@
     }
 
     // Función que se ejecuta cuando se modifica el input
-    function inputModificado() {
-        var tiempo = document.getElementById('cuentaInput').value;
+    function inputModificado(tiempo) {
         var regex = /^(\d{2}|--)?:?(\d{2}|--)?:?(\d{2}|--)$/; // Expresión regular para validar el formato hh:mm:ss
 
         if (regex.test(tiempo)) {
@@ -151,12 +149,12 @@
             s1 = parseInt(tiempoArray[2].charAt(1));
             if (s2 > 5 || m2 > 5) {
                 alert('Se introdujo un valor inexistente.');
-                reinicio = '';
+                reinicio = '00:00:00';
                 return false;
             }
         } else {
             alert('El formato de tiempo debe ser hh:mm:ss');
-            reinicio = '';
+            reinicio = '00:00:00';
             return false;
         }
 
@@ -171,7 +169,7 @@
             var valor = this.value;
             reinicio = valor;
             inputModificado(valor);
-            this.value = '';
+            this.value = '00:00:00';
         }
     });
 </script>
