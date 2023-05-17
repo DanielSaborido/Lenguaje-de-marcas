@@ -3,17 +3,22 @@
 <head>
     <meta enctype="utf-8">
     <title>Cuenta Atras</title>
+    <style>
+        img[alt="numero"]{
+            width: 158px;
+        }
+    </style>
 </head>
 <body>
     <div id="numeros">
-        <img src="0.png" id="cuenta6">
-        <img src="0.png" id="cuenta5">
+        <img src="0.png" id="cuenta6" alt="numero">
+        <img src="0.png" id="cuenta5" alt="numero">
         <img src="puntos.jpeg" id="puntos">
-        <img src="0.png" id="cuenta4">
-        <img src="0.png" id="cuenta3">
+        <img src="0.png" id="cuenta4" alt="numero">
+        <img src="0.png" id="cuenta3" alt="numero">
         <img src="puntos.jpeg" id="puntos">
-        <img src="0.png" id="cuenta2">
-        <img src="0.png" id="cuenta1">
+        <img src="0.png" id="cuenta2" alt="numero">
+        <img src="0.png" id="cuenta1" alt="numero">
     </div>
 	<input type="number" id="cuentaInput" oninput="inputModificado()">
     <button id="reiniciarBoton1" onclick="detenerCuenta()">Detener</button>
@@ -39,7 +44,7 @@
             // Definimos acciones que se realizan cada cierto tiempo usando setInterval
             // El tiempo se expresa en milisegundos.
             // En este caso, se ejecuta marchaAtras cada 500 milisegundos.
-            intervalId = setInterval(marchaAtras, 500);
+            intervalId = setInterval(marchaAtras, 1000);
         }
 
         // Función para reiniciar la cuenta regresiva
@@ -109,7 +114,6 @@
 				document.getElementById("reiniciarBoton2").style.display = "none";
 				document.getElementById("reiniciarBoton3").style.display = "none";
                 setTimeout(function() {
-					alert('Se te acabo el tiempo.')
                     window.close();
                 }, 1000);
             }
@@ -194,6 +198,11 @@
 			if (event.key === "Enter") {
 				event.preventDefault();
 				var valor = this.value;
+                if (valor.length > 6){
+                    alert('Se introdujo un valor muy largo.');
+                    this.value='';
+                    return false;
+                }
 				reinicio = valor;
 				inputModificado(valor);
 				this.value='';
