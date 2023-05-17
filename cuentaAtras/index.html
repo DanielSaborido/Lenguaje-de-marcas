@@ -4,224 +4,175 @@
     <meta enctype="utf-8">
     <title>Cuenta Atras</title>
     <style>
+        body{
+            background: url("fondos/tecno3.png");
+            background-size: cover;
+        }
         img[alt="numero"]{
             width: 158px;
+        }
+        #celda{
+            margin-top: 15%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
         }
     </style>
 </head>
 <body>
-    <div id="numeros">
-        <img src="0.png" id="cuenta6" alt="numero">
-        <img src="0.png" id="cuenta5" alt="numero">
-        <img src="puntos.jpeg" id="puntos">
-        <img src="0.png" id="cuenta4" alt="numero">
-        <img src="0.png" id="cuenta3" alt="numero">
-        <img src="puntos.jpeg" id="puntos">
-        <img src="0.png" id="cuenta2" alt="numero">
-        <img src="0.png" id="cuenta1" alt="numero">
+    <div id="celda">
+        <div id="numeros">
+            <img src="0.png" id="cuenta6" alt="numero">
+            <img src="0.png" id="cuenta5" alt="numero">
+            <img src="puntos.png" id="puntos" alt="numero">
+            <img src="0.png" id="cuenta4" alt="numero">
+            <img src="0.png" id="cuenta3" alt="numero">
+            <img src="puntos.png" id="puntos" alt="numero">
+            <img src="0.png" id="cuenta2" alt="numero">
+            <img src="0.png" id="cuenta1" alt="numero">
+        </div>
+        <div id="botones">
+            <input type="time" step="1" id="cuentaInput">
+            <button id="reiniciarBoton1" onclick="detenerCuenta()">Detener</button>
+            <button id="reiniciarBoton2" onclick="reanudarCuenta()">Reanudar</button>
+            <button id="reiniciarBoton3" onclick="reiniciarCuenta()">Reiniciar</button>
+        </div>
     </div>
-	<input type="number" id="cuentaInput" oninput="inputModificado()">
-    <button id="reiniciarBoton1" onclick="detenerCuenta()">Detener</button>
-    <button id="reiniciarBoton2" onclick="reanudarCuenta()">Reanudar</button>
-    <button id="reiniciarBoton3" onclick="reiniciarCuenta()">Reiniciar</button>
 </body>
-    <script>
-        var intervalId; // Variable para almacenar el ID del intervalo
-		const tiempo = document.getElementById('cuentaInput')
-		var reinicio;
+<script>
+    var intervalId; // Variable para almacenar el ID del intervalo
+    const tiempo = document.getElementById('cuentaInput');
+    var reinicio;
 
-        // Variables de la cuenta regresiva
-		
-        var h2 = 0;
-        var h1 = 0;
-        var m2 = 0;
-        var m1 = 0;
-        var s2 = 0;
-        var s1 = 0;
+    // Variables de la cuenta regresiva
+    var h2 = 0;
+    var h1 = 0;
+    var m2 = 0;
+    var m1 = 0;
+    var s2 = 0;
+    var s1 = 0;
 
-        // Función que se ejecuta al abrir la página y define lo que se hace cada segundo
-        function cuentaAtras() {
-            // Definimos acciones que se realizan cada cierto tiempo usando setInterval
-            // El tiempo se expresa en milisegundos.
-            // En este caso, se ejecuta marchaAtras cada 500 milisegundos.
-            intervalId = setInterval(marchaAtras, 1000);
+    // Función que se ejecuta al abrir la página y define lo que se hace cada segundo
+    function cuentaAtras() {
+        // Definimos acciones que se realizan cada cierto tiempo usando setInterval
+        // El tiempo se expresa en milisegundos.
+        // En este caso, se ejecuta marchaAtras cada 500 milisegundos.
+        intervalId = setInterval(marchaAtras, 1000);
+    }
+
+    // Función para reiniciar la cuenta regresiva
+    function reiniciarCuenta() {
+        var tiempo = document.getElementById('cuentaInput').value;
+        inputModificado(tiempo);
+    }
+
+    // Función para detener la cuenta regresiva
+    function detenerCuenta() {
+        clearInterval(intervalId);
+    }
+
+    // Función para reanudar la cuenta regresiva
+    function reanudarCuenta() {
+        detenerCuenta();
+        intervalId = setInterval(marchaAtras, 500);
+    }
+
+    // Función que actualiza los números de la cuenta regresiva
+    function actualizarNumeros() {
+        document.getElementById("cuenta1").src = s1 + ".png";
+        document.getElementById("cuenta2").src = s2 + ".png";
+        document.getElementById("cuenta3").src = m1 + ".png";
+        document.getElementById("cuenta4").src = m2 + ".png";
+        document.getElementById("cuenta5").src = h1 + ".png";
+        document.getElementById("cuenta6").src = h2 + ".png";
+    }
+
+    // Función que se ejecuta cada segundo para la cuenta regresiva
+    function marchaAtras() {
+        if (s1 > 0) {
+            s1 -= 1;
+        }
+        if (s1 == 0 && s2 > 0) {
+            s1 = 9;
+            s2 -= 1;
+        }
+        if (s1 == 0 && s2 == 0 && m1 > 0) {
+            s1 = 9;
+            s2 = 5;
+            m1 -= 1;
+        }
+        if (s1 == 0 && s2 == 0 && m1 == 0 && m2 > 0) {
+            s1 = 9;
+            s2 = 5;
+            m1 = 9;
+            m2 -= 1;
+        }
+        if (s1 == 0 && s2 == 0 && m1 == 0 && m2 == 0 && h1 > 0) {
+            s1 = 9;
+            s2 = 5;
+            m1 = 9;
+            m2 = 5;
+            h1 -= 1;
+        }
+        if (s1 == 0 && s2 == 0 && m1 == 0 && m2 == 0 && h1 == 0 && h2 > 0) {
+            s1 = 9;
+            s2 = 5;
+            m1 = 9;
+            m2 = 5;
+            h1 = 9;
+            h2 -= 1;
+        }
+        if (s1 == 0 && s2 == 0 && m1 == 0 && m2 == 0 && h1 == 0 && h2 == 0) {
+            document.getElementById("cuentaInput").style.display = "none";
+            document.getElementById("reiniciarBoton1").style.display = "none";
+            document.getElementById("reiniciarBoton2").style.display = "none";
+            document.getElementById("reiniciarBoton3").style.display = "none";
+            setTimeout(function() {
+                window.close();
+            }, 1000);
+        }
+        actualizarNumeros();
+    }
+
+    // Función que se ejecuta cuando se modifica el input
+    function inputModificado() {
+        var tiempo = document.getElementById('cuentaInput').value;
+        var regex = /^(\d{2}|--)?:?(\d{2}|--)?:?(\d{2}|--)$/; // Expresión regular para validar el formato hh:mm:ss
+
+        if (regex.test(tiempo)) {
+            var tiempoArray = tiempo.split(":");
+            h2 = parseInt(tiempoArray[0].charAt(0));
+            h1 = parseInt(tiempoArray[0].charAt(1));
+            m2 = parseInt(tiempoArray[1].charAt(0));
+            m1 = parseInt(tiempoArray[1].charAt(1));
+            s2 = parseInt(tiempoArray[2].charAt(0));
+            s1 = parseInt(tiempoArray[2].charAt(1));
+            if (s2 > 5 || m2 > 5) {
+                alert('Se introdujo un valor inexistente.');
+                reinicio = '';
+                return false;
+            }
+        } else {
+            alert('El formato de tiempo debe ser hh:mm:ss');
+            reinicio = '';
+            return false;
         }
 
-        // Función para reiniciar la cuenta regresiva
-        function reiniciarCuenta() {
-			inputModificado(reinicio)
-        }
+        actualizarNumeros();
+        detenerCuenta();
+        cuentaAtras();
+    }
 
-        // Función para detener la cuenta regresiva
-        function detenerCuenta() {
-            clearInterval(intervalId);
+    tiempo.addEventListener('keydown', function(event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            var valor = this.value;
+            reinicio = valor;
+            inputModificado(valor);
+            this.value = '';
         }
-
-        // Función para reanudar la cuenta regresiva
-        function reanudarCuenta() {
-            detenerCuenta();
-            intervalId = setInterval(marchaAtras, 500);
-        }
-
-        // Función que actualiza los números de la cuenta regresiva
-        function actualizarNumeros() {
-            document.getElementById("cuenta1").src = s1 + ".png";
-            document.getElementById("cuenta2").src = s2 + ".png";
-            document.getElementById("cuenta3").src = m1 + ".png";
-            document.getElementById("cuenta4").src = m2 + ".png";
-            document.getElementById("cuenta5").src = h1 + ".png";
-            document.getElementById("cuenta6").src = h2 + ".png";
-        }
-
-        // Función que se ejecuta cada segundo para la cuenta regresiva
-        function marchaAtras() {
-            if (s1 > 0) {
-                s1 -= 1;
-            }
-            if (s1 == 0 && s2 > 0) {
-                s1 = 9;
-                s2 -= 1;
-            }
-            if (s1 == 0 && s2 == 0 && m1 > 0) {
-                s1 = 9;
-                s2 = 5;
-                m1 -= 1;
-            }
-            if (s1 == 0 && s2 == 0 && m1 == 0 && m2 > 0) {
-                s1 = 9;
-                s2 = 5;
-                m1 = 9;
-                m2 -= 1;
-            }
-            if (s1 == 0 && s2 == 0 && m1 == 0 && m2 == 0 && h1 > 0) {
-                s1 = 9;
-                s2 = 5;
-                m1 = 9;
-                m2 = 5;
-                h1 -= 1;
-            }
-            if (s1 == 0 && s2 == 0 && m1 == 0 && m2 == 0 && h1 == 0 && h2 > 0) {
-                s1 = 9;
-                s2 = 5;
-                m1 = 9;
-                m2 = 5;
-                h1 = 9;
-                h2 -= 1;
-            }
-            if (s1 == 0 && s2 == 0 && m1 == 0 && m2 == 0 && h1 == 0 && h2 == 0) {
-				document.getElementById("cuentaInput").style.display = "none";
-				document.getElementById("reiniciarBoton1").style.display = "none";
-				document.getElementById("reiniciarBoton2").style.display = "none";
-				document.getElementById("reiniciarBoton3").style.display = "none";
-                setTimeout(function() {
-                    window.close();
-                }, 1000);
-            }
-            actualizarNumeros();
-        }
-		
-        // Función que se ejecuta cuando se modifica el input
-        function inputModificado(numero) {//pendiente de arreglar
-            if (numero.length === 6) {
-                h2 = parseInt(numero.charAt(0));
-                h1 = parseInt(numero.charAt(1));
-                m2 = parseInt(numero.charAt(2));
-                m1 = parseInt(numero.charAt(3));
-                s2 = parseInt(numero.charAt(4));
-                s1 = parseInt(numero.charAt(5));
-				if (s2 > 5){
-                    s2-=5;
-                    m1+=1;
-				}
-                if (m1 = 10){
-                    m1=0;
-                    m2*=1;
-                }
-                if (m2 > 5){
-                    m2-=5;
-                    h1+=1;
-                }
-                if (h1 = 10){
-                    h1=0;
-                    h2+=1;
-                }
-                if (h2 = 10){
-                    
-                }
-			}
-            if (numero.length === 5) {
-                h2 = 0;
-                h1 = parseInt(numero.charAt(0));
-				m2 = parseInt(numero.charAt(1));
-                m1 = parseInt(numero.charAt(2));
-                s2 = parseInt(numero.charAt(3));
-                s1 = parseInt(numero.charAt(4));
-				if (s2 > 5 || m2 > 5){
-					alert('Se introdujo un valor inexistente.');
-					return false;
-				}
-			}
-            if (numero.length === 4) {
-                h2 = 0;
-                h1 = 0;
-                m2 = parseInt(numero.charAt(0));
-                m1 = parseInt(numero.charAt(1));
-                s2 = parseInt(numero.charAt(2));
-                s1 = parseInt(numero.charAt(3));
-				if (s2 > 5 || m2 > 5){
-					alert('Se introdujo un valor inexistente.');
-					return false;
-				}
-			}
-            if (numero.length === 3) {
-                h2 = 0;
-                h1 = 0;
-				m2 = 0;
-                m1 = parseInt(numero.charAt(0));
-                s2 = parseInt(numero.charAt(1));
-                s1 = parseInt(numero.charAt(2));
-				if (s2 > 5){
-					alert('Se introdujo un valor inexistente.');
-					return false;
-				}
-			}
-            if (numero.length === 2) {
-                h2 = 0;
-                h1 = 0;
-                m2 = 0;
-                m1 = 0;
-                s2 = parseInt(numero.charAt(0));
-                s1 = parseInt(numero.charAt(1));
-				if (s2 > 5){
-					alert('Se introdujo un valor inexistente.');
-					return false;
-				}
-			}
-            if (numero.length === 1) {
-                h2 = 0;
-                h1 = 0;
-                m2 = 0;
-                m1 = 0;
-                s2 = 0;
-                s1 = parseInt(numero.charAt(0));
-			}
-			actualizarNumeros();
-			detenerCuenta();
-			cuentaAtras();
-        }
-		tiempo.addEventListener('keydown', function(event) {
-			if (event.key === "Enter") {
-				event.preventDefault();
-				var valor = this.value;
-                if (valor.length > 6){
-                    alert('Se introdujo un valor muy largo.');
-                    this.value='';
-                    return false;
-                }
-				reinicio = valor;
-				inputModificado(valor);
-				this.value='';
-			}
-		});
-    </script>
+    });
+</script>
 </html>
