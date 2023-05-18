@@ -1,0 +1,69 @@
+<title>Cuenta Atras</title>
+	<script>
+        var intervalId; // Variable para almacenar el ID del intervalo
+		// Una variable es un espacio para almacenar datos (por ahora simples).
+		var d = 9;
+		var u = 9;
+
+		 // Función que se ejecuta al abrir la página y define lo que se hace cada segundo
+         function cuentaAtras() {
+            // Definimos acciones que se realizan cada cierto tiempo usando setInterval
+            // El tiempo se expresa en milisegundos.
+            // En este caso, se ejecuta marchaAtras cada 500 milisegundos.
+            intervalId = setInterval(marchaAtras, 250);
+        }
+    
+        // Función para detener la cuenta regresiva
+        function detenerCuenta() {
+            clearInterval(intervalId);
+        }
+    
+        // Función para reanudar la cuenta regresiva
+        function reanudarCuenta() {
+            detenerCuenta();
+            intervalId = setInterval(marchaAtras, 250);
+        }
+        
+        function actualizarNumeros() {
+			document.getElementById("cuenta1").src = u + ".png";
+			document.getElementById("cuenta2").src = d + ".png";
+			document.getElementById("cuenta3").src = c + ".png";
+        }
+
+		// 
+		function marchaAtras() {
+			// Esta instrucci�n ejecuta c�digo condicional.
+			// La parte del 'if' si se cumple la condici�n y 
+			// la del 'else' si no se cumple.
+			if (u > 0){
+				u -= 1;
+			}
+			if (u == 0 && d > 0){
+				u = 9;
+				d -= 1;
+			}
+			if (u == 0 && d == 0){
+                actualizarNumeros();
+                document.getElementById("reiniciarBoton1").style.display = "none";
+                document.getElementById("reiniciarBoton2").style.display = "none";
+                setTimeout(function() {
+                    window.close();
+                }, 1000);
+			}
+
+			// Cambiamos parte de la p�gina usando DOM
+            actualizarNumeros();
+		}
+	</script>
+</head>
+<body onload="cuentaAtras()">
+	<div id="numeros">
+		<img src="9.png" id="cuenta2">
+		<img src="9.png" id="cuenta1">
+	</div>
+    <div id="botones">
+        <button id="reiniciarBoton1" onclick="detenerCuenta()">Detener</button>
+        <button id="reiniciarBoton2" onclick="reanudarCuenta()">Reanudar</button>
+    </div>
+</body>
+</html>
