@@ -79,14 +79,16 @@
 </head>
 <body onload="cuentaAtras()">
 	<h1>Cuenta Progresiva</h1>
-	<div id="numeros">
-		<img src="0.png" id="cuenta3">
-		<img src="0.png" id="cuenta2">
-		<img src="0.png" id="cuenta1">
+	<div id="celda">
+		<div id="numeros">
+			<img src="0.png" id="cuenta3">
+			<img src="0.png" id="cuenta2">
+			<img src="0.png" id="cuenta1">
+		</div>
+		<div id="botones">
+			<button id="reiniciarBoton1" onclick="detenerCuenta()">Detener</button>
+			<button id="reiniciarBoton2" onclick="reanudarCuenta()">Reanudar</button>
+		</div>
 	</div>
-    <div id="botones">
-        <button id="reiniciarBoton1" onclick="detenerCuenta()">Detener</button>
-        <button id="reiniciarBoton2" onclick="reanudarCuenta()">Reanudar</button>
-    </div>
 </body>
 </html>
