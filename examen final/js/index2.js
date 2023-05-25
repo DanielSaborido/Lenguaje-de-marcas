@@ -1,6 +1,10 @@
 const resultado = document.getElementById('resultado')
 var myWindow;
 
+var lnombres = [];
+var ldni = [];
+var lcorreo = [];
+
 var intervalId; // Variable para almacenar el ID del intervalo
 
 // Variables de la cuenta regresiva
@@ -45,10 +49,6 @@ function marchaAtras() {
     actualizarNumeros();
 }
 
-var lnombres = [];
-var ldni = [];
-var lcorreo = [];
-
 function Validacion() {
     var campo1 = document.getElementById("campo1").value;
     var dni = document.getElementById("dni").value;
@@ -80,6 +80,7 @@ function Validacion() {
     lnombres.push(campo1);
     ldni.push(dni);
     lcorreo.push(correo);
+    genera_tabla();
 }
 
 function genera_tabla() {
@@ -94,8 +95,6 @@ function genera_tabla() {
     for (var i = 0; i < lnombres.length(); i++) {
       // Crea las hileras de la tabla
       var hilera = document.createElement("tr");
-  
-      for (var j = 0; j < 3; j++) {
         // Crea un elemento <td> y un nodo de texto, haz que el nodo de
         // texto sea el contenido de <td>, ubica el elemento <td> al final
         // de la hilera de la tabla
@@ -111,7 +110,6 @@ function genera_tabla() {
         hilera.appendChild(celda1);
         hilera.appendChild(celda2);
         hilera.appendChild(celda3);
-      }
   
       // agrega la hilera al final de la tabla (al final del elemento tblbody)
       tblBody.appendChild(hilera);
