@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Examen</title>
+        <link href='../css/index2.css' rel='stylesheet' type='text/css'>
+    </head>
+    <header>
+        <img src="../img/milogo.png" alt="logo">
+        <h1>EJERCICIO 2 DNI EN ARRAY JAVASCRIPT</h1>
+    </header>
+    <body onload="cuentaAtras()">
+        <div class="celda">
+            <form method="post">
+                <label>Nombre: </label>
+                <input type="text" id="campo1"/><br>
+                <label>DNI: </label>
+                <input type="text" id="dni"/><br>
+                <label>Correo: </label>
+                <input type="text" id="correo"/><br>
+                <input type="submit" value="Enviar" onclick="Validacion()"/>
+                <input type="reset"/>
+            </form>
+            <button onclick="genera_tabla()">Listar</button>
+            <div id="numeros">
+                <img src="../img/numeros/2.png" id="cuenta3" alt="numero">
+                <img src="../img/numeros/p.png" id="puntos" alt="numero">
+                <img src="../img/numeros/0.png" id="cuenta2" alt="numero">
+                <img src="../img/numeros/0.png" id="cuenta1" alt="numero">
+            </div>
+        </div>
+    </body>
+<script src="../js/index2.js"></script>
+</html>

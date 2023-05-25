@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Examen</title>
+        <link href='../css/index.css' rel='stylesheet' type='text/css'>
+    </head>
+    <header>
+        <img src="../img/milogo.png" alt="logo">
+        <h1>FUNCIONES EN CADENA</h1>
+    </header>
+    <body onload="cuentaAtras()">
+        <div class="celda">
+            <div id="formulario">
+                <form method="post">
+                    <label>Campo 1: </label>
+                    <input type="text" id="campo1"/><br>
+                    <label>Campo 2 (DNI): </label>
+                    <input type="text" id="dni"/><br>
+                    <select id="opciones" name="opciones">
+                    <option value="longitud">Longitud</option>
+                    <option value="maymin">Mayusculas/Minusculas</option>
+                    <option value="numdni">Núm del DNI</option>
+                    <option value="letradni">Calcular letra del DNI</option>
+                    </select><br>
+                    <input type="submit" value="Enviar" onclick="Validacion()"/>
+                    <input type="reset"/>
+                </form>
+            </div>
+            <div id="numeros">
+                <img src="../img/numeros/2.png" id="cuenta3" alt="numero">
+                <img src="../img/numeros/p.png" id="puntos" alt="numero">
+                <img src="../img/numeros/0.png" id="cuenta2" alt="numero">
+                <img src="../img/numeros/0.png" id="cuenta1" alt="numero">
+            </div>
+        </div>
+    </body>
+<script src="../js/index.js"></script>
+</html>

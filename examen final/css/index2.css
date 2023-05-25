@@ -1,0 +1,14 @@
+img[alt="logo"]{
+    height: 90px;
+    float: right;
+}
+
+#celda{
+    margin-top: 10%;
+    display: flex;
+    border: solid black 1px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
