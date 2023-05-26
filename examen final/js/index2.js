@@ -92,7 +92,7 @@ function genera_tabla() {
     var tblBody = document.createElement("tbody");
   
     // Crea las celdas
-    for (var i = 0; i < lnombres.length(); i++) {
+    for (var i = 0; i < lnombres.length; i++) {
       // Crea las hileras de la tabla
       var hilera = document.createElement("tr");
         // Crea un elemento <td> y un nodo de texto, haz que el nodo de
